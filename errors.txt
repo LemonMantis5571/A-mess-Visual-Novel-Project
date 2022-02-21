@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 203: choice menuitem expects a non-empty block.
+    "Talk to Grettell":
+                       ^
+
+Ren'Py Version: Ren'Py 7.4.11.2266
+Sun Feb 20 03:33:33 2022

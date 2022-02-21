@@ -1,0 +1,30 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 326, in script call
+    "Quit":
+  File "game/script.rpy", line 419, in script
+    menu:
+  File "game/script.rpy", line 419, in <module>
+    menu:
+TypeError: input() takes at least 1 argument (1 given)
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 326, in script call
+    "Quit":
+  File "game/script.rpy", line 419, in script
+    menu:
+  File "renpy/ast.py", line 928, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2245, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 419, in <module>
+    menu:
+TypeError: input() takes at least 1 argument (1 given)
+
+Windows-10-10.0.19041
+Ren'Py 7.4.11.2266
+A mess 1.0
+Mon Feb 14 19:00:48 2022
