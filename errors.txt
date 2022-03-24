@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 203: choice menuitem expects a non-empty block.
-    "Talk to Grettell":
-                       ^
+File "game/intro_uni.rpy", line 23: expected menuitem
+    Ok:
+    ^
+
+File "game/script.rpy", line 14: expected 'word' not found.
+    define ??? = Character("???", color="#ff00ff")
+           ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sun Feb 20 03:33:33 2022
+Wed Mar 23 21:37:41 2022
