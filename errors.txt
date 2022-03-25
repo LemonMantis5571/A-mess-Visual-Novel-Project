@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/intro_uni.rpy", line 23: expected menuitem
-    Ok:
-    ^
-
-File "game/script.rpy", line 14: expected 'word' not found.
-    define ??? = Character("???", color="#ff00ff")
-           ^
+File "game/screens.rpy", line 295: end of line expected.
+    if not renpy.get_screen("main_menu")::
+                                         ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Wed Mar 23 21:37:41 2022
+Thu Mar 24 20:58:54 2022

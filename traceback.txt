@@ -1,38 +1,44 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "renpy/common/00start.rpy", line 184, in script call
-    label _start:
-  File "renpy/common/00start.rpy", line 94, in script
-    python hide:
-  File "renpy/common/00start.rpy", line 94, in <module>
-    python hide:
-  File "renpy/common/00start.rpy", line 97, in _execute_python_hide
-    i()
-  File "renpy/common/00console.rpy", line 864, in watch_after_load
-    if config.developer and traced_expressions:
-NameError: global name 'traced_expressions' is not defined
+While processing the outlines property of style navigation_button_text:
+  File "renpy/common/00start.rpy", line 80, in _init_language
+    renpy.change_language(language)
+  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
+    __update()
+  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
+    renpy.style.rebuild()
+TypeError: object of type 'absolute' has no len()
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 184, in script call
-    label _start:
-  File "renpy/common/00start.rpy", line 94, in script
-    python hide:
-  File "renpy/ast.py", line 928, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2245, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00start.rpy", line 94, in <module>
-    python hide:
-  File "renpy/common/00start.rpy", line 97, in _execute_python_hide
+  File "renpy/bootstrap.py", line 331, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 662, in main
+    run(restart)
+  File "renpy/main.py", line 78, in run
+    renpy.translation.init_translation()
+  File "renpy/translation/__init__.py", line 561, in init_translation
+    renpy.store._init_language() # @UndefinedVariable
+  File "renpy/common/00start.rpy", line 80, in _init_language
+    renpy.change_language(language)
+  File "renpy/translation/__init__.py", line 650, in change_language
     i()
-  File "renpy/common/00console.rpy", line 864, in watch_after_load
-    if config.developer and traced_expressions:
-NameError: global name 'traced_expressions' is not defined
+  File "renpy/common/00stylepreferences.rpy", line 124, in _m1_00stylepreferences__change_language
+    __update()
+  File "renpy/common/00stylepreferences.rpy", line 96, in _m1_00stylepreferences__update
+    renpy.style.rebuild()
+  File "style.pyx", line 795, in renpy.style.rebuild
+  File "style.pyx", line 788, in renpy.style.build_styles
+  File "style.pyx", line 680, in renpy.style.build_style
+  File "style.pyx", line 709, in renpy.style.build_style
+  File "style.pyx", line 706, in renpy.style.build_style
+  File "gen-static/style_functions.pyx", line 244, in style_functions.outlines_property
+  File "renpy/styledata/styleutil.py", line 60, in expand_outlines
+    if len(i) == 2:
+TypeError: object of type 'absolute' has no len()
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 A mess 1.0
-Wed Mar 23 19:40:13 2022
+Thu Mar 24 21:14:21 2022

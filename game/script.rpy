@@ -128,7 +128,7 @@ label traveling:
 
     scene bg lincoln
     
-    character_name "So, Im finally here... its dope."
+    character_name "So, Im finally here..."
     character_name "I didn't even take breakfast too."
     character_name "This day seems doomed already."
 

@@ -4,7 +4,7 @@ label  start_uni:
 
     show secret
     Talya "Hello there."
-    Talya "So, you are a Uni Student."
+    Talya "So, you are a UNI Student."
     Talya "You may ask what are you doing here."
     Talya "Well I'm here to help you."
     Talya "I'm Talya, your guide in this adventure. "
@@ -30,10 +30,12 @@ label  start_uni:
             Talya "Ozuna!"
             hide secret
             play music "audio/ozuna.mp3" fadein 1.0 volume 0.3
-            show ozuna at right
+            show ozuna at right with dissolve
             "Ozuna!?"
             show secret at left
             Talya "Yes."
+            hide ozuna
+            show ozunat at right with dissolve
             Ozuna "ax2+bx+c=0"
             $ character_name = "Ozuna" 
 

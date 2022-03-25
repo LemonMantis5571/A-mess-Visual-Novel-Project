@@ -292,10 +292,18 @@ style quick_button_text:
 screen navigation():
 
     vbox:
-        style_prefix "navigation"
+        if not renpy.get_screen("main_menu"):
+            style_prefix "navigation"
+        else:
+            style_prefix "mainmenu"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        if renpy.get_screen("main_menu"):
+            xalign 0.5
+            yalign 0.5
+
+        else:
+            xpos gui.navigation_xpos
+            yalign 0.5
 
         spacing gui.navigation_spacing
 
@@ -311,7 +319,7 @@ screen navigation():
 
         textbutton _("Load") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("Options") action ShowMenu("preferences")
 
         if _in_replay:
 
@@ -344,6 +352,15 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.button_text_properties("navigation_button")
+    font "fonts/Lato-Bold.ttf"
+    outlines [(absolute(2), "#000000", absolute(10),absolute(-5))]
+    xalign 0.5
+
+style mainmenu_button is navigation_button:
+    xalign 0.5
+
+style mainmenu_button_text is navigation_button_text:
+    xalign 0.5
 
 
 ## Main Menu screen ############################################################
@@ -389,7 +406,7 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    #background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
