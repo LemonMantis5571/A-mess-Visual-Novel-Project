@@ -153,9 +153,11 @@ label lincoln:
 
     play music "audio/bgm_class.mp3" fadein 1.0 volume 0.3
     "*I arrived the class... I wonder why everybody is looking at me in that way..."
+    scene bg class0
     show isela at left
     Isela "Good morning, you late... again..."
     Isela "[character_name], you better have a good excuse this time..."
+    scene bg class1
     character_name "I -I mean..."
     Isela "Anyways, let's start with memorizes!"
     hide isela
