@@ -10,6 +10,8 @@ default confidence_grettell = 0
 default friendship_gretell = 0
 default tension_grettell = 0
 
+init python:
+    config.font_replacement_map["DejaVuSans.ttf", False, True] = ("fonts/Lato-Bold.ttf", False, False)
 
 
 #Atributes
@@ -17,9 +19,9 @@ label atributes_nuria:
     $ randomnum = renpy.random.randint(1,2) # (randomize between 1 and 2)
 
     if randomnum==1 and confidence_nuria<45:
-        show nuria
 
-        Nuria "How my life is going???"
+        show nuria
+        Nuria "How things are going???"
         hide nuria
         show nuriat
         Nuria "Well, things are..."
@@ -49,9 +51,10 @@ label atributes_nuria:
 
             "I like you":
                 Nuria "*Blushes*"
+                hide nuriat
                 show nuria_blush at right
                 Nuria "..."
-                Nuria "Get low you dumb."
+                Nuria "So cute."
                 hide nuria_blush
                 show nuriat at right
                 Nuria "You'll never stand a chance with me."
@@ -64,7 +67,7 @@ label atributes_nuria:
             "My mom prepared me some chicken sandwich":
                 character_name "You want a taste of it?"
                 Nuria "I don't want anything from you."
-                Nuria "But i'll take it anyways."
+                Nuria "But I'll take it anyways."
                 hide nuriat
                 show nuria_sandwich at right
                 Nuria "Omg this is so good."
@@ -76,7 +79,7 @@ label atributes_nuria:
                         $ friendship_nuria +=1
                         $ tension_nuria -= 1 
                         
-                    "I swear i hate you":
+                    "I swear I hate you":
                         Nuria "Who do you think you are??"
                         Nuria "Trash."
                         show nuria_angry at right with dissolve
@@ -96,13 +99,15 @@ label atributes_nuria:
         Nuria "OMG this class is so boring bruh."
         hide nuria
         show nuriat
-        Nuria "I rather be programming the next Smash bros."
+        Nuria "I rather be making my next single."
+        Nuria "..."
         Nuria "What are you looking at?"
         character_name "Nothing."
-        Nuria "You better see nothing."
+        Nuria "Yes, you better see nothing."
         Nuria "..."
         Nuria "You still here?"
         character_name "Yes."
+        Nuria "Well, I'm bored."
         Nuria "May i ask what's your favorite type of music?"
         $ taste = renpy.input(" ", length=8)
         Nuria "[taste], that's interesting."
@@ -113,7 +118,7 @@ label atributes_nuria:
                 show nuria_blush at right
                 Nuria "..."
                 Nuria "Of course not."
-                Nuria "Mine is too hard for weak people as you."
+                Nuria "Mine is so underground."
                 hide nuria_blush
                 $ confidence_nuria +=2
                 $ friendship_nuria +=1
@@ -121,9 +126,9 @@ label atributes_nuria:
 
             "You that's edgy":
                 show nuria_angry at right
-                Nuria "I'm sorry?."
-                Nuria "What did you just say?."
-                Nuria "You such a desilutional person."
+                Nuria "I'm sorry?"
+                Nuria "B."
+                Nuria "You such a disgusting person."
                 $ confidence_nuria -=2
                 $ friendship_nuria -=1
                 $ tension_nuria += 5
@@ -131,7 +136,7 @@ label atributes_nuria:
             
             "Maybe you can guide me through that genre":
                 show nuriat at right
-                Nuria "Simple Plan - The las one standing."
+                Nuria "Or maybe you should stay with your Babytv's songs."
                 Nuria "That's all i will say."
                 $ friendship_nuria +=3
                 $ tension_nuria -= 1

@@ -152,7 +152,7 @@ label lincoln:
     scene bg class1
 
     play music "audio/bgm_class.mp3" fadein 1.0 volume 0.3
-    "*I arrived the class... I wonder why everybody is looking at me in that way..."
+    "I wonder why is everybody looking at me in that way..."
     scene bg class0
     show isela at left
     Isela "Good morning, you late... again..."
@@ -302,15 +302,15 @@ label Nuria:
 
     show nuriat
 
-    Nuria "Yup, why not?"
-    Nuria "I mean i have superior taste of music..."
+    Nuria "Yeah, why not?"
+    Nuria "I mean I have a superior music taste..."
     hide nuriat
     show nuria
 
     jump Nuria_Music
 
 label Nuria_Music:
-"*You put the headphones on*"
+"*You put on the headphones*"
 stop music fadeout 1.0
 scene bg nuria with dissolve
 
@@ -325,11 +325,12 @@ menu:
         play music "audio/metal1.mp3" fadein 3.0 volume 0.3
         "*Music Starts to play*"
         show nuriat at right
-        Nuria "Savage or nah?"
+        Nuria "Savage right?"
         Nuria "For me it's like exposing what i'm in reality."
         Nuria "Well, i'm not a animal for sure haha, but i like to be wild."
-        Nuria "Maybe you can tell me."
-        $ feel = renpy.input("Describe in a word what does this music feel.", length=8)
+        character_name "That was a pretty bad joke."
+        Nuria "xD."
+        $ feel = renpy.input("What does this music makes you feel?", length=8)
         Nuria "[feel], huh?."
         Nuria "You're a weirdo."
         Nuria "Anyway..."
@@ -434,17 +435,17 @@ label Tamy:
     hide tamy
     show tamyt
     
-    Tamy "Yeah I know , u want to listen to my playlist."
+    Tamy "Yeah I know, you wanna listen to my playlist."
     character_name "Huh, how do you.."
     
-    Tamy "You talk too loud... u know?"
+    Tamy "You talk too loud... you know?"
 
     character_name "..."
 
     Tamy """
-    But for you disgrace, i do not have my music player here.
+    But for you disgrace, my phone broke when i was coming here.
 
-    U shall come to my house to listen.
+    You shall come to my house to listen.
 
     Just wait me after class and we ready to go.
 
@@ -452,7 +453,7 @@ label Tamy:
     hide tamyt
     character_name "Aight."
     hide tamyt
-    "*You wait for 3 hours*"
+    "*You waited for 3 hours*"
     show tamyt
     Tamy "so, here we go."
 
@@ -460,23 +461,23 @@ label Tamy:
 
     character_name "Very nice house."
     show tamyt
-    Tamy "yep, i bought it yesterday."
+    Tamy "yep, I bought it yesterday."
 
-    character_name "what"
+    character_name "what?"
 
-    Tamy "Anyway just turn the radio on."
+    Tamy "Anyway just turn on the radio."
 
     character_name "Radio?, aren't we using spooderfy?"
 
     Tamy "That's for losers lol."
 
-    character_name "*Sad face*"
+    character_name "*Ashamed face*"
 
     hide tamyt
 
 
     
-    "*You turn the radio on*"
+    "*You turn on the radio*"
     "What radio station to listen now?."
 
 label tamy_options:
