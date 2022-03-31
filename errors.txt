@@ -2,9 +2,59 @@
 errors listed below, and try again.
 
 
-File "game/custom_guide.rpy", line 7: expected 'simple_expression' not found.
-    show guide with 
-                    ^
+File "game/script.rpy", line 308: end of line expected.
+(Perhaps you left out a ' at the end of the first line.)
+    '''
+    label Grettell:
+     scene bg class0
+     "*You aproaches to Grettell*"
+    
+     character_name "Hi."
+    
+     show grettell
+    
+     Grettell "H-hi what's going on-on? [character_name]."
+                                  ^
+    
+     character_name "Im just wondering if i can listen to your music."
+    
+     Grettell """
+     NO!
+    
+     NO!
+    
+     NO!
+    
+     NO!
+    
+     ...
+    
+     OK
+    
+     Maybe a bit. ><
+     
+     
+     
+     """
+     
+    
+     "*You put the headphones on*"
+     "What to listen now?."
+     menu:
+        "Wolves in the dark":
+            play music "audio/Grettell.mp3" fadein 1.0 volume 0.3
+            "*Music Starts to play*"
+            "*You start to feel inspiration*"
+            hide grettell
+            show bg wolf with dissolve
+            show grettell at right
+            menu:
+                "Get Back":
+                    character_name "*That was Dope*"
+                    stop music fadeout 1.0
+                    jump Options
+    
+    '''
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Wed Mar 30 23:27:16 2022
+Thu Mar 31 16:50:34 2022

@@ -14,8 +14,9 @@ default tension_grettell = 0
 #Music game atributes
 
 default music_game_choice_nuria = 0
+default music_game_choice_tamy = 0
 
-define taste = 0
+default taste = 0
 
 init python:
     config.font_replacement_map["DejaVuSans.ttf", False, True] = ("fonts/Lato-Bold.ttf", False, False)
@@ -51,6 +52,7 @@ label atributes_nuria:
                 $ tension_nuria -= 3
 
             "You such an agressive person you know?":
+                hide nuriat
                 show nuria_angry at right
                 Nuria "I'm gonna show what a true agressive person is."
                 Nuria "Just get out!"
@@ -118,7 +120,7 @@ label atributes_nuria:
         Nuria "You still here?"
         character_name "Yes."
         Nuria "Well, I'm bored."
-        if taste = 0:
+        if taste == 0:
             Nuria "May i ask what's your favorite type of music?"
             $ taste = renpy.input(" ", length=8)
             Nuria "[taste], that's interesting."

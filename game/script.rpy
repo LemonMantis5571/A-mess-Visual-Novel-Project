@@ -22,7 +22,7 @@ default game_code_lincoln  = "0198L" #The code of the game
 
 default game_code = 0
 
-define choices_left = 0
+define nuria_init_dialogue = False
 
 define feel = 0
 
@@ -275,11 +275,11 @@ label Options:
             window hide
             if tamy_unlocked == 0:
                 menu:
-                    "Talk to Grettell":
-                        jump Grettell
-
                     "Talk to Nuria":
-                        jump Nuria
+                        if nuria_init_dialogue == True:
+                            jump Nuria_Music
+                        else:
+                            jump Nuria
 
                     "Talk to Tamy":
                         scene bg class0
@@ -292,11 +292,10 @@ label Options:
                 
             if tamy_unlocked >= 1:
                 menu:
-                    "Talk to Grettell":
-                            jump Grettell
-
+                    
                     "Talk to Nuria":
-                            jump Nuria
+                            jump Nuria_Music
+
 
                     "Talk to Tamy":
                             jump Tamy
@@ -308,57 +307,8 @@ label Options:
             jump guide
 
 
-label Grettell:
- scene bg class0
- "*You aproaches to Grettell*"
-
- character_name "Hi."
-
- show grettell
-
- Grettell "H-hi what's going on-on? [character_name]."
-
- character_name "Im just wondering if i can listen to your music."
-
- Grettell """
- NO!
-
- NO!
-
- NO!
-
- NO!
-
- ...
-
- OK
-
- Maybe a bit. ><
- 
- 
- 
- """
- 
-
- "*You put the headphones on*"
- "What to listen now?."
- menu:
-    "Wolves in the dark":
-        play music "audio/Grettell.mp3" fadein 1.0 volume 0.3
-        "*Music Starts to play*"
-        "*You start to feel inspiration*"
-        hide grettell
-        show bg wolf with dissolve
-        show grettell at right
-        menu:
-            "Get Back":
-                character_name "*That was Dope*"
-                stop music fadeout 1.0
-                jump Options
-
-
 label Nuria:
-    $ choices_left += 1
+    $ nuria_init_dialogue = True
 
     scene bg class0
     "*You aproach to Nuria*"
@@ -383,11 +333,12 @@ label Nuria:
     jump Nuria_Music
 
 label Nuria_Music:
-"*You put on the headphones*"
 stop music fadeout 1.0
 scene bg nuria with dissolve
-
+"*You put on the headphones*"
 "What to listen now?."
+hide window
+pause
 show nuria at right
 
 menu:
@@ -458,7 +409,7 @@ menu:
     "Talk":
         $ tamy_unlocked += 1
         call atributes_nuria from _call_atributes_nuria
-        $ music_game_choice_nuria_nuria_nuria += renpy.random.randint(1,10)
+        $ music_game_choice_nuria += renpy.random.randint(1,10)
         jump Nuria_Music
 
     "Quit":
@@ -482,7 +433,7 @@ label nuriarepeat:
 label status:
     "*Here's the status from every classmate*"
     menu:
-        "Grettell":
+        "Tamy":
             """
             Grettell's Confidence: [confidence_grettell]
 
@@ -503,8 +454,19 @@ label status:
             """
             jump Options
         
+        "Music Status":
+            """
+            Tamy: [music_game_choice_tamy]
+
+            Nuria: [music_game_choice_nuria]
+
+            """
+            jump Options
+        
         "Back Menu":
             jump Options
+        
+
 
             
 
