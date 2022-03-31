@@ -10,11 +10,21 @@ default confidence_grettell = 0
 default friendship_gretell = 0
 default tension_grettell = 0
 
+
+#Music game atributes
+
+default music_game_choice_nuria = 0
+
+define taste = 0
+
 init python:
     config.font_replacement_map["DejaVuSans.ttf", False, True] = ("fonts/Lato-Bold.ttf", False, False)
 
 
+                
+
 #Atributes
+
 label atributes_nuria: 
     $ randomnum = renpy.random.randint(1,2) # (randomize between 1 and 2)
 
@@ -108,10 +118,14 @@ label atributes_nuria:
         Nuria "You still here?"
         character_name "Yes."
         Nuria "Well, I'm bored."
-        Nuria "May i ask what's your favorite type of music?"
-        $ taste = renpy.input(" ", length=8)
-        Nuria "[taste], that's interesting."
-        Nuria "Mine is metal."
+        if taste = 0:
+            Nuria "May i ask what's your favorite type of music?"
+            $ taste = renpy.input(" ", length=8)
+            Nuria "[taste], that's interesting."
+            Nuria "Mine is metal."
+        Nuria "I'm gonna make a song about you."
+        Nuria "[taste] right?"
+        character_name "Yeah."
         hide nuriat
         menu:
             "We can hear metal together":
@@ -142,5 +156,31 @@ label atributes_nuria:
                 $ tension_nuria -= 1
                 $ confidence_nuria += 4  
                 hide nuriat at right
-     
+    
+    elif friendship_nuria>=50 and tension_nuria<=0 and confidence_nuria>=50:
+        show nuria
+        Nuria "I'm glad you're here."
+        Nuria "You are not that bad as I think."
+        #Make a Friendship dialogue script with Nuria
+        Nuria "So, what do you want to talk about?"
+        Nuria "Do you want to talk about the others?"
+        Nuria "Or do you want to talk about your own life?"
+        Nuria "Anyway, I'm not sure what to say."
+        Nuria "About Tamy¿?!"
+        Nuria "Well, she's a good person."
+        character_name "What about the rest of the class?"
+        Nuria "I only know her."
+        Nuria "You should go to the university if you want to know more about the others."
+        Nuria "Maybe Tamy can take you there."
+        $ Nuria_finish = True
+        hide nuriaf
+    
+
+    elif Nuria_finish = True:
+        show nuria
+        Nuria "You should go the University, maybe you can get more information about the others."
+        Nuria "I'm sure you'll find them."
+        Nuria "Tamy can take you in there."
+        
+        hide nuria
     return
