@@ -1,4 +1,14 @@
 label  start_uni:
+    screen input:
+
+        window:
+
+            style "nvl_window"
+            
+            text prompt xalign 0.5 yalign 0.4
+            input id "input" xalign 0.5 yalign 0.5
+
+        use quick_menu
     play music "audio/bgm_unimusic.mp3" fadein 1.0 volume 0.3
     scene bg uni with dissolve
 
@@ -20,10 +30,11 @@ label  start_uni:
     Talya "Be yourself."
     Talya "So, tell me your name."
     menu:
-        "Ok":
+        "I'm...":
+
          $ character_name = renpy.input("Insert your name below", length=9)
 
-        "I prefer a random nickname":
+        "I prefer a random nickname.":
             Talya "Ok, I'll call you..."
             Talya "..."
             stop music fadeout 1.0

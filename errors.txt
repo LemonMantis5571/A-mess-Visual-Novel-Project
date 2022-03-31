@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/custom_guide.rpy", line 7: expected 'simple_expression' not found.
+    show guide with 
+                    ^
+
+Ren'Py Version: Ren'Py 7.4.11.2266
+Wed Mar 30 23:27:16 2022

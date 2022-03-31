@@ -13,6 +13,7 @@ define Rachel = Character("Rachel", color="#ff6666")
 define Yves = Character("Yves", color="#ff66ff")
 define Talya = Character("Talya", color="#ff00ff")
 define Ozuna = Character("Ozuna", color="#ff12ff")
+define guide = Character("Juan Caldera", color="#FFD700")
 # The game starts here.
 
 default game_code_uni = "0188U" #The code of the game 
@@ -21,6 +22,12 @@ default game_code_lincoln  = "0198L" #The code of the game
 
 default game_code = 0
 
+define choices_left = 0
+
+define feel = 0
+
+
+
 #Tamy Atributes
 default tamy_unlocked = 0
 
@@ -28,6 +35,7 @@ default tamy_unlocked = 0
 default Spotify = 0
 
 default character_name = "Sherylda"
+
 
 
 label start:
@@ -145,7 +153,7 @@ label traveling:
     
 
 label lincoln:
-
+    $ chapter = "Chapter I: The English Class" 
     scene bg blank
     centered "*You enter the class*"
 
@@ -171,6 +179,8 @@ label Options:
     play music "audio/bgm_class.mp3" fadein 1.0 volume 0.3
     scene bg class1
     "What to do now?."
+
+    
     menu Talk_Grind:
         "Listen to your own Spotify playlist":
             
@@ -181,39 +191,88 @@ label Options:
                         scene bg cartoon with dissolve
                         play music "audio/preset.mp3" fadein 2.0 volume 0.2
                         "..."
-                        "*Music Playing*"
+                        hide window
+                        pause
                         character_name "I don't know why, but this song bring me memories."
                         character_name "It feels like a summer day in 2015."
                         character_name "What a year..."
                         character_name "Anyways."
                         stop music fadeout 1.0
                         jump Options
+
                     "Get back":
-                        jump Options    
+                        jump Options
+
+            elif Spotify == 1:
+                menu:
+                    "Cartoon On & On":
+                        stop music fadeout 1.0
+                        scene bg cartoon with dissolve
+                        play music "audio/preset.mp3" fadein 2.0 volume 0.2
+                        hide window
+                        pause
+                       
+                        stop music fadeout 1.0
+                        jump Options
+                    
+                    "Twice - The Feels":
+                        stop music fadeout 1.0
+                        scene bg cartoon with dissolve
+                        play music "audio/thefeels.mp3" fadein 2.0 volume 0.2
+                        hide window
+                        pause
+
+                        stop music fadeout 1.0
+                        jump Options
+
+                    "Get back":
+                        jump Options
+                
+
 
         "Get new songs":
-            menu:
-                "????":
-                    "You haven't unlocked it yet"
-                    jump Options
+            if music_game_choice_nuria>100:
+                menu:
+                    "The feels Twice":
+                        "You have unlocked the feels twice."
+                        $ Spotify = 1
+                        jump Options
 
-                "????":
-                    "You haven't unlocked it yet"
-                    jump Options
+                    "????":
+                        "You haven't unlocked it yet"
+                        jump Options
 
-                "????":
-                    "You haven't unlocked it yet"
-                    jump Options
+                    "????":
+                        "You haven't unlocked it yet"
+                        jump Options
 
-                "????":
-                    "You haven't unlocked it yet"
-                    jump Options
+                    "????":
+                        "You haven't unlocked it yet"
+                        jump Options
             
+            elif music_game_choice_nuria<=100:
+                menu:
+                    "????":
+                        "You haven't unlocked it yet"
+                        jump Options
+
+                    "????":
+                        "You haven't unlocked it yet"
+                        jump Options
+
+                    "????":
+                        "You haven't unlocked it yet"
+                        jump Options
+
+                    "????":
+                        "You haven't unlocked it yet"
+                        jump Options
 
 
 
 
         "Talk with people in the class":
+            window hide
             if tamy_unlocked == 0:
                 menu:
                     "Talk to Grettell":
@@ -221,6 +280,15 @@ label Options:
 
                     "Talk to Nuria":
                         jump Nuria
+
+                    "Talk to Tamy":
+                        scene bg class0
+                        show tamyt
+                        Tamy "Hey, [character_name]!"
+                        Tamy "I'm Tamy."
+                        Tamy "I'll like to talk with you but im busy right now"
+                        Tamy "You should come back later."
+                        jump Options
                 
             if tamy_unlocked >= 1:
                 menu:
@@ -235,6 +303,9 @@ label Options:
         
         "Status":
             jump status
+        
+        "Guide":
+            jump guide
 
 
 label Grettell:
@@ -287,6 +358,8 @@ label Grettell:
 
 
 label Nuria:
+    $ choices_left += 1
+
     scene bg class0
     "*You aproach to Nuria*"
     character_name "Sup bro."
@@ -323,17 +396,20 @@ menu:
         hide nuria
         scene bg animal with dissolve
         play music "audio/metal1.mp3" fadein 3.0 volume 0.3
-        "*Music Starts to play*"
+        hide window
+        pause
         show nuriat at right
         Nuria "Savage right?"
         Nuria "For me it's like exposing what i'm in reality."
         Nuria "Well, i'm not a animal for sure haha, but i like to be wild."
         character_name "That was a pretty bad joke."
         Nuria "xD."
-        $ feel = renpy.input("What does this music makes you feel?", length=8)
-        Nuria "[feel], huh?."
-        Nuria "You're a weirdo."
-        Nuria "Anyway..."
+        if feel == 0:
+            $ feel = renpy.input("What does this music makes you feel?", length=8)
+            Nuria "[feel], huh?."
+            Nuria "You're a weirdo."
+            Nuria "Anyway..."
+        Nuria "Last time you said [feel]"
         hide nuriat
         show nuria at right
         jump nuriarepeat
@@ -343,7 +419,9 @@ menu:
         scene bg suite8 with dissolve
         show nuria at right
         play music "audio/metal2.mp3" fadein 3.0 volume 0.3
-        "*Music Starts to play*"
+        $ music_game_choice_nuria += renpy.random.randint(1,10)
+        hide window
+        pause
         
         jump nuriarepeat
 
@@ -351,7 +429,9 @@ menu:
         scene bg blackout with dissolve
         show nuria at right
         play music "audio/metal3.mp3" fadein 3.0 volume 0.3
-        "*Music Starts to play*"
+        $ music_game_choice_nuria += renpy.random.randint(1,10)
+        hide window
+        pause
         jump nuriarepeat
 
 
@@ -360,7 +440,9 @@ menu:
         scene bg faith with dissolve
         show nuria at right
         play music "audio/metal4.mp3" fadein 3.0 volume 0.3
-        "*Music Starts to play*"
+        $ music_game_choice_nuria += renpy.random.randint(1,10)
+        hide window
+        pause
         jump nuriarepeat
 
 
@@ -368,12 +450,15 @@ menu:
         scene bg falling with dissolve
         show nuria at right
         play music "audio/metal5.mp3" fadein 3.0 volume 0.3
-        "*Music Starts to play*"
+        $ music_game_choice_nuria += renpy.random.randint(1,10)
+        hide window
+        pause
         jump nuriarepeat
     
     "Talk":
         $ tamy_unlocked += 1
         call atributes_nuria from _call_atributes_nuria
+        $ music_game_choice_nuria_nuria_nuria += renpy.random.randint(1,10)
         jump Nuria_Music
 
     "Quit":
@@ -383,7 +468,11 @@ menu:
 label nuriarepeat:
     menu:
          "Get Back":
-            character_name "That was Dope."
+            if feel != 0:
+                character_name "That was [feel]."
+                character_name "*Hmm, so she likes metal a lot.*"
+
+            character_name "*Hmm, so she likes metal a lot.*"
             stop music fadeout 0.1
             jump Nuria_Music
 
