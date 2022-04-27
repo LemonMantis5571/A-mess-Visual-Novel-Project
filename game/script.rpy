@@ -68,6 +68,7 @@ label start_lincoln:
     play music "audio/bgm_intromusic.mp3" fadein 1.0 volume 0.3
     scene bg opening
 
+    
     Meifeng "*sigh*"
     show meifeng at left
     Blezz "*sigh*"
@@ -178,6 +179,9 @@ label lincoln:
 label Options:
     play music "audio/bgm_class.mp3" fadein 1.0 volume 0.3
     scene bg class1
+    hide screen nuria_buttons
+    hide screen nuria_quit
+    hide screen nuria_quit_menu
     "What to do now?."
 
     
@@ -333,21 +337,26 @@ label Nuria:
     jump Nuria_Music
 
 label Nuria_Music:
-stop music fadeout 1.0
-scene bg nuria with dissolve
-"*You put on the headphones*"
-"What to listen now?."
-hide window
-pause
-show nuria at right
+    hide screen nuria_quit
+    stop music fadeout 1.0
+    scene bg nuria with dissolve
+    "*You put on the headphones*"
+    "What to listen now?."
+    hide window
+    show screen nuria_buttons with pixellate
+    show nuria at right
+    show screen nuria_quit_menu
+
 
 menu:
 
     "Animal in Me":
+        hide screen nuria_buttons
         hide nuria
         scene bg animal with dissolve
         play music "audio/metal1.mp3" fadein 3.0 volume 0.3
         hide window
+        
         pause
         show nuriat at right
         Nuria "Savage right?"
@@ -360,10 +369,10 @@ menu:
             Nuria "[feel], huh?."
             Nuria "You're a weirdo."
             Nuria "Anyway..."
-        Nuria "Last time you said [feel]"
+        Nuria "Last time you said that [feel]"
         hide nuriat
         show nuria at right
-        jump nuriarepeat
+        show screen nuria_quit
 
 
     "Suite 8":
@@ -407,25 +416,23 @@ menu:
         jump nuriarepeat
     
     "Talk":
+        hide screen nuria_quit_menu
         $ tamy_unlocked += 1
-        call atributes_nuria from _call_atributes_nuria
+        call atributes_nuria
         $ music_game_choice_nuria += renpy.random.randint(1,10)
         jump Nuria_Music
 
-    "Quit":
-        jump Options
 
 
 label nuriarepeat:
-    menu:
-         "Get Back":
-            if feel != 0:
-                character_name "That was [feel]."
-                character_name "*Hmm, so she likes metal a lot.*"
-
+        hide screen nuria_quit
+        if feel != 0:
+            character_name "That was [feel]."
             character_name "*Hmm, so she likes metal a lot.*"
-            stop music fadeout 0.1
-            jump Nuria_Music
+
+        character_name "*Hmm, so she likes metal a lot.*"
+        stop music fadeout 0.1
+        jump Nuria_Music
 
 
 
@@ -433,26 +440,9 @@ label nuriarepeat:
 label status:
     "*Here's the status from every classmate*"
     menu:
-        "Tamy":
-            """
-            Grettell's Confidence: [confidence_grettell]
+        "Character Status":
+            call screen StatusBox
 
-            Grettell's Tension: [tension_grettell]
-
-            Grettell's Friendship: [friendship_gretell]
-            """
-            jump Options
-
-        "Nuria":
-            """
-            Nuria's Confidence: [confidence_nuria]
-
-            Nuria's Tension: [tension_nuria]
-
-            Nuria's Friendship: [friendship_nuria]
-
-            """
-            jump Options
         
         "Music Status":
             """
@@ -574,13 +564,23 @@ label tamy_options:
                     jump tamy_options
 
         "Shekinah Radio":
+            hide tamy
+            play music "audio/screamer.mp3" fadein 1.0 volume 0.15
+            if childish == 0:
+                show screen fnaf_screamer
+                pause 3.0
+                hide screen fnaf_screamer
+                $ childish += 1
+            stop music fadeout 1.0
             scene bg fnaf with dissolve
+            show screen fnaf_golden
             show tamy
             play music "audio/blezz4.mp3" fadein 1.0 volume 0.3
-            "*Music Starts to play*"
             hide tamy
+            "*Music Starts to play*"
             menu:
                 "Get Back":
+                    hide screen fnaf_golden
                     character_name "*That was Dope*"
                     stop music fadeout 1.0
                     jump tamy_options

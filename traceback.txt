@@ -1,26 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 461, in script
-    $ music_game_choice_nuria_nuria_nuria += renpy.random.randint(1,10)
-  File "game/script.rpy", line 461, in <module>
-    $ music_game_choice_nuria_nuria_nuria += renpy.random.randint(1,10)
-NameError: name 'music_game_choice_nuria_nuria_nuria' is not defined
+  File "game/script.rpy", line 568, in script
+    show screen fnaf_screamer
+  File "renpy/common/000statements.rpy", line 548, in execute_show_screen
+    renpy.show_screen(name, *args, **kwargs)
+Exception: Screen fnaf_screamer is not known.
+
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 461, in script
-    $ music_game_choice_nuria_nuria_nuria += renpy.random.randint(1,10)
-  File "renpy/ast.py", line 928, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2245, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 461, in <module>
-    $ music_game_choice_nuria_nuria_nuria += renpy.random.randint(1,10)
-NameError: name 'music_game_choice_nuria_nuria_nuria' is not defined
+  File "game/script.rpy", line 568, in script
+    show screen fnaf_screamer
+  File "renpy/ast.py", line 2015, in execute
+    self.call("execute")
+  File "renpy/ast.py", line 2003, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "renpy/statements.py", line 278, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 548, in execute_show_screen
+    renpy.show_screen(name, *args, **kwargs)
+  File "renpy/display/screen.py", line 1131, in show_screen
+    raise Exception("Screen %s is not known.\n" % (name[0],))
+Exception: Screen fnaf_screamer is not known.
+
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 A mess 1.0
-Thu Mar 31 16:07:04 2022
+Mon Apr 25 16:35:09 2022

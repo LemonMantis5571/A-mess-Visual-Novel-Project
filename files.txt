@@ -1,0 +1,197 @@
+android-icon_foreground.png
+android_cutscenes.rpy
+android_cutscenes.rpyc
+atributes.rpy
+atributes.rpyc
+custom_guide.rpy
+custom_guide.rpyc
+custom_screens.rpy
+custom_screens.rpyc
+eduardo_days.rpy
+eduardo_days.rpyc
+gui.rpy
+gui.rpyc
+intro_uni.rpy
+intro_uni.rpyc
+options.rpy
+options.rpyc
+presplash.jpg
+progess+.rpy
+progess+.rpyc
+screens.rpy
+screens.rpyc
+script.rpy
+script.rpy.bak
+script.rpyc
+.vscode\settings.json
+audio\Grettell.mp3
+audio\bgm_class.mp3
+audio\bgm_intromusic.mp3
+audio\bgm_unimusic.mp3
+audio\bgm_walking.mp3
+audio\blezz1.mp3
+audio\blezz2.mp3
+audio\blezz3.mp3
+audio\blezz4.mp3
+audio\guide.mp3
+audio\intro.mp3
+audio\metal1.mp3
+audio\metal2.mp3
+audio\metal3.mp3
+audio\metal4.mp3
+audio\metal5.mp3
+audio\ozuna.mp3
+audio\preset.mp3
+audio\thefeels.mp3
+cache\bytecode.rpyb
+cache\pyanalysis.rpyb
+cache\screens.rpyb
+cache\shaders.txt
+fonts\Lato-Bold.ttf
+gui\frame.png
+gui\game_menu.png
+gui\main_menu.png
+gui\namebox.png
+gui\notify.png
+gui\nvl.png
+gui\skip.png
+gui\textbox.png
+gui\window_icon.png
+gui\bar\bottom.png
+gui\bar\left.png
+gui\bar\right.png
+gui\bar\top.png
+gui\button\check_foreground.png
+gui\button\check_selected_foreground.png
+gui\button\choice_hover_background.png
+gui\button\choice_idle_background.png
+gui\button\hover_background.png
+gui\button\idle_background.png
+gui\button\quick_hover_background.png
+gui\button\quick_idle_background.png
+gui\button\radio_foreground.png
+gui\button\radio_selected_foreground.png
+gui\button\slot_hover_background.png
+gui\button\slot_idle_background.png
+gui\overlay\confirm.png
+gui\overlay\game_menu.png
+gui\overlay\main_menu.png
+gui\phone\android-icon_foreground.png
+gui\phone\android-presplash.jpg
+gui\phone\nvl.png
+gui\phone\textbox.png
+gui\phone\bar\bottom.png
+gui\phone\bar\left.png
+gui\phone\bar\right.png
+gui\phone\bar\top.png
+gui\phone\button\check_foreground.png
+gui\phone\button\check_selected_foreground.png
+gui\phone\button\choice_hover_background.png
+gui\phone\button\choice_idle_background.png
+gui\phone\button\hover_background.png
+gui\phone\button\idle_background.png
+gui\phone\button\radio_foreground.png
+gui\phone\button\radio_selected_foreground.png
+gui\phone\button\slot_hover_background.png
+gui\phone\button\slot_idle_background.png
+gui\phone\overlay\game_menu.png
+gui\phone\overlay\main_menu.png
+gui\phone\scrollbar\horizontal_hover_bar.png
+gui\phone\scrollbar\horizontal_hover_thumb.png
+gui\phone\scrollbar\horizontal_idle_bar.png
+gui\phone\scrollbar\horizontal_idle_thumb.png
+gui\phone\scrollbar\vertical_hover_bar.png
+gui\phone\scrollbar\vertical_hover_thumb.png
+gui\phone\scrollbar\vertical_idle_bar.png
+gui\phone\scrollbar\vertical_idle_thumb.png
+gui\phone\slider\horizontal_hover_bar.png
+gui\phone\slider\horizontal_hover_thumb.png
+gui\phone\slider\horizontal_idle_bar.png
+gui\phone\slider\horizontal_idle_thumb.png
+gui\phone\slider\vertical_hover_bar.png
+gui\phone\slider\vertical_hover_thumb.png
+gui\phone\slider\vertical_idle_bar.png
+gui\phone\slider\vertical_idle_thumb.png
+gui\scrollbar\horizontal_hover_bar.png
+gui\scrollbar\horizontal_hover_thumb.png
+gui\scrollbar\horizontal_idle_bar.png
+gui\scrollbar\horizontal_idle_thumb.png
+gui\scrollbar\vertical_hover_bar.png
+gui\scrollbar\vertical_hover_thumb.png
+gui\scrollbar\vertical_idle_bar.png
+gui\scrollbar\vertical_idle_thumb.png
+gui\slider\horizontal_hover_bar.png
+gui\slider\horizontal_hover_thumb.png
+gui\slider\horizontal_idle_bar.png
+gui\slider\horizontal_idle_thumb.png
+gui\slider\vertical_hover_bar.png
+gui\slider\vertical_hover_thumb.png
+gui\slider\vertical_idle_bar.png
+gui\slider\vertical_idle_thumb.png
+images\bg Tamy.jpg
+images\bg afterdark.jpg
+images\bg animal.jpg
+images\bg blackout.jpg
+images\bg blank.jpg
+images\bg cartoon.jpg
+images\bg class0.png
+images\bg class1.png
+images\bg faith.jpg
+images\bg falling.jpg
+images\bg fnaf.jpg
+images\bg grettell.jpg
+images\bg guide.jpg
+images\bg homemage.jpg
+images\bg lincoln.jpg
+images\bg maroon.jpg
+images\bg nuria.jpg
+images\bg opening.jpg
+images\bg suite8.jpg
+images\bg uni.jpg
+images\bg wolf.jpg
+images\bg zumen.jpg
+images\blezz.png
+images\download20220304222507.png
+images\grettell.png
+images\guide.png
+images\isela.png
+images\meifeng.png
+images\nuria.png
+images\nuria_angry.png
+images\nuria_blush.png
+images\nuria_sandwich.png
+images\nuriat.png
+images\nuriat_angry.png
+images\ozuna.png
+images\ozunat.png
+images\rachel.png
+images\rachelt.png
+images\secret.png
+images\tamy.png
+images\tamyt.png
+images\yves.png
+images\yvest.png
+images\UI\Zoom_cm_fo42mnktZ9vvrZo4_mcE43TnX0s5X2mb7emKJuQAssvIAjD2D0ULFy@CcrJPtAAZ7VlweCh_kf214bcd8e30d21f1_.exe
+images\UI\bg class1.png
+images\UI\class1.png
+images\UI\class2.png
+images\UI\idle_placeholder.png
+images\UI\nuria_hover.png
+saves\1-1-LT1.save
+saves\_reload-2-LT1.save
+saves\auto-1-LT1.save
+saves\auto-10-LT1.save
+saves\auto-2-LT1.save
+saves\auto-3-LT1.save
+saves\auto-4-LT1.save
+saves\auto-5-LT1.save
+saves\auto-6-LT1.save
+saves\auto-7-LT1.save
+saves\auto-8-LT1.save
+saves\auto-9-LT1.save
+saves\navigation.json
+saves\persistent
+saves\quick-1-LT1.save
+saves\quick-2-LT1.save
+tl\None\common.rpym
+tl\None\common.rpymc

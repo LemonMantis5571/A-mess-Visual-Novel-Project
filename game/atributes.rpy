@@ -22,11 +22,15 @@ init python:
     config.font_replacement_map["DejaVuSans.ttf", False, True] = ("fonts/Lato-Bold.ttf", False, False)
 
 
-                
+#Adult game atributes
+default heart_problems = 0
+default censorship = 0                
+default childish = 0
 
 #Atributes
 
 label atributes_nuria: 
+    hide screen nuria_quit_menu
     $ randomnum = renpy.random.randint(1,2) # (randomize between 1 and 2)
 
     if randomnum==1 and confidence_nuria<45:

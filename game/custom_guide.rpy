@@ -15,6 +15,7 @@ label guide_options:
     hide guide
     "Select an option."
     show guide with hpunch
+    show screen guide_quit
     menu:
         "Im stuck.":
             show guide with dissolve
@@ -48,10 +49,6 @@ label guide_options:
             guide "The only way to change character is to create a new game file."
             jump guide_options
 
-        "Quit.":
-           hide guide
-           stop music fadeout 1.0
-           jump Options
 
 '''label traveling:
         scene bg blank

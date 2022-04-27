@@ -1,4 +1,28 @@
+show ozunat:
+    subpixel True zoom 1.19
+
 label  start_uni:
+    scene bg blank
+
+    "Do you have heart problems of any type?"
+    menu:   
+        "Yes":
+            $ heart_problems = 1
+
+        "No":
+            $ heart_problems = 0
+            "hehe :)"
+    
+    "Do you have any type of fear?"
+    menu:
+        "Yes":
+            $ censorship = 1
+
+        "No":
+            $ censorship = 0
+            "hm..."
+
+
     screen input:
 
         window:
@@ -47,6 +71,8 @@ label  start_uni:
             Talya "Yes."
             hide ozuna
             show ozunat at right with dissolve
+
+
             Ozuna "ax2+bx+c=0"
             $ character_name = "Ozuna" 
 
