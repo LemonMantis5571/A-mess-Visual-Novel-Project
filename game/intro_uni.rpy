@@ -78,7 +78,7 @@ label  start_uni:
 
     hide ozuna
     Talya "Nice to meet you, [character_name]."
-    Talya "So, lets start with your first choice."
+    Talya "So, lets start with your adventure, Good Luck!."
 
     jump traveling
 
