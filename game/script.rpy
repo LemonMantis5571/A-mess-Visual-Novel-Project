@@ -11,10 +11,30 @@ define Nuria = Character("Nuria", color="#8cff66")
 define Tamy  = Character("Tamy", color="#6666ff")
 define Rachel = Character("Rachel", color="#ff6666")
 define Yves = Character("Yves", color="#ff66ff")
-define Talya = Character("Talya", color="#ff00ff")
+define Talya = Character("Talya", color="#ff00ff", what_slow_cps=30, what_slow_abortable=False)
 define Ozuna = Character("Ozuna", color="#ff12ff")
-define guide = Character("Juan Caldera", color="#FFD700")
+define guide = Character("Juan Caldera", color="#FFD700", what_slow_cps=30, what_slow_abortable=False)
 # The game starts here.
+
+transform dizzy(m, t):
+    subpixel True
+    parallel:
+        xoffset 0
+        ease 0.75 * t xoffset 10 * m
+        ease 0.75 * t xoffset 5 * m
+        ease 0.75 * t xoffset -5 * m
+        ease 0.75 * t xoffset -3 * m
+        ease 0.75 * t xoffset -10 * m
+        ease 0.75 * t xoffset 0
+        ease 0.75 * t xoffset 5 * m
+        ease 0.75 * t xoffset 0
+        repeat
+    parallel:
+        yoffset 0
+        ease 1.0 * t yoffset 5 * m
+        ease 2.0 * t yoffset -5 * m
+        easein 1.0 * t yoffset 0
+        repeat
 
 default game_code_uni = "0188U" #The code of the game 
 
@@ -302,7 +322,11 @@ label Options:
 
 
                     "Talk to Tamy":
-                            jump Tamy
+                        if Tamy_knowledge == True:
+                            jump tamy_options  #Tamy_knowledge == True
+                        jump Tamy
+            
+
         
         "Status":
             jump status
@@ -418,6 +442,10 @@ menu:
     "Talk":
         hide screen nuria_quit_menu
         $ tamy_unlocked += 1
+        if Nuria_finish == True:
+            $ Nuria_final_dialogue = True
+            call Nuria_finished_chapt1
+            
         call atributes_nuria
         $ music_game_choice_nuria += renpy.random.randint(1,10)
         jump Nuria_Music
@@ -451,10 +479,10 @@ label status:
             Nuria: [music_game_choice_nuria]
 
             """
-            jump Options
+            jump Options #TODO: Add music status
         
         "Back Menu":
-            jump Options
+            jump Options #TODO: Add music status
         
 
 
@@ -462,6 +490,7 @@ label status:
 
 
 label Tamy:
+
     scene bg class0
     "*You aproaches to Tamy*"
 
@@ -522,6 +551,7 @@ label Tamy:
     "What radio station to listen now?."
 
 label tamy_options:
+    $ Tamy_knowledge = True     # This is to make sure that the player can't repeat the dialogue.
     scene bg tamy with dissolve
     show tamy
     menu:
@@ -565,12 +595,30 @@ label tamy_options:
 
         "Shekinah Radio":
             hide tamy
-            play music "audio/screamer.mp3" fadein 1.0 volume 0.15
             if childish == 0:
-                show screen fnaf_screamer
-                pause 3.0
-                hide screen fnaf_screamer
-                $ childish += 1
+                play music "audio/screamer.mp3"  volume 0.15
+                show screamer:
+                    parallel:
+                        0.2 #tiempo de espera
+                        xalign 0.5 yalign 0 #centrar la imagen en el eje x
+                        ease 0.25 zoom 2.0 #animación donde la imagen hace un zoom al doble
+                    parallel:
+                        alpha 0 #opacidad 0
+                        0.2 #t. de espera
+                        linear 0.15 alpha 1.0 #comienza a mostrarse
+                        1.0 #t. de espera
+                        linear 0.10 alpha 0 #empieza a desaparecer
+                    parallel:
+                        dizzy(1.5,0.01) #animación de la imagen
+
+
+            window auto hide
+            pause 1.0
+            window auto show
+
+            hide screen fnaf_screamer
+            $ childish += 1
+
             stop music fadeout 1.0
             scene bg fnaf with dissolve
             show screen fnaf_golden

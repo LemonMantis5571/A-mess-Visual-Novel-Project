@@ -21,7 +21,6 @@ screen StatusBox:
             frame:
                 xpadding 20
                 ypadding 20
-                background "images/UI/boxtext.png"
                 text "Tamy's Confidence: [confidence_grettell]\n" + "Tamy's Friendship: [friendship_gretell]\n" + "Tamy's Tension: [tension_grettell]"     
                 
             
@@ -34,7 +33,7 @@ screen StatusBox:
             frame:
                 xpadding 20
                 ypadding 20
-                text "Nuria's Confidence: [confidence_nuria]\n\n" + "Nuria's Friendship: [friendship_nuria]\n\n" + "Nuria's Tension: [tension_nuria]"
+                text "Nuria's Confidence: [confidence_nuria]\n" + "Nuria's Friendship: [friendship_nuria]\n" + "Nuria's Tension: [tension_nuria]"
 
 
         button:
@@ -77,7 +76,7 @@ screen fnaf_golden:
             
             
 
-screen fnaf_screamer:
+'''screen fnaf_screamer:
 
     draggroup:
         drag:
@@ -89,7 +88,7 @@ screen fnaf_screamer:
             droppable False
             dragged drag_placed
             drag_raise True
-            button action [ToggleScreen("fnaf_screamer")]
+            button action [ToggleScreen("fnaf_screamer")] '''
 
 screen nuria_quit:
     button:

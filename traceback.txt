@@ -1,32 +1,36 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 568, in script
-    show screen fnaf_screamer
-  File "renpy/common/000statements.rpy", line 548, in execute_show_screen
-    renpy.show_screen(name, *args, **kwargs)
-Exception: Screen fnaf_screamer is not known.
-
+  File "game/script.rpy", line 424, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 424, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 422, in script call
+    call Nuria_finished_chapt1
+  File "game/atributes.rpy", line 178, in script
+    if Nuria_final_dialogue = True:
+SyntaxError: invalid syntax (atributes.rpy, line 178)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 568, in script
-    show screen fnaf_screamer
-  File "renpy/ast.py", line 2015, in execute
-    self.call("execute")
-  File "renpy/ast.py", line 2003, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "renpy/statements.py", line 278, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 548, in execute_show_screen
-    renpy.show_screen(name, *args, **kwargs)
-  File "renpy/display/screen.py", line 1131, in show_screen
-    raise Exception("Screen %s is not known.\n" % (name[0],))
-Exception: Screen fnaf_screamer is not known.
-
+  File "game/script.rpy", line 424, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 424, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 422, in script call
+    call Nuria_finished_chapt1
+  File "game/atributes.rpy", line 178, in script
+    if Nuria_final_dialogue = True:
+  File "renpy/ast.py", line 1898, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2274, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (atributes.rpy, line 178)
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 A mess 1.0
-Mon Apr 25 16:35:09 2022
+Wed Jun  1 20:12:40 2022

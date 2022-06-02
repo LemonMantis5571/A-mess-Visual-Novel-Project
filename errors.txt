@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/intro_uni.rpy", line 54: expected 'comma or end of line' not found.
-    subpixel True zoom 1.19 at right
-                            ^
+File "game/script.rpy", line 591: parallel expects a non-empty block.
+    parallel:
+             ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Mon Apr 25 15:43:35 2022
+Wed Jun  1 21:14:43 2022
