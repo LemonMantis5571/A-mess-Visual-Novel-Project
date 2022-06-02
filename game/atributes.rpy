@@ -1,3 +1,5 @@
+
+
 #Nuria Atributes
 
 default confidence_nuria = 0  
@@ -29,9 +31,16 @@ default childish = 0
 
 #Atributes
 
+default Nuria_finish = False
+default Nuria_final_dialogue = False
+default Tamy_knowledge = False
+
 label atributes_nuria: 
     hide screen nuria_quit_menu
     $ randomnum = renpy.random.randint(1,2) # (randomize between 1 and 2)
+
+    if friendship_nuria>=15 and tension_nuria<=5 and confidence_nuria>=15:
+        $ Nuria_finish = True
 
     if randomnum==1 and confidence_nuria<45:
 
@@ -51,8 +60,8 @@ label atributes_nuria:
                 Nuria "hmm."
                 Nuria "that's good."
                 hide nuriat
-                $ confidence_nuria += 3
-                $ friendship_nuria += 2
+                $ confidence_nuria += 5
+                $ friendship_nuria += 5
                 $ tension_nuria -= 3
 
             "You such an agressive person you know?":
@@ -76,9 +85,9 @@ label atributes_nuria:
                 Nuria "You'll never stand a chance with me."
                 Nuria "No cap." 
                 hide nuriat
-                $ friendship_nuria +=2
+                $ friendship_nuria +=4
                 $ tension_nuria -= 2
-                $ confidence_nuria += 2  
+                $ confidence_nuria += 4  
 
             "My mom prepared me some chicken sandwich":
                 character_name "You want a taste of it?"
@@ -91,25 +100,26 @@ label atributes_nuria:
                 menu:
                     "I said a piece... not all.":
                         Nuria "You such a fool."
-                        $ confidence_nuria +=2
-                        $ friendship_nuria +=1
+                        $ confidence_nuria +=3
+                        $ friendship_nuria +=3
                         $ tension_nuria -= 1 
                         
                     "I swear I hate you":
                         Nuria "Who do you think you are??"
                         Nuria "Trash."
                         show nuria_angry at right with dissolve
-                        $ confidence_nuria -=3
-                        $ friendship_nuria -=2
+                        $ confidence_nuria -=4
+                        $ friendship_nuria -=4
                         $ tension_nuria += 4
 
                     "*Cries in KFC*":
                         Nuria "Are you really crying?"
                         Nuria "What a mommysitter."
                         
-                        $ confidence_nuria -=1
+                        $ confidence_nuria +=5
                         $ friendship_nuria += 5
                         $ tension_nuria -= 6
+        jump Nuria_Music                  
 
     elif randomnum==2 and confidence_nuria<45:
         Nuria "OMG this class is so boring bruh."
@@ -140,8 +150,8 @@ label atributes_nuria:
                 Nuria "Of course not."
                 Nuria "Mine is so underground."
                 hide nuria_blush
-                $ confidence_nuria +=2
-                $ friendship_nuria +=1
+                $ confidence_nuria +=4
+                $ friendship_nuria +=4
                 $ tension_nuria -= 1 
 
             "You that's edgy":
@@ -149,8 +159,8 @@ label atributes_nuria:
                 Nuria "I'm sorry?"
                 Nuria "B."
                 Nuria "You such a disgusting person."
-                $ confidence_nuria -=2
-                $ friendship_nuria -=1
+                $ confidence_nuria -=10
+                $ friendship_nuria -=10
                 $ tension_nuria += 5
                 hide nuria_angry
             
@@ -158,12 +168,18 @@ label atributes_nuria:
                 show nuriat at right
                 Nuria "Or maybe you should stay with your Babytv's songs."
                 Nuria "That's all i will say."
-                $ friendship_nuria +=3
+                $ friendship_nuria +=4
                 $ tension_nuria -= 1
                 $ confidence_nuria += 4  
                 hide nuriat at right
-    
-    elif friendship_nuria>=50 and tension_nuria<=0 and confidence_nuria>=50:
+
+        jump Nuria_Music
+   
+
+
+label Nuria_finished_chapt1:
+        if Nuria_final_dialogue == True:
+            jump Nuria_finalized
         show nuria
         Nuria "I'm glad you're here."
         Nuria "You are not that bad as I think."
@@ -178,15 +194,16 @@ label atributes_nuria:
         Nuria "I only know her."
         Nuria "You should go to the university if you want to know more about the others."
         Nuria "Maybe Tamy can take you there."
-        $ Nuria_finish = True
         hide nuriaf
+        jump Nuria_finalized
+        
     
 
-    elif Nuria_finish = True:
+label Nuria_finalized:
         show nuria
         Nuria "You should go the University, maybe you can get more information about the others."
         Nuria "I'm sure you'll find them."
         Nuria "Tamy can take you in there."
-        
+    
         hide nuria
-    return
+        jump Nuria_Music
