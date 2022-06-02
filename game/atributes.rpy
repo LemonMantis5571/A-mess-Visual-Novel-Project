@@ -8,9 +8,9 @@ default tension_nuria = 0
 
 #Grettell Atributes
 
-default confidence_grettell = 0  
-default friendship_gretell = 0
-default tension_grettell = 0
+default confidence_tamy = 0  
+default friendship_tamy = 0
+default tension_tamy = 0
 
 
 #Music game atributes
@@ -19,6 +19,8 @@ default music_game_choice_nuria = 0
 default music_game_choice_tamy = 0
 
 default taste = 0
+
+default Tamy_University_trip = False
 
 init python:
     config.font_replacement_map["DejaVuSans.ttf", False, True] = ("fonts/Lato-Bold.ttf", False, False)

@@ -633,5 +633,62 @@ label tamy_options:
                     stop music fadeout 1.0
                     jump tamy_options
 
+        "Talk":
+            if Tamy_University_trip == True:
+                jump Tamy_Taking_Action
+            show tamyt
+            #make a dialogue with tamy
+            Tamy 
+            """And when I awoke at night.  That's when I knew who she was.  
+            That she was a dreamer.  
+            someone who could play any instrument.  
+            any color you could imagine.  
+            everyone I ever loved, in all their expressions.  
+            Who had all the dreams of all my life.  
+            and, yes, she kept on changing the color, 
+            it didn't matter. She always looked the same.  Always the same.  That you'll never forget."""
+
+
+            Tamy "*You are not supposed to talk to me*"
+            Tamy "*I am not supposed to talk to you*"
+            Tamy "Joking! I am just a little childish with you."
+            #tamy takes you to the university
+
+            Tamy "So you are [character_name]."
+            Tamy "I might have seen you in the university."
+            character_name "..."
+            character_name "Oh really?"
+
+            Tamy "Yes, like 5 times so far."
+            character_name "That's scary."
+
+            Tamy "So, why you are here?"
+            character_name "I just want to meet new people"
+            Tamy "Interesting"
+
+            Tamy "All of them are students on the same university as your's"
+            character_name "How the heck I didn't know?"
+
+            Tamy "Maybe you should start to see fowards from your own feet"
+            character_name "..."
+            character_name "Can you take me there?"
+
+            Tamy "I'm not sure."
+            Tamy "Let me think a bit about it"
+            $ Tamy_University_trip = True
+            jump Options
+
+
+
+
         "Quit":
             jump Options
+
+
+label Tamy_Taking_Action:
+    scene bg tamy with dissolve
+    show tamyt
+    Tamy "I'm not quite sure that we should go to the university together, I just met you!"
+    Tamy "Definitively that's not gonna happen"
+    hide tamyt
+    jump tamy_options
