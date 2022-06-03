@@ -164,10 +164,10 @@ screen selector1():
         #   y la imagen 'hover', cuando el ratón pasa por encima
         #imagebutton idle "ram"    hover "ram_hover"    action Jump("Ram")
         #imagebutton idle "motherboard"    hover "motherboard_hover"    action Jump("Motherboard")
-        textbutton "ram"    action Jump("Ram")
-        textbutton "motherboard"    action Jump("Motherboard")
-        textbutton "cpu"    action Jump("cpu")
-        textbutton "Continuar" action Jump("preGame")
+        textbutton "RAM"    action Jump("Ram")
+        textbutton "Motherboard"    action Jump("Motherboard")
+        textbutton "CPU"    action Jump("cpu")
+        textbutton "Continue" action Jump("preGame")
         
 
     
@@ -210,10 +210,12 @@ label preGame:
     if decision == 1:
         scene bg aula1
         show rachel at right
-        Rachel "Thank you for doing homework with me, while they come for me watch this game, it's very interesting :3"
-
-        Rachel " You only have to touch the figures that have two or more of the same, simple right?"
-
+        Rachel "Thanks you for working with me"
+        Rachel "Hmm"
+        Rachel "Shall we play a game?"
+        Rachel "I mean meanwhile they're coming"
+        Rachel ":3"
+        Rachel "You only have to touch the figures that have two or more of the same type, simple right?"
         Rachel "Great, lets go"
 
         hide rachel
@@ -222,7 +224,7 @@ label preGame:
     else:
         scene bg blank with dissolve
 
-        centered "vas a casa a descansar para mañana"
+        centered "*You returned home tired*"
     
 
 
