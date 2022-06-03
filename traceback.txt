@@ -1,32 +1,80 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 189, in script
-    python:
-  File "renpy/common/00start.rpy", line 190, in <module>
-    renpy.execute_default_statement(True)
-  File "game/script.rpy", line 49, in set_default
-    default Adult = True
-Exception: store.Adult is being given a default a second time.
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 474, in script call
+    call Nuria_finished_chapt1
+  File "game/script.rpy", line 474, in script call
+    call Nuria_finished_chapt1
+  File "game/eduardo_days.rpy", line 77, in script
+    if rachel_bus == 1:
+  File "game/eduardo_days.rpy", line 77, in <module>
+    if rachel_bus == 1:
+NameError: name 'rachel_bus' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 189, in script
-    python:
-  File "renpy/ast.py", line 928, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "renpy/python.py", line 2245, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00start.rpy", line 190, in <module>
-    renpy.execute_default_statement(True)
-  File "renpy/exports.py", line 3753, in execute_default_statement
-    i.set_default(start)
-  File "game/script.rpy", line 49, in set_default
-    default Adult = True
-Exception: store.Adult is being given a default a second time.
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 476, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 474, in script call
+    call Nuria_finished_chapt1
+  File "game/script.rpy", line 474, in script call
+    call Nuria_finished_chapt1
+  File "game/eduardo_days.rpy", line 77, in script
+    if rachel_bus == 1:
+  File "renpy/ast.py", line 1898, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2276, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2269, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/eduardo_days.rpy", line 77, in <module>
+    if rachel_bus == 1:
+NameError: name 'rachel_bus' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 A mess 1.0
-Thu Jun  2 23:10:21 2022
+Fri Jun  3 16:05:19 2022

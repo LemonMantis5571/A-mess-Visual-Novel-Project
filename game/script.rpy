@@ -345,14 +345,18 @@ label Options:
                         Isela "So guys this is the class for today"
                         Isela "Do you have any questions?"
                         character_name "I have-I have a question."
-                        Isela "So no one"
+                        Isela "So no one."
                         Isela "Alright, see you next day."
                         hide Isela
                         scene bg lincoln
                         show tamyt at left
                         Tamy "So, do we go to the university?"
+                        hide tamyt
+                        show tamy at left
                         character_name "Yessir."
-                        Tamy "Ok, let's go"
+                        hide tamy
+                        show tamyt at left
+                        Tamy "Ok, let's go."
                         jump Tuesday_edu
            
 
