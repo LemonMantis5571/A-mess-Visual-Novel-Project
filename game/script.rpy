@@ -738,6 +738,8 @@ label Tamy_Taking_Action:
                     "???"
                     "????"
                     $renpy.pause(delay = 2.5, hard = True)
+                    hide tamyt
+                    hide tamy
                     play music "audio/screamer.mp3"  volume 0.15
                     show jeff:
                             parallel:
