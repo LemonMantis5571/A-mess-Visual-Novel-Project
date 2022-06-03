@@ -693,10 +693,52 @@ label Tamy_Taking_Action:
         hide tamyt
         jump tamy_options
     
+    if Adult == True:
+            menu:
+                "What's up?":
+                    jump Tamy_Dialogues
+                
+                "Take me to the university":
+                    scene bg tamy with dissolve
+                    show tamyt
+                    Tamy "I'm not quite sure that we should go to the university together, I just met you!"
+                    Tamy "Definitively that's not gonna happen"
+                    hide tamyt
+                    jump tamy_options
+
+                "Maybe I should go alone to the University":
+                    "Where are you going?"
+                    "?"
+                    "??"
+                    "???"
+                    "????"
+                    $renpy.pause(delay = 2.5, hard = True)
+                    play music "audio/screamer.mp3"  volume 0.15
+                    show jeff:
+                            parallel:
+                                0.2 #tiempo de espera
+                                xalign 0.5 yalign 0 #centrar la imagen en el eje x
+                                ease 0.25 zoom 2.0 #animación donde la imagen hace un zoom al doble
+                            parallel:
+                                alpha 0 #opacidad 0
+                                0.2 #t. de espera
+                                linear 0.15 alpha 1.0 #comienza a mostrarse
+                                1.0 #t. de espera
+                                linear 0.10 alpha 0 #empieza a desaparecer
+                            parallel:
+                                dizzy(1.5,0.01) #animación de la imagen
+
+                    window auto hide
+                    pause 1.0
+                    window auto show
+                    $ Adult = False
+                    hide jeff
+                    jump tamy_options
+                    
     menu:
         "What's up?":
             jump Tamy_Dialogues
-        
+                
         "Take me to the university":
             scene bg tamy with dissolve
             show tamyt
@@ -704,6 +746,7 @@ label Tamy_Taking_Action:
             Tamy "Definitively that's not gonna happen"
             hide tamyt
             jump tamy_options
+
 
 
 label Tamy_Dialogues:
