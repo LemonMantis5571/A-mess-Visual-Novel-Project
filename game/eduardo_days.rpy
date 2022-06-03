@@ -185,21 +185,19 @@ label Ram:
     
 label Motherboard:
 
-    scene bg class1
-    """
-    The motherboard is the main board in the internal structure of the computer where the electronic circuits, the processor, the memories and the main connections are located."""
+    scene bg Tamy
+    "The motherboard is the main board on the internal structure of a computer where the electronic circuits, the processor, the memories and the main connections are located."
 
-    """ When referring to the motherboard, we are talking about a type of technology that has been present since the beginning of the history of computers until today."""
+    "When we refer to the motherboard, we are talking about a type of technology that has been present since the beginning of the history of computers to this day."
 
     jump Options1
 
 label cpu:
 
-    scene bg class1
-    """
-    The CPU is the brain of the computer, we refer to the part of the computer in which direct commands that generate the different functions of the CPU are controlled and originated."""
+    scene bg Tamy
+    "The CPU is the brain of the computer, we refer to the part of the computer in which direct commands that generate the different functions of the CPU that are controlled and originated."""
 
-    """ In the CPU all the calculations of the binary code of the computer are done. In general, it is the most important part of the system. """
+    "In the CPU all the calculations of the binary code of the computer are done. In general, it is the most important part of the system."
     jump Options1
 
 
