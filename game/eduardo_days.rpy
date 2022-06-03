@@ -173,31 +173,43 @@ screen selector1():
     
 label Ram:
 
-    scene bg Tamy
+    scene bg tamy
     
-    "RAM is the main memory of a device, the one where the data of the software you are using at the moment is temporarily stored."
+    show screen RAM_buttons
+    show tamyt at left with hpunch
+    Tamy "RAM is the main memory of a device, the one where the data of the software you are using at the moment is temporarily stored."
 
-    "It has two characteristics that makes the difference from sother types of storage. "
+    Tamy "It has two characteristics that makes the difference from other types of storage. "
 
-    "On the first hand it has enormous speed, and secondly the data is only stored temporarily."""
-
+    Tamy "On the first hand it has enormous speed, and secondly the data is only stored temporarily."
+    hide screen RAM_buttons
+    hide tamyt
     jump Options1  
     
 label Motherboard:
 
-    scene bg Tamy
-    "The motherboard is the main board on the internal structure of a computer where the electronic circuits, the processor, the memories and the main connections are located."
+    scene bg tamy
 
-    "When we refer to the motherboard, we are talking about a type of technology that has been present since the beginning of the history of computers to this day."
+    show tamyt at left with hpunch
+    show screen Motherboard_buttons
+    Tamy "The motherboard is the main board on the internal structure of a computer where the electronic circuits, the processor, the memories and the main connections are located."
 
+    Tamy "When we refer to the motherboard, we are talking about a type of technology that has been present since the beginning of the history of computers to this day."
+    hide screen Motherboard_buttons
+    hide tamyt
     jump Options1
 
 label cpu:
 
-    scene bg Tamy
-    "The CPU is the brain of the computer, we refer to the part of the computer in which direct commands that generate the different functions of the CPU that are controlled and originated."""
+    scene bg tamy
 
-    "In the CPU all the calculations of the binary code of the computer are done. In general, it is the most important part of the system."
+    show tamyt at left with hpunch
+    show screen CPU_buttons
+    Tamy "The CPU is the brain of the computer, we refer to the part of the computer in which direct commands that generate the different functions of the CPU that are controlled and originated."
+
+    Tamy "In the CPU all the calculations of the binary code of the computer are done. In general, it is the most important part of the system."
+    hide screen CPU_buttons
+    hide tamyt
     jump Options1
 
 

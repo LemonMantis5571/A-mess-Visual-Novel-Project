@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 303: Line is indented, but the preceding window hide statement statement does not expect a block. Please check this line's indentation.
-    menu:
-    ^
+File "game/eduardo_days.rpy", line 208: end of line expected.
+    Tamy "The CPU is the brain of the computer, we refer to the part of the computer in which direct commands that generate the different functions of the CPU that are controlled and originated."""
+                                                                                                                                                                                                   ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Thu Jun  2 23:49:35 2022
+Fri Jun  3 17:00:14 2022
