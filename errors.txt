@@ -2,14 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 480: end of line expected.
-(Perhaps you left out a " at the end of the first line.)
-    """
-                "Here's the music taste status"
-                  ^
-                [music_game_choice_nuria]
-    
-                """
+File "game/script.rpy", line 713: expected statement.
+    tamy_unlocked -= 2
+                   ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Thu Jun  2 22:15:52 2022
+Thu Jun  2 23:28:16 2022

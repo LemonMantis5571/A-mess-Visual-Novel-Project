@@ -1,3 +1,5 @@
+default Adult = True
+
 show ozunat:
     subpixel True zoom 1.19
 
@@ -8,9 +10,11 @@ label  start_uni:
     menu:   
         "Yes":
             $ heart_problems = 1
+            $ Adult = False
 
         "No":
             $ heart_problems = 0
+            $ Adult = True
             "hehe :)"
     
     "Do you have any type of fear?"

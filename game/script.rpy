@@ -46,8 +46,7 @@ define nuria_init_dialogue = False
 
 define feel = 0
 
-
-
+default Tamy_Takes_You = False
 #Tamy Atributes
 default tamy_unlocked = 0
 
@@ -329,9 +328,34 @@ label Options:
                         if Tamy_knowledge == True:
                             jump tamy_options  #Tamy_knowledge == True
                         jump Tamy
+                    
             
+            if Tamy_Takes_You = True:
+                menu:
+                    "Talk to Nuria":
+                        jump Nuria_Music
+                    
+                    "Talk to Tamy":
+                        jump tamy_options
+                    
+                    "Talk to the teacher":
+                        scene bg class0
+                        show isela
+                        Isela "Hey, [character_name]!"
+                        Isela "Don't be late next time."
+                        Isela "So guys this is the class for today"
+                        Isela "Do you have any questions?"
+                        character_name "I have-I have a question."
+                        Isela "So no one"
+                        Isela "Alright, see you next day."
+                        hide Isela
+                        scene bg lincoln
+                        show tamyt at left
+                        Tamy "So, do we go to the university?"
+                        character_name "Yessir."
+                        Tamy "Ok, let's go"
+           
 
-        
         "Status":
             jump status
         
@@ -689,7 +713,8 @@ label Tamy_Taking_Action:
         if confidence_tamy == 0 and friendship_tamy == 0 and tension_tamy == 0:
            $ confidence_tamy += 5
            $ friendship_tamy += 5
-
+        $ Tamy_Takes_You = True
+        $ tamy_unlocked -= 2
         hide tamyt
         jump tamy_options
     
@@ -734,7 +759,7 @@ label Tamy_Taking_Action:
                     $ Adult = False
                     hide jeff
                     jump tamy_options
-                    
+
     menu:
         "What's up?":
             jump Tamy_Dialogues

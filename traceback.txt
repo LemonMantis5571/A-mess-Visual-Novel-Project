@@ -1,122 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'images/UI/afterdark.png'>:
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 451, in script call
-    call Nuria_finished_chapt1
-  File "game/script.rpy", line 451, in script call
-    call Nuria_finished_chapt1
-  File "game/script.rpy", line 554, in script
-    menu:
-IOError: Couldn't find file 'images/UI/afterdark.png'.
+While running game code:
+  File "renpy/common/00start.rpy", line 189, in script
+    python:
+  File "renpy/common/00start.rpy", line 190, in <module>
+    renpy.execute_default_statement(True)
+  File "game/script.rpy", line 49, in set_default
+    default Adult = True
+Exception: store.Adult is being given a default a second time.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 453, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 451, in script call
-    call Nuria_finished_chapt1
-  File "game/script.rpy", line 451, in script call
-    call Nuria_finished_chapt1
-  File "game/script.rpy", line 554, in script
-    menu:
-  File "renpy/ast.py", line 1688, in execute
-    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
-  File "renpy/exports.py", line 1060, in menu
-    rv = renpy.store.menu(new_items)
-  File "renpy/exports.py", line 1296, in display_menu
-    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
-  File "renpy/ui.py", line 298, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3325, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3839, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "renpy/display/core.py", line 2565, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 492, in renpy.display.render.render_screen
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/screen.py", line 688, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/dragdrop.py", line 853, in render
-    return super(DragGroup, self).render(width, height, st, at)
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/dragdrop.py", line 461, in render
-    cr = render(child, width, height, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/im.py", line 625, in render
-    return cache.get(self, render=True)
-  File "renpy/display/im.py", line 287, in get
-    surf = image.load()
-  File "renpy/display/im.py", line 706, in load
-    raise e
-IOError: Couldn't find file 'images/UI/afterdark.png'.
+  File "renpy/common/00start.rpy", line 189, in script
+    python:
+  File "renpy/ast.py", line 928, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "renpy/python.py", line 2245, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00start.rpy", line 190, in <module>
+    renpy.execute_default_statement(True)
+  File "renpy/exports.py", line 3753, in execute_default_statement
+    i.set_default(start)
+  File "game/script.rpy", line 49, in set_default
+    default Adult = True
+Exception: store.Adult is being given a default a second time.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 A mess 1.0
-Thu Jun  2 22:37:16 2022
+Thu Jun  2 23:10:21 2022
