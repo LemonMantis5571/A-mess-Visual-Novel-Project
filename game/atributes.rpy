@@ -197,6 +197,7 @@ label Nuria_finished_chapt1:
         Nuria "You should go to the university if you want to know more about the others."
         Nuria "Maybe Tamy can take you there."
         hide nuriaf
+        $ Nuria_final_dialogue = True
         jump Nuria_finalized
         
     

@@ -299,38 +299,37 @@ label Options:
 
 
         "Talk with people in the class":
-            window hide
-            if tamy_unlocked == 0:
-                menu:
-                    "Talk to Nuria":
-                        if nuria_init_dialogue == True:
-                            jump Nuria_Music
-                        else:
-                            jump Nuria
+            if Tamy_Takes_You == False:
+                    if tamy_unlocked == 0:
+                        menu:
+                            "Talk to Nuria":
+                                if nuria_init_dialogue == True:
+                                    jump Nuria_Music
+                                else:
+                                    jump Nuria
 
-                    "Talk to Tamy":
-                        scene bg class0
-                        show tamyt
-                        Tamy "Hey, [character_name]!"
-                        Tamy "I'm Tamy."
-                        Tamy "I'll like to talk with you but im busy right now"
-                        Tamy "You should come back later."
-                        jump Options
-                
-            if tamy_unlocked >= 1:
-                menu:
+                            "Talk to Tamy":
+                                scene bg class0
+                                show tamyt
+                                Tamy "Hey, [character_name]!"
+                                Tamy "I'm Tamy."
+                                Tamy "I'll like to talk with you but im busy right now"
+                                Tamy "You should come back later."
+                                jump Options
+                        
+                    if tamy_unlocked >= 1:
+                        menu:
+                            
+                            "Talk to Nuria":
+                                    jump Nuria_Music
+
+
+                            "Talk to Tamy":
+                                if Tamy_knowledge == True:
+                                    jump tamy_options  #Tamy_knowledge == True
+                                jump Tamy
                     
-                    "Talk to Nuria":
-                            jump Nuria_Music
-
-
-                    "Talk to Tamy":
-                        if Tamy_knowledge == True:
-                            jump tamy_options  #Tamy_knowledge == True
-                        jump Tamy
-                    
-            
-            if Tamy_Takes_You = True:
+            if Tamy_Takes_You == True:
                 menu:
                     "Talk to Nuria":
                         jump Nuria_Music
@@ -354,6 +353,7 @@ label Options:
                         Tamy "So, do we go to the university?"
                         character_name "Yessir."
                         Tamy "Ok, let's go"
+                        jump Tuesday_edu
            
 
         "Status":
@@ -471,7 +471,6 @@ menu:
         hide screen nuria_quit_menu
         $ tamy_unlocked += 1
         if Nuria_finish == True:
-            $ Nuria_final_dialogue = True
             call Nuria_finished_chapt1
             
         call atributes_nuria
