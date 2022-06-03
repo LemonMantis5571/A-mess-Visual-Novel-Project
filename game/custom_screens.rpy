@@ -21,7 +21,7 @@ screen StatusBox:
             frame:
                 xpadding 20
                 ypadding 20
-                text "Tamy's Confidence: [confidence_grettell]\n" + "Tamy's Friendship: [friendship_gretell]\n" + "Tamy's Tension: [tension_grettell]"     
+                text "Tamy's Confidence: [confidence_tamy]\n" + "Tamy's Friendship: [friendship_tamy]\n" + "Tamy's Tension: [tension_tamy]"     
                 
             
         drag:
@@ -35,6 +35,18 @@ screen StatusBox:
                 ypadding 20
                 text "Nuria's Confidence: [confidence_nuria]\n" + "Nuria's Friendship: [friendship_nuria]\n" + "Nuria's Tension: [tension_nuria]"
 
+        drag:
+            drag_name "Music Game"
+            xpos 0.5
+            ypos 0.5
+            draggable True
+            drag_raise True
+            frame:
+                xpadding 20
+                ypadding 20
+                text "Music taste status: \nMetal: [music_game_choice_nuria] \nPop-Synthwave: [music_game_choice_tamy]"
+            
+            
 
         button:
             hover_background "#00a"
@@ -73,6 +85,48 @@ screen fnaf_golden:
             dragged drag_placed
             drag_raise True
             button action [ToggleScreen("fnaf_golden")]
+
+screen afterdark:
+
+    draggroup:
+        drag:
+            drag_name "mrkitty"
+            child "images/UI/afterdark.png"
+            xalign 0.5
+            yalign 0.5
+            draggable True
+            droppable False
+            dragged drag_placed
+            drag_raise True
+            button action [ToggleScreen("afterdark")]
+
+screen synthwave:
+
+    draggroup:
+        drag:
+            drag_name "wave"
+            child "images/UI/synthwave.png"
+            xalign 0.5
+            yalign 0.5
+            draggable True
+            droppable False
+            dragged drag_placed
+            drag_raise True
+            button action [ToggleScreen("synthwave")]
+
+screen caldera:
+
+    draggroup:
+        drag:
+            drag_name "sugar"
+            child "images/UI/caldera.png"
+            xalign 0.5
+            yalign 0.5
+            draggable True
+            droppable False
+            dragged drag_placed
+            drag_raise True
+            button action [ToggleScreen("caldera")]
             
             
 
@@ -121,8 +175,22 @@ screen guide_quit:
             yalign 0.5
             textbutton "Quit"  action [ToggleScreen("guide_quit"), Jump("Options")]
 
+'''
+screen Music_Player:
+    button:
+        text "Music Controls"
+        action ToggleScreen("music_controls") '''
 
 
+screen thefeels_buttons:
 
-
-                
+    draggroup:
+        drag:
+            drag_name "phone"
+            child "thefeels.png"
+            xpos 450
+            ypos 100
+            draggable True
+            droppable False
+            dragged drag_placed
+            drag_raise True          

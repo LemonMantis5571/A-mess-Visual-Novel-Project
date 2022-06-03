@@ -2,9 +2,14 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 591: parallel expects a non-empty block.
-    parallel:
-             ^
+File "game/script.rpy", line 480: end of line expected.
+(Perhaps you left out a " at the end of the first line.)
+    """
+                "Here's the music taste status"
+                  ^
+                [music_game_choice_nuria]
+    
+                """
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Wed Jun  1 21:14:43 2022
+Thu Jun  2 22:15:52 2022

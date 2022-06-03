@@ -56,7 +56,7 @@ default Spotify = 0
 
 default character_name = "Sherylda"
 
-
+default Wordle_Finish = False
 
 label start:
     # The game starts here.
@@ -241,12 +241,14 @@ label Options:
                     
                     "Twice - The Feels":
                         stop music fadeout 1.0
-                        scene bg cartoon with dissolve
+                        scene bg class1
+                        show screen thefeels_buttons
                         play music "audio/thefeels.mp3" fadein 2.0 volume 0.2
                         hide window
                         pause
 
                         stop music fadeout 1.0
+                        hide screen thefeels_buttons
                         jump Options
 
                     "Get back":
@@ -255,37 +257,39 @@ label Options:
 
 
         "Get new songs":
-            if music_game_choice_nuria>100:
+            if music_game_choice_nuria>50:
                 menu:
                     "The feels Twice":
+                        "Oh, look it seems you have unlocked a new song."
                         "You have unlocked the feels twice."
                         $ Spotify = 1
+                        jump Options    
+
+                    "????":
+                        "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
 
                     "????":
                         "You haven't unlocked it yet"
-                        jump Options
-
-                    "????":
-                        "You haven't unlocked it yet"
-                        jump Options
-
-                    "????":
-                        "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
             
-            elif music_game_choice_nuria<=100:
+            elif music_game_choice_nuria<50:
                 menu:
                     "????":
                         "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
 
                     "????":
                         "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
 
                     "????":
                         "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
 
                     "????":
@@ -470,16 +474,6 @@ label status:
     menu:
         "Character Status":
             call screen StatusBox
-
-        
-        "Music Status":
-            """
-            Tamy: [music_game_choice_tamy]
-
-            Nuria: [music_game_choice_nuria]
-
-            """
-            jump Options #TODO: Add music status
         
         "Back Menu":
             jump Options #TODO: Add music status
@@ -551,47 +545,51 @@ label Tamy:
     "What radio station to listen now?."
 
 label tamy_options:
+    stop music fadeout 1.0
+    play music "audio/bgm_class.mp3" fadein 1.0 volume 0.3
     $ Tamy_knowledge = True     # This is to make sure that the player can't repeat the dialogue.
     scene bg tamy with dissolve
     show tamy
+
     menu:
         "Radio.net":
             scene bg afterdark with dissolve
             show tamy
             play music "audio/blezz1.mp3" fadein 1.0 volume 0.3
-            "*Music Starts to play*"
+            
+            $ music_game_choice_tamy += renpy.random.randint(1,10)
+            # call screen Music_Player
             hide tamy
-
-            menu:
-                "Get Back":
-                    character_name "*That was Dope*"
-                    stop music fadeout 1.0
-                    jump tamy_options
+            show screen afterdark
+            hide window
+            pause
+            hide screen afterdark
+            jump tamy_options
         
         "98.5 FM":
             scene bg homemage with dissolve
             show tamy
             play music "audio/blezz2.mp3" fadein 1.0 volume 0.3
-            "*Music Starts to play*"
-            
+            $ music_game_choice_tamy += renpy.random.randint(1,10)
             hide tamy
-            menu:
-                "Get Back":
-                    character_name "*That was Dope*"
-                    stop music fadeout 1.0
-                    jump tamy_options
+            show screen synthwave
+            hide window
+            pause
+            hide screen synthwave
+            stop music fadeout 1.0
+            jump tamy_options
 
         "CBC Radio ONE":
             scene bg maroon with dissolve
             show tamy
             play music "audio/blezz3.mp3" fadein 1.0 volume 0.3
-            "*Music Starts to play*"
+            $ music_game_choice_tamy += renpy.random.randint(1,10)
             hide tamy
-            menu:
-                "Get Back":
-                    character_name "*That was Dope*"
-                    stop music fadeout 1.0
-                    jump tamy_options
+            show screen caldera
+            hide window
+            pause
+            hide screen caldera
+            jump tamy_options
 
         "Shekinah Radio":
             hide tamy
@@ -610,11 +608,9 @@ label tamy_options:
                         linear 0.10 alpha 0 #empieza a desaparecer
                     parallel:
                         dizzy(1.5,0.01) #animación de la imagen
-
-
-            window auto hide
-            pause 1.0
-            window auto show
+                window auto hide
+                pause 1.0
+                window auto show
 
             hide screen fnaf_screamer
             $ childish += 1
@@ -624,29 +620,25 @@ label tamy_options:
             show screen fnaf_golden
             show tamy
             play music "audio/blezz4.mp3" fadein 1.0 volume 0.3
+            $ music_game_choice_tamy += renpy.random.randint(1,10)
             hide tamy
-            "*Music Starts to play*"
-            menu:
-                "Get Back":
-                    hide screen fnaf_golden
-                    character_name "*That was Dope*"
-                    stop music fadeout 1.0
-                    jump tamy_options
+            hide window
+            pause
+            hide screen fnaf_golden
+            jump tamy_options
 
         "Talk":
             if Tamy_University_trip == True:
                 jump Tamy_Taking_Action
             show tamyt
             #make a dialogue with tamy
-            Tamy 
-            """And when I awoke at night.  That's when I knew who she was.  
+            Tamy """
+            And when I awoke at night.  That's when I knew who she was.  
             That she was a dreamer.  
             someone who could play any instrument.  
             any color you could imagine.  
             everyone I ever loved, in all their expressions.  
-            Who had all the dreams of all my life.  
-            and, yes, she kept on changing the color, 
-            it didn't matter. She always looked the same.  Always the same.  That you'll never forget."""
+            """
 
 
             Tamy "*You are not supposed to talk to me*"
@@ -674,9 +666,11 @@ label tamy_options:
             character_name "Can you take me there?"
 
             Tamy "I'm not sure."
+            Tamy "Taking you as a person that I just met 5 mins ago."
+            Tamy "To my friends..."
             Tamy "Let me think a bit about it"
             $ Tamy_University_trip = True
-            jump Options
+            jump tamy_options
 
 
 
@@ -686,9 +680,57 @@ label tamy_options:
 
 
 label Tamy_Taking_Action:
-    scene bg tamy with dissolve
-    show tamyt
-    Tamy "I'm not quite sure that we should go to the university together, I just met you!"
-    Tamy "Definitively that's not gonna happen"
+    if Wordle_Finish == True and Nuria_final_dialogue == True:
+        scene bg tamy with dissolve
+        show tamyt
+        Tamy "I'm not sure if I should tell you this, but I've been thinking about you."
+        Tamy "Maybe I can introduce you to my friends."
+        Tamy "Wait for me at the stop Tomorow."
+        if confidence_tamy == 0 and friendship_tamy == 0 and tension_tamy == 0:
+           $ confidence_tamy += 5
+           $ friendship_tamy += 5
+
+        hide tamyt
+        jump tamy_options
+    
+    menu:
+        "What's up?":
+            jump Tamy_Dialogues
+        
+        "Take me to the university":
+            scene bg tamy with dissolve
+            show tamyt
+            Tamy "I'm not quite sure that we should go to the university together, I just met you!"
+            Tamy "Definitively that's not gonna happen"
+            hide tamyt
+            jump tamy_options
+
+
+label Tamy_Dialogues:
     hide tamyt
-    jump tamy_options
+    hide tamy
+    show tamyt
+    Tamy "Hey, [character_name]."
+    Tamy "Shall we play a game?"
+    character_name "..."
+    character_name "I don't know."
+    Tamy "A wordle Game."
+    Tamy "It's gonna be fun."
+    Tamy "Trust Me."
+    
+    menu:
+        "I'm Ready":
+            jump lingo_example
+        
+        "No":
+            scene bg tamy with dissolve
+            show tamyt
+            Tamy "You are so boring!!!"
+            Tamy "Looser!"
+            jump tamy_options
+    
+
+
+
+
+
