@@ -1,80 +1,138 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 476, in script call
+While loading <'Image' u'UI/coin-icon.png'>:
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 474, in script call
+  File "game/script.rpy", line 478, in script call
     call Nuria_finished_chapt1
-  File "game/script.rpy", line 474, in script call
+  File "game/script.rpy", line 478, in script call
     call Nuria_finished_chapt1
-  File "game/eduardo_days.rpy", line 77, in script
-    if rachel_bus == 1:
-  File "game/eduardo_days.rpy", line 77, in <module>
-    if rachel_bus == 1:
-NameError: name 'rachel_bus' is not defined
+  File "game/CandyCrushMinigame.rpy", line 245, in script
+    call screen SameGame
+  File "renpy/common/000statements.rpy", line 569, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+IOError: Couldn't find file 'UI/coin-icon.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 476, in script call
+  File "game/script.rpy", line 480, in script call
     call atributes_nuria
-  File "game/script.rpy", line 474, in script call
+  File "game/script.rpy", line 478, in script call
     call Nuria_finished_chapt1
-  File "game/script.rpy", line 474, in script call
+  File "game/script.rpy", line 478, in script call
     call Nuria_finished_chapt1
-  File "game/eduardo_days.rpy", line 77, in script
-    if rachel_bus == 1:
-  File "renpy/ast.py", line 1898, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2276, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "renpy/python.py", line 2269, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/eduardo_days.rpy", line 77, in <module>
-    if rachel_bus == 1:
-NameError: name 'rachel_bus' is not defined
+  File "game/CandyCrushMinigame.rpy", line 245, in script
+    call screen SameGame
+  File "renpy/ast.py", line 2015, in execute
+    self.call("execute")
+  File "renpy/ast.py", line 2003, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "renpy/statements.py", line 278, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 569, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "renpy/exports.py", line 3136, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "renpy/display/core.py", line 3325, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3839, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "renpy/display/core.py", line 2565, in draw_screen
+    renpy.config.screen_height,
+  File "render.pyx", line 492, in renpy.display.render.render_screen
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 826, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 826, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 826, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/screen.py", line 688, in render
+    child = renpy.display.render.render(self.child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 826, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 1264, in render
+    st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 1264, in render
+    st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/layout.py", line 493, in render
+    renders = [ render(i, renwidth, renheight, st, at) for i in children ]
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/transform.py", line 733, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/transform.py", line 733, in render
+    return transform_render(self, width, height, st, at)
+  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/im.py", line 625, in render
+    return cache.get(self, render=True)
+  File "renpy/display/im.py", line 287, in get
+    surf = image.load()
+  File "renpy/display/im.py", line 706, in load
+    raise e
+IOError: Couldn't find file 'UI/coin-icon.png'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 A mess 1.0
-Fri Jun  3 16:05:19 2022
+Fri Jun  3 17:08:02 2022

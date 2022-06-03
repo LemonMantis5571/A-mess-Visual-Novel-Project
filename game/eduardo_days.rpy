@@ -222,13 +222,13 @@ label preGame:
     if decision == 1:
         scene bg aula1
         show rachel at right
-        Rachel "Thanks you for working with me"
-        Rachel "Hmm"
+        Rachel "We do such a great team huh?"
+        Rachel "Hmm."
         Rachel "Shall we play a game?"
-        Rachel "I mean meanwhile they're coming"
+        Rachel "I mean meanwhile they're coming."
         Rachel ":3"
         Rachel "You only have to touch the figures that have two or more of the same type, simple right?"
-        Rachel "Great, lets go"
+        Rachel "Great, lets go."
 
         hide rachel
 
