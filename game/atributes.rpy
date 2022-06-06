@@ -41,7 +41,7 @@ label atributes_nuria:
     hide screen nuria_quit_menu
     $ randomnum = renpy.random.randint(1,2) # (randomize between 1 and 2)
 
-    if friendship_nuria>=15 and tension_nuria<=5 and confidence_nuria>=15:
+    if friendship_nuria>=25 and tension_nuria<=5 and confidence_nuria>=25:
         $ Nuria_finish = True
 
     if randomnum==1 and confidence_nuria<45:
