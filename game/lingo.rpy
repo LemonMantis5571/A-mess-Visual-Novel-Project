@@ -1,13 +1,14 @@
 ﻿init python:
     import random
     import time
+    from palabras import palabras
     random.seed(time.clock())
 
     def get_a_word():
-        f = open(renpy.loader.transfn("sgb-words.txt"),"r")
-        words = f.readlines(  )
+        #f = open(renpy.loader.transfn("resources/sgb-words.txt"),"r")
+        #words = f.readlines(  )
+        words = palabras
         selected = random.randint(0, len(words)-1)
-        f.close()
         return words[selected].strip()
     class lingo_game:
         def __init__(self):

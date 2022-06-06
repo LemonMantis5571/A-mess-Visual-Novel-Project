@@ -292,6 +292,7 @@ style quick_button_text:
 
 screen navigation():
 
+
     vbox:
         if not renpy.get_screen("main_menu"):
             style_prefix "navigation"
@@ -321,6 +322,7 @@ screen navigation():
         textbutton _("Load") action ShowMenu("load")
 
         textbutton _("Options") action ShowMenu("preferences")
+        
 
         if _in_replay:
 
@@ -342,6 +344,8 @@ screen navigation():
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
             textbutton _("Quit") action Quit(confirm=not main_menu)
+
+        textbutton _("Music Room") action [ShowMenu("music_room"), Function(ost.get_music_channel_info), Stop('music', fadeout=2.0), Function(ost.refresh_list)]
 
 
 style navigation_button is gui_button
