@@ -191,18 +191,17 @@ screen selector1():
 
     vbox:
         align (1.0, 0.5)
+        xpos 0.4
+        ypos 0.5
         xsize 5
         spacing 20
 
-        # Cambiamos los 'textbutton' por 'imagebutton',
-        #   e indicamos la imagen básica: 'idle'
-        #   y la imagen 'hover', cuando el ratón pasa por encima
         #imagebutton idle "ram"    hover "ram_hover"    action Jump("Ram")
         #imagebutton idle "motherboard"    hover "motherboard_hover"    action Jump("Motherboard")
         textbutton "RAM"    action Jump("Ram")
         textbutton "Motherboard"    action Jump("Motherboard")
         textbutton "CPU"    action Jump("cpu")
-        textbutton "Continue" action Jump("preGame")
+        textbutton "Continue" action Jump("exam")
         
 
     
@@ -249,55 +248,69 @@ label cpu:
 
 
     
+label exam:
+    scene bg aula1
+    show rachel at right
+    Rachel "Oki, we are going to do a exam"
+    Rachel "isi pisi"
+    hide rachel
+    jump preguntas
+    
+
+
 
 label preGame:
 
-    if friendship_rachel >= 5 and confidence_rachel >= 5 and tension_rachel <= -3 and playGame > 0:
+    if finalTimeExamDialog == 0:
+        Rachel "Nos fue bien xd"
+        $ finalTimeExamDialog = 3
+    
+    if finalTimeExamDialog == 1:
+        Rachel "Nos fue mal xd"
+        $ finalTimeExamDialog = 3
 
+    if (friendship_rachel >= 2 and friendship_rachel < 5) and (confidence_rachel >= 2 and confidence_rachel < 5) and (tension_rachel >= 2 and tension_rachal < 5) and (tension_rachel > -2 and tension_rachal < 2):
         scene bg aula1
         show rachel at right
-        Rachel "Eso fue divertido :D"
-        Rachel "oye que tipo de musica te gusta?"
+        Rachel "You are a good student, I'm so glad to see you"
         hide rachel
-        menu:
-            "xd":
-                show rachel at right
-                Rachel "a"
-            "xd2":
-                show rachel at right
-                Rachel "A2"
-            "otro":
-                $ musicFavorite = renpy.input("Insert your name below", length=9)
-                Rachel "[musicFavorite] ? interesante"
-        
-
-    else:
-        scene bg aula1
-        show rachel at right
-        Rachel "We do such a great team huh?"
-        Rachel "Hmm."
-        Rachel "Shall we play a game?"
-        Rachel "I mean meanwhile they're coming."
-        Rachel ":3"
-        Rachel "You only have to touch the figures that have two or more of the same type, simple right?"
-        Rachel "Great, lets go."
-
-        hide rachel
-
-        jump initGame
+        jump preguntas
 
     
 
+    if friendship_rachel >= 5 and confidence_rachel >= 5 and tension_rachel <= -3:
 
+        if playGame > 0:
 
-
+            scene bg aula1
+            show rachel at right
+            Rachel "Eso fue divertido :D"
+            Rachel "oye que tipo de musica te gusta?"
+            hide rachel
+            menu:
+                "xd":
+                    show rachel at right
+                    Rachel "a"
+                "xd2":
+                    show rachel at right
+                    Rachel "A2"
+                "otro":
+                    $ musicFavorite = renpy.input("Insert your name below", length=9)
+                    Rachel "[musicFavorite] ? interesante"
         
+        if playGame == 0:
+            scene bg aula1
+            show rachel at right
+            Rachel "We do such a great team huh?"
+            Rachel "Hmm."
+            Rachel "Shall we play a game?"
+            Rachel "I mean meanwhile they're coming."
+            Rachel ":3"
+            Rachel "You only have to touch the figures that have two or more of the same type, simple right?"
+            Rachel "Great, lets go."
 
+            hide rachel
 
-
-
-
-
-
-
+            jump initGame
     
+

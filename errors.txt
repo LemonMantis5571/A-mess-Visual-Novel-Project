@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/eduardo_days.rpy", line 119: expected statement.
-    friendship_rachel += 1
-                      ^
+File "game/examEduDay.rpy", line 3: invalid syntax
+    $ timer_range = 0
+     ^
+    
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sat Jun 11 21:34:28 2022
+Sun Jun 12 11:22:04 2022
