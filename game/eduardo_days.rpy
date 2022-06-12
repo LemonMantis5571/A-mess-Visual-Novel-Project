@@ -262,11 +262,11 @@ label exam:
 label preGame:
 
     if finalTimeExamDialog == 0:
-        Rachel "We did it! We passed the exam!"
+        Rachel "We did it! We passed the exam! 🥰"
         $ finalTimeExamDialog = 3
     
     if finalTimeExamDialog == 1:
-        Rachel "We failed the exam!"
+        Rachel "We failed the exam! 😢"
         $ finalTimeExamDialog = 3
 
     if (friendship_rachel >= 2 and friendship_rachel < 5) and (confidence_rachel >= 2 and confidence_rachel < 5) and (tension_rachel >= 2 and tension_rachal < 5) and (tension_rachel > -2 and tension_rachal < 2):
@@ -295,8 +295,8 @@ label preGame:
                     show rachel at right
                     Rachel "A2"
                 "otro":
-                    $ musicFavorite = renpy.input("Insert your name below", length=9)
-                    Rachel "[musicFavorite] ? interesante"
+                    $ musicFavorite = renpy.input("", length=9)
+                    Rachel "[musicFavorite] ? that's quite interesting"
         
         if playGame == 0:
             scene bg aula1
