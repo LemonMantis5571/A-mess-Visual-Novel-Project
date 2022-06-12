@@ -60,7 +60,7 @@ label  start_uni:
     menu:
         "I'm...":
 
-         $ character_name = renpy.input("Insert your name below", length=9)
+            $ character_name = renpy.input("Insert your name below", length=9)
 
         "I prefer a random nickname.":
             Talya "Ok, I'll call you..."

@@ -12,6 +12,10 @@ default confidence_tamy = 0
 default friendship_tamy = 0
 default tension_tamy = 0
 
+default confidence_rachel = 0
+default friendship_rachel = 0
+default tension_rachel = 0
+
 
 #Music game atributes
 
@@ -210,3 +214,4 @@ label Nuria_finalized:
     
         hide nuria
         jump Nuria_Music
+

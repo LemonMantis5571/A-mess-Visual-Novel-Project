@@ -22,7 +22,18 @@ screen StatusBox:
                 xpadding 20
                 ypadding 20
                 text "Tamy's Confidence: [confidence_tamy]\n" + "Tamy's Friendship: [friendship_tamy]\n" + "Tamy's Tension: [tension_tamy]"     
-                
+
+        drag:
+            drag_name "Rachel"
+            xpos 0.7
+            ypos 0.8
+            draggable True
+            drag_raise True
+            frame:
+                xpadding 20
+                ypadding 20
+                text "Rachel's Confidence: [confidence_rachel]\n" + "Rachel's Friendship: [friendship_rachel]\n" + "Rachel's Tension: [tension_rachel]"     
+               
             
         drag:
             drag_name "Nuria"

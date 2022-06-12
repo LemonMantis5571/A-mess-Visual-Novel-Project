@@ -1,3 +1,5 @@
+default rachel_finish = False
+
 label Tuesday_edu:
 
     play music "audio/bgm_intromusic.mp3" fadein 1.0 volume 0.3
@@ -45,67 +47,82 @@ label busTuesday:
 
     """*You push someone*"""
 
-    show rachel at right
-
-    Rachel "Omg sorry, wait a minute, are you [character_name]?"
-    Rachel "I'm Rachel, we are on the same class."
-    Rachel "What a coincidence, I'm also on the bus."
-
-    hide rachel
-    
-    menu response:
-        "Response"
-        "Yes, what a surprise":
-            character_name "Yes, what a surprise to see you here"
-            character_name "We live near each other, I'm so glad to see you."
-            show rachel at right
-            Rachel "So, I'll see you more often then"
-            Rachel "We arrived at the stop, get off we're late"
-            hide rachel
-
-            $rachel_bus = 1
-
-
-        "Actually not":
-            character_name "Actually not, I've already seen you around here"
-            $rachel_bus = 0
-
-        "...":
-            character_name "..."
-            show rachel at right
-            Rachel "Are you shy? Do not worry, haha"
-    
-    if rachel_bus == 1:
-        scene bg busllegada
-
+    if confidence_rachel < 5:
         show rachel at right
 
-        Rachel "If we walk faster we can get there in time"
+        Rachel "Omg sorry, wait a minute, are you [character_name]?"
+        Rachel "I'm Rachel, we are on the same class."
+        Rachel "What a coincidence, I'm also on the bus."
 
         hide rachel
-
-        "*Rachel goes faster and suddenly you see her outwalking you*"
-
-        character_name "I'll see her in the classroom I guess.."
-
-        #friend +1
-
-
-    #elif rachel_bus == 0:
-        #block of code to run
-    #else:
-        #block of code to run
-
-            
         
+        menu response:
+            "Response"
+            "Yes, what a surprise":
+                character_name "Yes, what a surprise to see you here"
+                character_name "We live near each other, I'm so glad to see you."
+                show rachel at right
+                Rachel "So, I'll see you more often then"
+                Rachel "We arrived at the stop, get off we're late"
+                hide rachel
+                $rachel_bus = 1
 
 
+            "Actually not":
+                character_name "Actually not, I've already seen you around here"
+                
+                $rachel_bus = 0
 
+            "...":
+                character_name "..."
+                show rachel at right
+                Rachel "Are you shy? Do not worry, haha"
 
+                $ rachel_bus = 2
+        
+        if rachel_bus == 1:
+            scene bg busllegada
+
+            show rachel at right
+
+            Rachel "If we walk faster we can get there in time"
+
+            hide rachel
+
+            "*Rachel goes faster and suddenly you see her outwalking you*"
+
+            character_name "I'll see her in the classroom I guess.."
+
+            $ friendship_rachel += 2
+            $ tension_rachel -= 1
+            $ confidence_rachel += 1
+
+        if rachel_bus == 0:
+            scene bg busllegada
+            show rachel at right
+            Rachel "supongo que te vere en la seccion"
+            Rachel "Nos vemos alla"
+            $ tension_rachel += 2
+
+        if rachel_bus == 2:
+            scene bg busllegada
+            show rachel at right
+            Rachel "vamos"
+
+            "*te toma la mano y comienzan a caminar rapido*"
+
+            Rachel "Empieza a correr [character_name] hoy hay prueba"
+            Rachel "te vere en la seccion"
+
+            hide rachel
+
+            $ friendship_rachel += 1
 
 label classTuesday:
 
     scene bg aula1
+
+
 
     character_name "What a great first class!"
 
@@ -116,33 +133,51 @@ label classTuesday:
 
     show rachel at right
 
-    #if optional == 1:
-    #    Rachel "hi, i'm Rachel, I think everyone is here, do you want to join me?"
-    #
-        #menu labMinigame:
-            #"Say Statement"
-            #" ok":
-                #show rachel at right
-                #Rachel "great"
-                #hide rachel
-
-                #$decision = 1
-
-            #"No, thanks":
-                
-                #show rachel at left
-                #Rachel ":("
-                #Rachel "it's okay"
-                #hide rachel
-
-                #$decision = 0
-
-    #else:
     Rachel "Hi [character_name], come join me"
 
     hide rachel
+
+    menu:
+        "oki":
+            $ friendship_rachel += 3
+            $ tension_rachel -= 2
+            show rachel at right
+            Rachel "Sabia que no te resisitirias ;)"
+            Rachel "oki, veamos que hay que aprender"
+            hide rachel
+            $ rachel_clase = 1
+
+        "prefiero hacerlo solo":
+            $ friendship_rachel -= 2
+            $ tension_rachel += 2 
+            $ confidence_rachel -= 1
+            show rachel at right
+            Rachel "esta bien"
+            hide rachel
+            $  rachel_clase = 0
     
-    jump Options1
+    if rachel_clase == 1:
+        jump Options1
+
+    if rachel_clase == 0:
+        
+        "vas a trabajar solo?"
+        "esta bien, si tu quieres"
+        "te dare un consejo"
+        "No lograras mucho sin compañeros"
+
+        menu:
+            "Esta bien, me haré con ella":
+                show rachel at right
+                Rachel "Holi"
+                Rachel "Empecemos de una vez"
+                $ tension_rachel += 2
+                $ confidence_rachel -= 1
+                jump Options1
+            
+            "No me interesa":
+                "como gustes"
+                jump Options1
 
 label Options1:
     
@@ -217,9 +252,26 @@ label cpu:
 
 label preGame:
 
-    $decision = 1
+    if friendship_rachel >= 5 and confidence_rachel >= 5 and tension_rachel <= -3 and playGame > 0:
 
-    if decision == 1:
+        scene bg aula1
+        show rachel at right
+        Rachel "Eso fue divertido :D"
+        Rachel "oye que tipo de musica te gusta?"
+        hide rachel
+        menu:
+            "xd":
+                show rachel at right
+                Rachel "a"
+            "xd2":
+                show rachel at right
+                Rachel "A2"
+            "otro":
+                $ musicFavorite = renpy.input("Insert your name below", length=9)
+                Rachel "[musicFavorite] ? interesante"
+        
+
+    else:
         scene bg aula1
         show rachel at right
         Rachel "We do such a great team huh?"
@@ -233,10 +285,7 @@ label preGame:
         hide rachel
 
         jump initGame
-    else:
-        scene bg blank with dissolve
 
-        centered "*You returned home tired*"
     
 
 

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/eduardo_days.rpy", line 208: end of line expected.
-    Tamy "The CPU is the brain of the computer, we refer to the part of the computer in which direct commands that generate the different functions of the CPU that are controlled and originated."""
-                                                                                                                                                                                                   ^
+File "game/eduardo_days.rpy", line 119: expected statement.
+    friendship_rachel += 1
+                      ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Fri Jun  3 17:00:14 2022
+Sat Jun 11 21:34:28 2022
