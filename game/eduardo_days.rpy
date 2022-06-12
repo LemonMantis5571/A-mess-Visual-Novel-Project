@@ -138,21 +138,21 @@ label classTuesday:
     hide rachel
 
     menu:
-        "oki":
+        "Alright":
             $ friendship_rachel += 3
             $ tension_rachel -= 2
             show rachel at right
-            Rachel "Sabia que no te resisitirias ;)"
-            Rachel "oki, veamos que hay que aprender"
+            Rachel "I knew that you wouldn't resist 🥱"
+            Rachel "Ok, let's see what we can do"
             hide rachel
             $ rachel_clase = 1
 
-        "prefiero hacerlo solo":
+        "I prefer to do things on my own":
             $ friendship_rachel -= 2
             $ tension_rachel += 2 
             $ confidence_rachel -= 1
             show rachel at right
-            Rachel "esta bien"
+            Rachel "..."
             hide rachel
             $  rachel_clase = 0
     
@@ -167,7 +167,7 @@ label classTuesday:
         "You are not going to do much without a team."
 
         menu:
-            "I'ts ok I'll do it with her":
+            "I'ts ok I'll do with her":
                 show rachel at right
                 Rachel "Hi"
                 Rachel "Let's start at once"
