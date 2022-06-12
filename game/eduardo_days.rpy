@@ -63,7 +63,7 @@ label busTuesday:
                 character_name "We live near each other, I'm so glad to see you."
                 show rachel at right
                 Rachel "So, I'll see you more often then"
-                Rachel "We arrived at the stop, get off we're late"
+                Rachel "We arrived at the stop, hurry up we're late!"
                 hide rachel
                 $rachel_bus = 1
 
