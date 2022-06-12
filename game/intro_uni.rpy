@@ -41,7 +41,7 @@ label  start_uni:
     scene bg uni with dissolve
 
     show secret
-    Talya "Hello there."
+    Talya "Hello there {font=fonts/NotoEmoji-Bold.ttf}😁{/font}."
     Talya "So, you are a UNI Student."
     Talya "You may ask what are you doing here."
     Talya "Well I'm here to help you."

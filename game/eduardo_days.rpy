@@ -20,7 +20,7 @@ label Tuesday_edu:
 
     character_name "It's already late, should I go until the next hour?"
 
-    menu :
+    menu:
         "Take the Bus":
             #goto Tuesday_bus
             jump busTuesday
@@ -142,7 +142,7 @@ label classTuesday:
             $ friendship_rachel += 3
             $ tension_rachel -= 2
             show rachel at right
-            Rachel "I knew that you wouldn't resist 🥱"
+            Rachel "I knew that you wouldn't resist {font=fonts/NotoEmoji-Bold.ttf}🥴{/font}"
             Rachel "Ok, let's see what we can do"
             hide rachel
             $ rachel_clase = 1
@@ -251,8 +251,8 @@ label cpu:
 label exam:
     scene bg aula1
     show rachel at right
-    Rachel "Oki, we are going to do a exam"
-    Rachel "isi pisi"
+    Rachel "Okey, we are going to do an exam"
+    Rachel "Ez game"
     hide rachel
     jump preguntas
     
@@ -262,11 +262,11 @@ label exam:
 label preGame:
 
     if finalTimeExamDialog == 0:
-        Rachel "We did it! We passed the exam! 🥰"
+        Rachel "We did it! We passed the exam! {font=fonts/NotoEmoji-Bold.ttf}😎{/font}"
         $ finalTimeExamDialog = 3
     
     if finalTimeExamDialog == 1:
-        Rachel "We failed the exam! 😢"
+        Rachel "We failed the exam! {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
         $ finalTimeExamDialog = 3
 
     if (friendship_rachel >= 2 and friendship_rachel < 5) and (confidence_rachel >= 2 and confidence_rachel < 5) and (tension_rachel >= 2 and tension_rachal < 5) and (tension_rachel > -2 and tension_rachal < 2):
@@ -284,7 +284,7 @@ label preGame:
 
             scene bg aula1
             show rachel at right
-            Rachel "That was funny 😂"
+            Rachel "That was funny {font=fonts/NotoEmoji-Bold.ttf}😂{/font}"
             Rachel "Hey what type of music do you like?"
             hide rachel
             menu:

@@ -1,25 +1,84 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-error: subsurface rectangle outside surface area.
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 478, in script call
+    call Nuria_finished_chapt1
+  File "game/script.rpy", line 478, in script call
+    call Nuria_finished_chapt1
+  File "game/script.rpy", line 478, in script call
+    call Nuria_finished_chapt1
+  File "game/eduardo_days.rpy", line 283, in script
+    if playGame > 0:
+  File "game/eduardo_days.rpy", line 283, in <module>
+    if playGame > 0:
+NameError: name 'playGame' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/bootstrap.py", line 331, in bootstrap
-    renpy.main.main()
-  File "renpy/main.py", line 466, in main
-    log_clock("Loading error handling")
-  File "renpy/main.py", line 55, in log_clock
-    renpy.display.presplash.pump_window()
-  File "renpy/display/presplash.py", line 146, in pump_window
-    progress_bar.update(len(renpy.game.script.script_files) + 23)
-  File "renpy/display/presplash.py", line 66, in update
-    foreground = self.foreground.subsurface(0, 0, width, self.height)
-  File "src/pygame_sdl2/surface.pyx", line 642, in pygame_sdl2.surface.Surface.subsurface
-error: subsurface rectangle outside surface area.
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 480, in script call
+    call atributes_nuria
+  File "game/script.rpy", line 478, in script call
+    call Nuria_finished_chapt1
+  File "game/script.rpy", line 478, in script call
+    call Nuria_finished_chapt1
+  File "game/script.rpy", line 478, in script call
+    call Nuria_finished_chapt1
+  File "game/eduardo_days.rpy", line 283, in script
+    if playGame > 0:
+  File "renpy/ast.py", line 1898, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2276, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "renpy/python.py", line 2269, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/eduardo_days.rpy", line 283, in <module>
+    if playGame > 0:
+NameError: name 'playGame' is not defined
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
- 
-Sun Jun 12 17:38:12 2022
+A mess 1.0
+Sun Jun 12 17:47:47 2022
