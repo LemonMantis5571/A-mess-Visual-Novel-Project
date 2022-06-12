@@ -100,19 +100,19 @@ label busTuesday:
         if rachel_bus == 0:
             scene bg busllegada
             show rachel at right
-            Rachel "supongo que te vere en la seccion"
-            Rachel "Nos vemos alla"
+            Rachel "I supose that we're going to meet in the classroom"
+            Rachel "See you there"
             $ tension_rachel += 2
 
         if rachel_bus == 2:
             scene bg busllegada
             show rachel at right
-            Rachel "vamos"
+            Rachel "Let's go"
 
-            "*te toma la mano y comienzan a caminar rapido*"
+            "*She takes your hand and you start to walk faster*"
 
-            Rachel "Empieza a correr [character_name] hoy hay prueba"
-            Rachel "te vere en la seccion"
+            Rachel "Hurry up! [character_name] we got a test today!"
+            Rachel "I'll see you in the classroom"
 
             hide rachel
 
@@ -161,22 +161,22 @@ label classTuesday:
 
     if rachel_clase == 0:
         
-        "vas a trabajar solo?"
-        "esta bien, si tu quieres"
-        "te dare un consejo"
-        "No lograras mucho sin compañeros"
+        "Are you going to work alone?"
+        "It's ok if you want."
+        "But listen..."
+        "You are not going to do much without a team."
 
         menu:
-            "Esta bien, me haré con ella":
+            "I'ts ok I'll do it with her":
                 show rachel at right
-                Rachel "Holi"
-                Rachel "Empecemos de una vez"
+                Rachel "Hi"
+                Rachel "Let's start at once"
                 $ tension_rachel += 2
                 $ confidence_rachel -= 1
                 jump Options1
             
-            "No me interesa":
-                "como gustes"
+            "I'm not interested":
+                "As you wish"
                 jump Options1
 
 label Options1:
@@ -262,17 +262,17 @@ label exam:
 label preGame:
 
     if finalTimeExamDialog == 0:
-        Rachel "Nos fue bien xd"
+        Rachel "We did it! We passed the exam!"
         $ finalTimeExamDialog = 3
     
     if finalTimeExamDialog == 1:
-        Rachel "Nos fue mal xd"
+        Rachel "We failed the exam!"
         $ finalTimeExamDialog = 3
 
     if (friendship_rachel >= 2 and friendship_rachel < 5) and (confidence_rachel >= 2 and confidence_rachel < 5) and (tension_rachel >= 2 and tension_rachal < 5) and (tension_rachel > -2 and tension_rachal < 2):
         scene bg aula1
         show rachel at right
-        Rachel "You are a good student, I'm so glad to see you"
+        Rachel "You are a good classmate, I'm so glad to see you"
         hide rachel
         jump preguntas
 
@@ -284,8 +284,8 @@ label preGame:
 
             scene bg aula1
             show rachel at right
-            Rachel "Eso fue divertido :D"
-            Rachel "oye que tipo de musica te gusta?"
+            Rachel "That was funny 😂"
+            Rachel "Hey what type of music do you like?"
             hide rachel
             menu:
                 "xd":
