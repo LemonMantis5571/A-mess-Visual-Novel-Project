@@ -7,14 +7,34 @@ define Meifeng = Character("Meifeng", color="#FFD700")
 define Blezz = Character("Blezz", color="#ff99cc")
 define Isela = Character("Miss Isela", color="#b3b3ff")
 define Grettell = Character("Grettell", color="#ff00ff")
-define Nuria = Character("Nuria", color="#8cff66")
-define Tamy  = Character("Tamy", color="#6666ff")
-define Rachel = Character("Rachel", color="#ff6666")
-define Yves = Character("Yves", color="#ff66ff")
-define Talya = Character("Talya", color="#ff00ff")
-define Ozuna = Character("Ozuna", color="#ff12ff")
-define guide = Character("Juan Caldera", color="#FFD700")
+define Nuria = Character("Nuria", color="#8cff66",  what_slow_cps=30, what_slow_abortable=False)
+define Tamy  = Character("Tamy", color="#6666ff",  what_slow_cps=30, what_slow_abortable=False)
+define Rachel = Character("Rachel", color="#ff6666",  what_slow_cps=30, what_slow_abortable=False)
+define Yves = Character("Yves", color="#ff66ff",  what_slow_cps=30, what_slow_abortable=False)
+define Talya = Character("Talya", color="#ff00ff", what_slow_cps=30, what_slow_abortable=False)
+define Ozuna = Character("Ozuna", color="#ff12ff", what_slow_cps=45, what_slow_abortable=False)
+define guide = Character("Juan Caldera", color="#FFD700", what_slow_cps=30, what_slow_abortable=False)
 # The game starts here.
+
+transform dizzy(m, t):
+    subpixel True
+    parallel:
+        xoffset 0
+        ease 0.75 * t xoffset 10 * m
+        ease 0.75 * t xoffset 5 * m
+        ease 0.75 * t xoffset -5 * m
+        ease 0.75 * t xoffset -3 * m
+        ease 0.75 * t xoffset -10 * m
+        ease 0.75 * t xoffset 0
+        ease 0.75 * t xoffset 5 * m
+        ease 0.75 * t xoffset 0
+        repeat
+    parallel:
+        yoffset 0
+        ease 1.0 * t yoffset 5 * m
+        ease 2.0 * t yoffset -5 * m
+        easein 1.0 * t yoffset 0
+        repeat
 
 default game_code_uni = "0188U" #The code of the game 
 
@@ -26,8 +46,7 @@ define nuria_init_dialogue = False
 
 define feel = 0
 
-
-
+default Tamy_Takes_You = False
 #Tamy Atributes
 default tamy_unlocked = 0
 
@@ -36,7 +55,7 @@ default Spotify = 0
 
 default character_name = "Sherylda"
 
-
+default Wordle_Finish = False
 
 label start:
     # The game starts here.
@@ -221,12 +240,14 @@ label Options:
                     
                     "Twice - The Feels":
                         stop music fadeout 1.0
-                        scene bg cartoon with dissolve
+                        scene bg class1
+                        show screen thefeels_buttons
                         play music "audio/thefeels.mp3" fadein 2.0 volume 0.2
                         hide window
                         pause
 
                         stop music fadeout 1.0
+                        hide screen thefeels_buttons
                         jump Options
 
                     "Get back":
@@ -235,37 +256,39 @@ label Options:
 
 
         "Get new songs":
-            if music_game_choice_nuria>100:
+            if music_game_choice_nuria>50:
                 menu:
                     "The feels Twice":
+                        "Oh, look it seems you have unlocked a new song."
                         "You have unlocked the feels twice."
                         $ Spotify = 1
+                        jump Options    
+
+                    "????":
+                        "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
 
                     "????":
                         "You haven't unlocked it yet"
-                        jump Options
-
-                    "????":
-                        "You haven't unlocked it yet"
-                        jump Options
-
-                    "????":
-                        "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
             
-            elif music_game_choice_nuria<=100:
+            elif music_game_choice_nuria<50:
                 menu:
                     "????":
                         "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
 
                     "????":
                         "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
 
                     "????":
                         "You haven't unlocked it yet"
+                        "*Maybe I can unlock news if I listen to the others songs for a while*"
                         jump Options
 
                     "????":
@@ -276,34 +299,67 @@ label Options:
 
 
         "Talk with people in the class":
-            window hide
-            if tamy_unlocked == 0:
-                menu:
-                    "Talk to Nuria":
-                        if nuria_init_dialogue == True:
-                            jump Nuria_Music
-                        else:
-                            jump Nuria
+            if Tamy_Takes_You == False:
+                    if tamy_unlocked == 0:
+                        menu:
+                            "Talk to Nuria":
+                                if nuria_init_dialogue == True:
+                                    jump Nuria_Music
+                                else:
+                                    jump Nuria
 
-                    "Talk to Tamy":
-                        scene bg class0
-                        show tamyt
-                        Tamy "Hey, [character_name]!"
-                        Tamy "I'm Tamy."
-                        Tamy "I'll like to talk with you but im busy right now"
-                        Tamy "You should come back later."
-                        jump Options
-                
-            if tamy_unlocked >= 1:
-                menu:
+                            "Talk to Tamy":
+                                scene bg class0
+                                show tamyt
+                                Tamy "Hey, [character_name]!"
+                                Tamy "I'm Tamy."
+                                Tamy "I'll like to talk with you but im busy right now"
+                                Tamy "You should come back later."
+                                jump Options
+                        
+                    if tamy_unlocked >= 1:
+                        menu:
+                            
+                            "Talk to Nuria":
+                                    jump Nuria_Music
+
+
+                            "Talk to Tamy":
+                                if Tamy_knowledge == True:
+                                    jump tamy_options  #Tamy_knowledge == True
+                                jump Tamy
                     
+            if Tamy_Takes_You == True:
+                menu:
                     "Talk to Nuria":
-                            jump Nuria_Music
-
-
+                        jump Nuria_Music
+                    
                     "Talk to Tamy":
-                            jump Tamy
-        
+                        jump tamy_options
+                    
+                    "Talk to the teacher":
+                        scene bg class0
+                        show isela
+                        Isela "Hey, [character_name]!"
+                        Isela "Don't be late next time."
+                        Isela "So guys this is the class for today"
+                        Isela "Do you have any questions?"
+                        character_name "I have-I have a question."
+                        Isela "So no one."
+                        Isela "Alright, see you next day."
+                        hide Isela
+                        scene bg lincoln
+                        show tamyt at left
+                        Tamy "So, do we go to the university?"
+                        hide tamyt
+                        show tamy at left
+                        character_name "Yessir."
+                        hide tamy
+                        show tamyt at left
+                        Tamy "Ok, let's go."
+                        jump Tuesday_edu
+           
+
         "Status":
             jump status
         
@@ -418,6 +474,9 @@ menu:
     "Talk":
         hide screen nuria_quit_menu
         $ tamy_unlocked += 1
+        if Nuria_finish == True:
+            call Nuria_finished_chapt1
+            
         call atributes_nuria
         $ music_game_choice_nuria += renpy.random.randint(1,10)
         jump Nuria_Music
@@ -442,19 +501,9 @@ label status:
     menu:
         "Character Status":
             call screen StatusBox
-
-        
-        "Music Status":
-            """
-            Tamy: [music_game_choice_tamy]
-
-            Nuria: [music_game_choice_nuria]
-
-            """
-            jump Options
         
         "Back Menu":
-            jump Options
+            jump Options #TODO: Add music status
         
 
 
@@ -462,6 +511,7 @@ label status:
 
 
 label Tamy:
+
     scene bg class0
     "*You aproaches to Tamy*"
 
@@ -522,68 +572,238 @@ label Tamy:
     "What radio station to listen now?."
 
 label tamy_options:
+    stop music fadeout 1.0
+    play music "audio/bgm_class.mp3" fadein 1.0 volume 0.3
+    $ Tamy_knowledge = True     # This is to make sure that the player can't repeat the dialogue.
     scene bg tamy with dissolve
     show tamy
+
     menu:
         "Radio.net":
             scene bg afterdark with dissolve
             show tamy
             play music "audio/blezz1.mp3" fadein 1.0 volume 0.3
-            "*Music Starts to play*"
+            
+            $ music_game_choice_tamy += renpy.random.randint(1,10)
+            # call screen Music_Player
             hide tamy
-
-            menu:
-                "Get Back":
-                    character_name "*That was Dope*"
-                    stop music fadeout 1.0
-                    jump tamy_options
+            show screen afterdark
+            hide window
+            pause
+            hide screen afterdark
+            jump tamy_options
         
         "98.5 FM":
             scene bg homemage with dissolve
             show tamy
             play music "audio/blezz2.mp3" fadein 1.0 volume 0.3
-            "*Music Starts to play*"
-            
+            $ music_game_choice_tamy += renpy.random.randint(1,10)
             hide tamy
-            menu:
-                "Get Back":
-                    character_name "*That was Dope*"
-                    stop music fadeout 1.0
-                    jump tamy_options
+            show screen synthwave
+            hide window
+            pause
+            hide screen synthwave
+            stop music fadeout 1.0
+            jump tamy_options
 
         "CBC Radio ONE":
             scene bg maroon with dissolve
             show tamy
             play music "audio/blezz3.mp3" fadein 1.0 volume 0.3
-            "*Music Starts to play*"
+            $ music_game_choice_tamy += renpy.random.randint(1,10)
             hide tamy
-            menu:
-                "Get Back":
-                    character_name "*That was Dope*"
-                    stop music fadeout 1.0
-                    jump tamy_options
+            show screen caldera
+            hide window
+            pause
+            hide screen caldera
+            jump tamy_options
 
         "Shekinah Radio":
             hide tamy
-            play music "audio/screamer.mp3" fadein 1.0 volume 0.15
             if childish == 0:
-                show screen fnaf_screamer
-                pause 3.0
-                hide screen fnaf_screamer
-                $ childish += 1
+                play music "audio/screamer.mp3"  volume 0.15
+                show screamer:
+                    parallel:
+                        0.2 #tiempo de espera
+                        xalign 0.5 yalign 0 #centrar la imagen en el eje x
+                        ease 0.25 zoom 2.0 #animación donde la imagen hace un zoom al doble
+                    parallel:
+                        alpha 0 #opacidad 0
+                        0.2 #t. de espera
+                        linear 0.15 alpha 1.0 #comienza a mostrarse
+                        1.0 #t. de espera
+                        linear 0.10 alpha 0 #empieza a desaparecer
+                    parallel:
+                        dizzy(1.5,0.01) #animación de la imagen
+                window auto hide
+                pause 1.0
+                window auto show
+
+            hide screen fnaf_screamer
+            $ childish += 1
+
             stop music fadeout 1.0
             scene bg fnaf with dissolve
             show screen fnaf_golden
             show tamy
             play music "audio/blezz4.mp3" fadein 1.0 volume 0.3
+            $ music_game_choice_tamy += renpy.random.randint(1,10)
             hide tamy
-            "*Music Starts to play*"
-            menu:
-                "Get Back":
-                    hide screen fnaf_golden
-                    character_name "*That was Dope*"
-                    stop music fadeout 1.0
-                    jump tamy_options
+            hide window
+            pause
+            hide screen fnaf_golden
+            jump tamy_options
+
+        "Talk":
+            if Tamy_University_trip == True:
+                jump Tamy_Taking_Action
+            show tamyt
+            #make a dialogue with tamy
+            Tamy """
+            And when I awoke at night.  That's when I knew who she was.  
+            That she was a dreamer.  
+            someone who could play any instrument.  
+            any color you could imagine.  
+            everyone I ever loved, in all their expressions.  
+            """
+
+
+            Tamy "*You are not supposed to talk to me*"
+            Tamy "*I am not supposed to talk to you*"
+            Tamy "Joking! I am just a little childish with you."
+            #tamy takes you to the university
+
+            Tamy "So you are [character_name]."
+            Tamy "I might have seen you in the university."
+            character_name "..."
+            character_name "Oh really?"
+
+            Tamy "Yes, like 5 times so far."
+            character_name "That's scary."
+
+            Tamy "So, why you are here?"
+            character_name "I just want to meet new people"
+            Tamy "Interesting"
+
+            Tamy "All of them are students on the same university as your's"
+            character_name "How the heck I didn't know?"
+
+            Tamy "Maybe you should start to see fowards from your own feet"
+            character_name "..."
+            character_name "Can you take me there?"
+
+            Tamy "I'm not sure."
+            Tamy "Taking you as a person that I just met 5 mins ago."
+            Tamy "To my friends..."
+            Tamy "Let me think a bit about it"
+            $ Tamy_University_trip = True
+            jump tamy_options
+
+
+
 
         "Quit":
             jump Options
+
+
+label Tamy_Taking_Action:
+    if Wordle_Finish == True and Nuria_final_dialogue == True:
+        scene bg tamy with dissolve
+        show tamyt
+        Tamy "I'm not sure if I should tell you this, but I've been thinking about you."
+        Tamy "Maybe I can introduce you to my friends."
+        Tamy "Wait for me at the stop Tomorow."
+        if confidence_tamy == 0 and friendship_tamy == 0 and tension_tamy == 0:
+           $ confidence_tamy += 5
+           $ friendship_tamy += 5
+        $ Tamy_Takes_You = True
+        $ tamy_unlocked -= 2
+        hide tamyt
+        jump tamy_options
+    
+    if Adult == True:
+            menu:
+                "What's up?":
+                    jump Tamy_Dialogues
+                
+                "Take me to the university":
+                    scene bg tamy with dissolve
+                    show tamyt
+                    Tamy "I'm not quite sure that we should go to the university together, I just met you!"
+                    Tamy "Definitively that's not gonna happen"
+                    hide tamyt
+                    jump tamy_options
+
+                "Maybe I should go alone to the University":
+                    "Where are you going?"
+                    "?"
+                    "??"
+                    "???"
+                    "????"
+                    $renpy.pause(delay = 2.5, hard = True)
+                    hide tamyt
+                    hide tamy
+                    play music "audio/screamer.mp3"  volume 0.15
+                    show jeff:
+                            parallel:
+                                0.2 #tiempo de espera
+                                xalign 0.5 yalign 0 #centrar la imagen en el eje x
+                                ease 0.25 zoom 2.0 #animación donde la imagen hace un zoom al doble
+                            parallel:
+                                alpha 0 #opacidad 0
+                                0.2 #t. de espera
+                                linear 0.15 alpha 1.0 #comienza a mostrarse
+                                1.0 #t. de espera
+                                linear 0.10 alpha 0 #empieza a desaparecer
+                            parallel:
+                                dizzy(1.5,0.01) #animación de la imagen
+
+                    window auto hide
+                    pause 1.0
+                    window auto show
+                    $ Adult = False
+                    hide jeff
+                    jump tamy_options
+
+    menu:
+        "What's up?":
+            jump Tamy_Dialogues
+                
+        "Take me to the university":
+            scene bg tamy with dissolve
+            show tamyt
+            Tamy "I'm not quite sure that we should go to the university together, I just met you!"
+            Tamy "Definitively that's not gonna happen"
+            hide tamyt
+            jump tamy_options
+
+
+
+label Tamy_Dialogues:
+    hide tamyt
+    hide tamy
+    show tamyt
+    Tamy "Hey, [character_name]."
+    Tamy "Shall we play a game?"
+    character_name "..."
+    character_name "I don't know."
+    Tamy "A wordle Game."
+    Tamy "It's gonna be fun."
+    Tamy "Trust Me."
+    
+    menu:
+        "I'm Ready":
+            jump lingo_example
+        
+        "No":
+            scene bg tamy with dissolve
+            show tamyt
+            Tamy "You are so boring!!!"
+            Tamy "Looser!"
+            jump tamy_options
+    
+
+
+
+
+

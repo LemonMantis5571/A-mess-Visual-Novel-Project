@@ -475,9 +475,9 @@ menu:
         hide screen nuria_quit_menu
         $ tamy_unlocked += 1
         if Nuria_finish == True:
-            call Nuria_finished_chapt1
+            call Nuria_finished_chapt1 from _call_Nuria_finished_chapt1
             
-        call atributes_nuria
+        call atributes_nuria from _call_atributes_nuria
         $ music_game_choice_nuria += renpy.random.randint(1,10)
         jump Nuria_Music
 
