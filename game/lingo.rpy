@@ -167,7 +167,7 @@ label lingo_example:
     "Lets start with a word we choose. This time \"lingo\""
     call screen lingo("lingo")
     "Easy when you know the answer right?"
-    "Let's try with a random word from a list of 5757."
+    "Let's try with a random word from a list of 80."
     call screen lingo
     $ word = _return[1]
     if _return[0] == "won":
