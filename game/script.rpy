@@ -3,6 +3,8 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
+
+
 define Meifeng = Character("Meifeng", color="#FFD700")
 define Blezz = Character("Blezz", color="#ff99cc")
 define Isela = Character("Miss Isela", color="#b3b3ff")
@@ -137,6 +139,7 @@ label traveling:
     centered "*You path towards to the Zumen.*"
     play music "audio/bgm_walking.mp3" fadein 1.0 volume 0.3
     scene bg zumen
+    with slideawayleft
     "*You arrive and see the vendings stores around there...*"
 
     character_name "*.*"
@@ -155,6 +158,7 @@ label traveling:
     centered "*You arrive to the entrance...*"
 
     scene bg lincoln
+    with pixellate
     
     character_name "So, Im finally here..."
     character_name "I didn't even take breakfast too."
@@ -174,10 +178,10 @@ label traveling:
 
 label lincoln:
     $ chapter = "Chapter I: The English Class" 
-    scene bg blank
-    centered "*You enter the class*"
 
     scene bg class1
+    with pushdown
+    centered "*You enter the class*"
 
     play music "audio/bgm_class.mp3" fadein 1.0 volume 0.3
     "I wonder why is everybody looking at me in that way..."
