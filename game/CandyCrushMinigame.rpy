@@ -343,7 +343,6 @@ label Hola:
     character_name "Goodbye"
 
     hide rachel
-    $ playGame = 0
 
     $ playGame =+ 1
 
