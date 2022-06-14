@@ -1,84 +1,128 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 478, in script call
-    call Nuria_finished_chapt1
-  File "game/script.rpy", line 478, in script call
-    call Nuria_finished_chapt1
-  File "game/script.rpy", line 478, in script call
-    call Nuria_finished_chapt1
-  File "game/eduardo_days.rpy", line 283, in script
-    if playGame > 0:
-  File "game/eduardo_days.rpy", line 283, in <module>
-    if playGame > 0:
-NameError: name 'playGame' is not defined
+While loading <'Image' u'images/PIXNIO-2562359-1800x1200.webp'>:
+  File "game/insto/insto.rpy", line 355, in script
+    call screen insto
+  File "renpy/common/000statements.rpy", line 569, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "game/insto/insto.rpy", line 100, in execute
+    screen insto(g = instopost, set = all_images_for_aya):
+  File "game/insto/insto.rpy", line 100, in execute
+    screen insto(g = instopost, set = all_images_for_aya):
+  File "game/insto/insto.rpy", line 102, in execute
+    frame:
+  File "game/insto/insto.rpy", line 129, in execute
+    viewport:
+  File "game/insto/insto.rpy", line 135, in execute
+    vbox spacing 10:
+  File "game/insto/insto.rpy", line 136, in execute
+    if g.page == "Feed":
+  File "game/insto/insto.rpy", line 163, in execute
+    if g.posting_step == "Choose an image.":
+  File "game/insto/insto.rpy", line 176, in execute
+    frame xsize 556 background "#0009" padding 8,8 align .5,.5:
+  File "game/insto/insto.rpy", line 177, in execute
+    vbox align .5,.5 spacing 8:
+  File "game/insto/insto.rpy", line 178, in execute
+    if img:
+  File "game/insto/insto.rpy", line 179, in execute
+    button:
+  File "game/insto/insto.rpy", line 181, in execute
+    add img at zoom(image_fit(img, (400,600)))
+  File "game/insto/insto.rpy", line 181, in keywords
+    add img at zoom(image_fit(img, (400,600)))
+  File "game/insto/insto.rpy", line 181, in <module>
+    add img at zoom(image_fit(img, (400,600)))
+  File "game/insto/image fit.rpy", line 8, in image_fit
+    im = get_image_size(im)
+  File "game/insto/image fit.rpy", line 4, in get_image_size
+    w, h = renpy.render(d, 0, 0, 0, 0).get_size()
+IOError: Couldn't find file 'images/PIXNIO-2562359-1800x1200.webp'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 480, in script call
-    call atributes_nuria
-  File "game/script.rpy", line 478, in script call
-    call Nuria_finished_chapt1
-  File "game/script.rpy", line 478, in script call
-    call Nuria_finished_chapt1
-  File "game/script.rpy", line 478, in script call
-    call Nuria_finished_chapt1
-  File "game/eduardo_days.rpy", line 283, in script
-    if playGame > 0:
-  File "renpy/ast.py", line 1898, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2276, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "renpy/python.py", line 2269, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/eduardo_days.rpy", line 283, in <module>
-    if playGame > 0:
-NameError: name 'playGame' is not defined
+  File "game/insto/insto.rpy", line 355, in script
+    call screen insto
+  File "renpy/ast.py", line 2015, in execute
+    self.call("execute")
+  File "renpy/ast.py", line 2003, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "renpy/statements.py", line 278, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 569, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "renpy/exports.py", line 3136, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "renpy/display/core.py", line 3325, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
+  File "renpy/display/core.py", line 3737, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "renpy/display/core.py", line 568, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 568, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/core.py", line 568, in visit_all
+    d.visit_all(callback, seen)
+  File "renpy/display/screen.py", line 436, in visit_all
+    callback(self)
+  File "renpy/display/core.py", line 3737, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "renpy/display/screen.py", line 447, in per_interact
+    self.update()
+  File "renpy/display/screen.py", line 637, in update
+    self.screen.function(**self.scope)
+  File "game/insto/insto.rpy", line 100, in execute
+    screen insto(g = instopost, set = all_images_for_aya):
+  File "game/insto/insto.rpy", line 100, in execute
+    screen insto(g = instopost, set = all_images_for_aya):
+  File "game/insto/insto.rpy", line 102, in execute
+    frame:
+  File "game/insto/insto.rpy", line 129, in execute
+    viewport:
+  File "game/insto/insto.rpy", line 135, in execute
+    vbox spacing 10:
+  File "game/insto/insto.rpy", line 136, in execute
+    if g.page == "Feed":
+  File "game/insto/insto.rpy", line 163, in execute
+    if g.posting_step == "Choose an image.":
+  File "game/insto/insto.rpy", line 176, in execute
+    frame xsize 556 background "#0009" padding 8,8 align .5,.5:
+  File "game/insto/insto.rpy", line 177, in execute
+    vbox align .5,.5 spacing 8:
+  File "game/insto/insto.rpy", line 178, in execute
+    if img:
+  File "game/insto/insto.rpy", line 179, in execute
+    button:
+  File "game/insto/insto.rpy", line 181, in execute
+    add img at zoom(image_fit(img, (400,600)))
+  File "game/insto/insto.rpy", line 181, in keywords
+    add img at zoom(image_fit(img, (400,600)))
+  File "game/insto/insto.rpy", line 181, in <module>
+    add img at zoom(image_fit(img, (400,600)))
+  File "game/insto/image fit.rpy", line 8, in image_fit
+    im = get_image_size(im)
+  File "game/insto/image fit.rpy", line 4, in get_image_size
+    w, h = renpy.render(d, 0, 0, 0, 0).get_size()
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/image.py", line 501, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "renpy/display/image.py", line 307, in wrap_render
+    rend = render(child, w, h, st, at)
+  File "render.pyx", line 170, in renpy.display.render.render
+  File "render.pyx", line 263, in renpy.display.render.render
+  File "renpy/display/im.py", line 625, in render
+    return cache.get(self, render=True)
+  File "renpy/display/im.py", line 287, in get
+    surf = image.load()
+  File "renpy/display/im.py", line 706, in load
+    raise e
+IOError: Couldn't find file 'images/PIXNIO-2562359-1800x1200.webp'.
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 A mess 1.0
-Sun Jun 12 17:47:47 2022
+Tue Jun 14 01:36:17 2022

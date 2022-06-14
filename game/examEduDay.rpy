@@ -1,16 +1,15 @@
-"""init python:
+init python:
     import time
 
-init:
-    $ timer_range = 0
-    $ timer_jump = 0
-    $ time = 0
+    timer_range = 0
+    timer_jump = 0
+    time = 0
 
-transform alpha_dissolve:
-    alpha 0.0
-    linear 0.5 alpha 1.0
-    on hide:
-        linear 0.5 alpha 0"""
+    transform alpha_dissolve:
+        alpha 0.0
+        linear 0.5 alpha 1.0
+        on hide:
+            linear 0.5 alpha 0
 
     
 #screen countdown:

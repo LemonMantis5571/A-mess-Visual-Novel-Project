@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/examEduDay.rpy", line 3: invalid syntax
-    $ timer_range = 0
-     ^
-    
+File "game/insto/insto.rpy", line 2: expected statement.
+    from numpy import character
+                               ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sun Jun 12 11:22:04 2022
+Tue Jun 14 00:15:21 2022

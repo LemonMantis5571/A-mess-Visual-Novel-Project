@@ -358,6 +358,9 @@ label Options:
                         show tamyt at left
                         Tamy "Ok, let's go."
                         jump Tuesday_edu
+                    
+        "Use the cellphone":
+            jump insto_example            
            
 
         "Status":
