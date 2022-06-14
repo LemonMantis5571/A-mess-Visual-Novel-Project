@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 303: expected menuitem
-    if nuria_init_dialogue == True:
-    ^
+File "game/insto/insto.rpy", line 366: end of line expected.
+    jump screen insto
+                ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Tue Jun 14 02:19:06 2022
+Tue Jun 14 02:29:56 2022

@@ -108,6 +108,12 @@ screen insto(g = instopost, set = all_images_for_aya):
                 align 0.0,.5 background "#222" xysize 40,40
                 text "⬅" font "DejaVuSans.ttf" align .5,.5
                 action Function(g.set_page, "Feed")
+
+            button:
+                align 0.2,.5 background "#222" xysize 40,40
+                text "X" font "DejaVuSans.ttf" align .5,.5
+                action Jump("Options")
+
             button align 1.0,.5:
                 text _("My wall") size 22
                 action Function(g.set_page, "Me")
@@ -358,7 +364,4 @@ label insto_example:
                             i.likes.append(u)
 
     call screen insto
-    jump Options
-
-
-
+    return

@@ -5,8 +5,6 @@
 
 
 
-from sre_constants import JUMP
-
 
 define Meifeng = Character("Meifeng", color="#FFD700")
 define Blezz = Character("Blezz", color="#ff99cc")
