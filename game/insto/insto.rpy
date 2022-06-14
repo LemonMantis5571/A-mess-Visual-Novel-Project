@@ -289,27 +289,30 @@ default mayo_user = ins_user(
     name = "@MayoNyan",
     image = "mayo_avatar"
 )
+default chepito = ins_user(
+    name = "@Chepito",
+    image = "chepito_avatar"
+)
 default guy_101 = ins_user(
     name = "@Daniel Ortega"
 )
 default the_real_president = ins_user(
     name = "@Herradora"
 )
-default kiaazad = ins_user(
-    name = "@Chepito"
-)
+
 default pita = ins_user(
     name = "@pita"
 )
 
 label insto_example:
+    
     # Specify the default user
     $ instopost.user = aya_user
     # she follows few friends
     $ instopost.follow(rin_user)
     $ instopost.follow(mayo_user)
     # add some other users to our app
-    $ instopost.other_users = [guy_101, the_real_president, kiaazad, pita]
+    $ instopost.other_users = [chepito, guy_101, the_real_president,pita]
 
     # Adding some post to people's timeline
     #$ mayo_user.post(_("Koi and tea..."),"piqselscom-id-oigzk")
@@ -320,6 +323,8 @@ label insto_example:
     $ rin_user.post(_("Recently met dyneside!"),"dyneside")
     $ rin_user.post(_("This album is gonna be nuts"),"invisions")
     $ rin_user.post(_("One day I'll met them"),"queen")
+
+    $ chepito.post(_("Here with my friends having a fun time"),"tapineo")
 
     #$ guy_101.post(_("Am I handsome."),"meme-4656855__480")
     #$ guy_101.post(_("Give me your number girl"),"suit-673697__480")
@@ -353,7 +358,7 @@ label insto_example:
                             i.likes.append(u)
 
     call screen insto
-
+    jump Options
 
 
 

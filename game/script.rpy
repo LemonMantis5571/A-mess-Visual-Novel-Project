@@ -5,6 +5,9 @@
 
 
 
+from sre_constants import JUMP
+
+
 define Meifeng = Character("Meifeng", color="#FFD700")
 define Blezz = Character("Blezz", color="#ff99cc")
 define Isela = Character("Miss Isela", color="#b3b3ff")
@@ -209,96 +212,103 @@ label Options:
 
     
     menu Talk_Grind:
-        "Listen to your own Spotify playlist":
-            
-            if Spotify == 0:
-                menu:
-                    "Cartoon On & On":
-                        stop music fadeout 1.0
-                        scene bg cartoon with dissolve
-                        play music "audio/preset.mp3" fadein 2.0 volume 0.2
-                        "..."
-                        hide window
-                        pause
-                        character_name "I don't know why, but this song bring me memories."
-                        character_name "It feels like a summer day in 2015."
-                        character_name "What a year..."
-                        character_name "Anyways."
-                        stop music fadeout 1.0
-                        jump Options
+        "Phone":
+            menu:
+                "Listen to music":
+                    if Spotify == 0:
+                            menu:
+                                "Cartoon On & On":
+                                    stop music fadeout 1.0
+                                    scene bg cartoon with dissolve
+                                    play music "audio/preset.mp3" fadein 2.0 volume 0.2
+                                    "..."
+                                    hide window
+                                    pause
+                                    character_name "I don't know why, but this song bring me memories."
+                                    character_name "It feels like a summer day in 2015."
+                                    character_name "What a year..."
+                                    character_name "Anyways."
+                                    stop music fadeout 1.0
+                                    jump Options
 
-                    "Get back":
-                        jump Options
+                                "Get back":
+                                    jump Options
 
-            elif Spotify == 1:
-                menu:
-                    "Cartoon On & On":
-                        stop music fadeout 1.0
-                        scene bg cartoon with dissolve
-                        play music "audio/preset.mp3" fadein 2.0 volume 0.2
-                        hide window
-                        pause
-                       
-                        stop music fadeout 1.0
-                        jump Options
-                    
-                    "Twice - The Feels":
-                        stop music fadeout 1.0
-                        scene bg class1
-                        show screen thefeels_buttons
-                        play music "audio/thefeels.mp3" fadein 2.0 volume 0.2
-                        hide window
-                        pause
+                    elif Spotify == 1:
+                                menu:
+                                    "Cartoon On & On":
+                                        stop music fadeout 1.0
+                                        scene bg cartoon with dissolve
+                                        play music "audio/preset.mp3" fadein 2.0 volume 0.2
+                                        hide window
+                                        pause
+                                    
+                                        stop music fadeout 1.0
+                                        jump Options
+                                    
+                                    "Twice - The Feels":
+                                        stop music fadeout 1.0
+                                        scene bg class1
+                                        show screen thefeels_buttons
+                                        play music "audio/thefeels.mp3" fadein 2.0 volume 0.2
+                                        hide window
+                                        pause
 
-                        stop music fadeout 1.0
-                        hide screen thefeels_buttons
-                        jump Options
+                                        stop music fadeout 1.0
+                                        hide screen thefeels_buttons
+                                        jump Options
 
-                    "Get back":
-                        jump Options
+                                    "Get back":
+                                        jump Options
                 
 
 
-        "Get new songs":
-            if music_game_choice_nuria>50:
-                menu:
-                    "The feels Twice":
-                        "Oh, look it seems you have unlocked a new song."
-                        "You have unlocked the feels twice."
-                        $ Spotify = 1
-                        jump Options    
+                "Get new songs":
+                    if music_game_choice_nuria>50:
+                            menu:
+                                "The feels Twice":
+                                    "Oh, look it seems you have unlocked a new song."
+                                    "You have unlocked the feels twice."
+                                    $ Spotify = 1
+                                    jump Options    
 
-                    "????":
-                        "You haven't unlocked it yet"
-                        "*Maybe I can unlock news if I listen to the others songs for a while*"
-                        jump Options
+                                "????":
+                                    "You haven't unlocked it yet"
+                                    "*Maybe I can unlock news if I listen to the others songs for a while*"
+                                    jump Options
 
-                    "????":
-                        "You haven't unlocked it yet"
-                        "*Maybe I can unlock news if I listen to the others songs for a while*"
-                        jump Options
+                                "????":
+                                    "You haven't unlocked it yet"
+                                    "*Maybe I can unlock news if I listen to the others songs for a while*"
+                                    jump Options
             
-            elif music_game_choice_nuria<50:
-                menu:
-                    "????":
-                        "You haven't unlocked it yet"
-                        "*Maybe I can unlock news if I listen to the others songs for a while*"
-                        jump Options
+                    elif music_game_choice_nuria<50:
+                            menu:
+                                "????":
+                                    "You haven't unlocked it yet"
+                                    "*Maybe I can unlock news if I listen to the others songs for a while*"
+                                    jump Options
 
-                    "????":
-                        "You haven't unlocked it yet"
-                        "*Maybe I can unlock news if I listen to the others songs for a while*"
-                        jump Options
+                                "????":
+                                    "You haven't unlocked it yet"
+                                    "*Maybe I can unlock news if I listen to the others songs for a while*"
+                                    jump Options
 
-                    "????":
-                        "You haven't unlocked it yet"
-                        "*Maybe I can unlock news if I listen to the others songs for a while*"
-                        jump Options
+                                "????":
+                                    "You haven't unlocked it yet"
+                                    "*Maybe I can unlock news if I listen to the others songs for a while*"
+                                    jump Options
 
-                    "????":
-                        "You haven't unlocked it yet"
-                        jump Options
+                                "????":
+                                    "You haven't unlocked it yet"
+                                    jump Options
 
+                "Watch Instagram":
+                    if nuria_init_dialogue == True:
+                            jump insto_example
+                    else:
+                        "I'ts not time to watch Instagram yet."
+                        jump Options 
 
 
 
@@ -363,8 +373,7 @@ label Options:
                         Tamy "Ok, let's go."
                         jump Tuesday_edu
                     
-        "Use the cellphone":
-            jump insto_example            
+             
            
 
         "Status":
