@@ -12,15 +12,33 @@ default confidence_tamy = 0
 default friendship_tamy = 0
 default tension_tamy = 0
 
+# Rachel Atributes
+
 default confidence_rachel = 0
 default friendship_rachel = 0
 default tension_rachel = 0
 
+default option_music_Rachel = 0
+
+default exitDay = False
+
+default music_game_choice_rachel = 0
+
+default opt_menu_talkRachel = False
+default opt_menu_talkRachel_q1 = False
+default opt_menu_talkRachel_q2 = False
+default opt_menu_talkRachel_q3 = False
+default opt_menu_talkRachel_q4 = False
+
+
+# fin de opciones de rachel
 
 #Music game atributes
 
 default music_game_choice_nuria = 0
 default music_game_choice_tamy = 0
+
+
 
 default taste = 0
 

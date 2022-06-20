@@ -282,21 +282,7 @@ label preGame:
 
         if playGame > 0:
 
-            scene bg aula1
-            show rachel at right
-            Rachel "That was funny {font=fonts/NotoEmoji-Bold.ttf}😂{/font}"
-            Rachel "Hey what type of music do you like?"
-            hide rachel
-            menu:
-                "xd":
-                    show rachel at right
-                    Rachel "a"
-                "xd2":
-                    show rachel at right
-                    Rachel "A2"
-                "otro":
-                    $ musicFavorite = renpy.input("", length=9)
-                    Rachel "[musicFavorite] ? that's quite interesting"
+            jump rachel_menu
         
         if playGame == 0:
             scene bg aula1
@@ -314,3 +300,560 @@ label preGame:
             jump initGame
     
 
+
+label rachel_menu:
+    scene bg aula1
+    show rachel at right
+    stop music fadeout 1.0
+   
+    
+    Rachel "Well, now what do we do?"
+
+
+    menu:
+        "Play again":
+            show rachel at right
+            Rachel "Ok, let's play again"
+            jump initGame
+
+        "ask about your music":
+            character_name "rachel, What Music Are You Listening?"
+            show rachel at right
+            Rachel "my music?"
+            Rachel "I'm listening to... {font=fonts/NotoEmoji-Bold.ttf}🎶{/font}"
+            Rachel "Look at it yourself"
+            hide rachel
+
+            menu:
+                "music1":
+                    scene bg blank
+                    play music "audio/rachel1.mp3" fadein 2.0 volume 0.5
+                    pause
+                    $ option_music_Rachel += 1
+                    jump rachel_menu
+
+                
+                "music2":
+                    scene bg blank
+                    play music "audio/rachel2.mp3" fadein 2.0 volume 0.5
+                    pause
+                    $ option_music_Rachel += 1
+                    jump rachel_menu
+
+                    
+
+                "music3":
+                    scene bg blank
+                    play music "audio/rachel3.mp3" fadein 2.0 volume 0.5
+                    pause
+                    $ option_music_Rachel += 1
+                    jump rachel_menu 
+
+                "return":
+                    jump rachel_menu 
+
+        "Talk":
+            if option_music_Rachel >= 3 and opt_menu_talkRachel == True:
+                Rachel "Y, que te parecen mis canciones?"
+                character_name "geniales"
+                Rachel "Tengo muchas mas pero las tengo en la nube, mañana talvez te las muestre"
+                $ exitDay = True
+                $ confidence_rachel += 2
+                $ friendship_rachel += 5
+                $ tension_rachel -= 2
+                jump Byebye
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == False:
+                menu:
+                    "Que marca es tu telefono?":
+                        character_name "Que marca es tu telefono?"
+                        Rachel "Es un xiaomi, puro calidad precio XD"
+                        character_name "..."
+                        Rachel "es una broma jajaja"
+                        Rachel "pero si, es un xiaomi"
+
+                        $ opt_menu_talkRachel_q1 = True
+                        $ friendship_rachel += 2
+
+                        jump rachel_menu
+                    
+                    "que haces en tus tiempos libres?":
+                        character_name "que haces en tus tiempos libres?"
+                        Rachel "Programar, Programar, Programar..."
+                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
+                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
+                        Rachel "no te preocupes :D"
+                        Rachel "Tu podras con esto"
+                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
+                        Rachel "yo creo en ti :'D"
+
+                        $ friendship_rachel += 5
+                        $ confidence_rachel += 3
+                        $ opt_menu_talkRachel_q2 = True
+                        jump rachel_menu
+
+                    "A que rama te quieres dedicar?":
+                        character_name "A que rama te quieres dedicar?"
+                        Rachel "Me gusta mucho la programacion web sabes"
+                        Rachel "En la parte de frontend mas que todo"
+                        Rachel "Es genial, darle vida a una pagina en blanco"
+                        character_name "Se escucha genial"
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q3 = True
+                        jump rachel_menu
+
+                    "Que comes aqui en la universidad?":
+                        character_name "Que comes aqui en la universidad?"
+                        Rachel "Que es comer?"
+                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
+                        Rachel "Llegas lleno hasta al dia siguiente B)"
+                        character_name "Anotado XD"
+
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q4 = True
+                        jump rachel_menu
+
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == False:
+                menu:
+                    "que haces en tus tiempos libres?":
+                        character_name "que haces en tus tiempos libres?"
+                        Rachel "Programar, Programar, Programar..."
+                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
+                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
+                        Rachel "no te preocupes :D"
+                        Rachel "Tu podras con esto"
+                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
+                        Rachel "yo creo en ti :'D"
+
+                        $ friendship_rachel += 5
+                        $ confidence_rachel += 3
+                        $ opt_menu_talkRachel_q2 = True
+                        jump rachel_menu
+
+                    "A que rama te quieres dedicar?":
+                        character_name "A que rama te quieres dedicar?"
+                        Rachel "Me gusta mucho la programacion web sabes"
+                        Rachel "En la parte de frontend mas que todo"
+                        Rachel "Es genial, darle vida a una pagina en blanco"
+                        character_name "Se escucha genial"
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q3 = True
+                        jump rachel_menu
+
+                    "Que comes aqui en la universidad?":
+                        character_name "Que comes aqui en la universidad?"
+                        Rachel "Que es comer?"
+                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
+                        Rachel "Llegas lleno hasta al dia siguiente B)"
+                        character_name "Anotado XD"
+
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q4 = True
+                        jump rachel_menu
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == False:
+                menu:
+                    "Que marca es tu telefono?":
+                        character_name "Que marca es tu telefono?"
+                        Rachel "Es un xiaomi, puro calidad precio XD"
+                        character_name "..."
+                        Rachel "es una broma jajaja"
+                        Rachel "pero si, es un xiaomi"
+
+                        $ opt_menu_talkRachel_q1 = True
+                        $ friendship_rachel += 2
+
+                        jump rachel_menu
+
+                    "A que rama te quieres dedicar?":
+                        character_name "A que rama te quieres dedicar?"
+                        Rachel "Me gusta mucho la programacion web sabes"
+                        Rachel "En la parte de frontend mas que todo"
+                        Rachel "Es genial, darle vida a una pagina en blanco"
+                        character_name "Se escucha genial"
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q3 = True
+                        jump rachel_menu
+
+                    "Que comes aqui en la universidad?":
+                        character_name "Que comes aqui en la universidad?"
+                        Rachel "Que es comer?"
+                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
+                        Rachel "Llegas lleno hasta al dia siguiente B)"
+                        character_name "Anotado XD"
+
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q4 = True
+                        jump rachel_menu
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == False:
+                menu:
+                    
+                    "Que marca es tu telefono?":
+                        character_name "Que marca es tu telefono?"
+                        Rachel "Es un xiaomi, puro calidad precio XD"
+                        character_name "..."
+                        Rachel "es una broma jajaja"
+                        Rachel "pero si, es un xiaomi"
+
+                        $ opt_menu_talkRachel_q1 = True
+                        $ friendship_rachel += 2
+
+                        jump rachel_menu
+
+                    "que haces en tus tiempos libres?":
+                        character_name "que haces en tus tiempos libres?"
+                        Rachel "Programar, Programar, Programar..."
+                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
+                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
+                        Rachel "no te preocupes :D"
+                        Rachel "Tu podras con esto"
+                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
+                        Rachel "yo creo en ti :'D"
+
+                        $ friendship_rachel += 5
+                        $ confidence_rachel += 3
+                        $ opt_menu_talkRachel_q2 = True
+                        jump rachel_menu
+
+                    
+
+                    "Que comes aqui en la universidad?":
+                        character_name "Que comes aqui en la universidad?"
+                        Rachel "Que es comer?"
+                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
+                        Rachel "Llegas lleno hasta al dia siguiente B)"
+                        character_name "Anotado XD"
+
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q4 = True
+                        jump rachel_menu
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == True:
+                menu:
+                    "Que marca es tu telefono?":
+                        character_name "Que marca es tu telefono?"
+                        Rachel "Es un xiaomi, puro calidad precio XD"
+                        character_name "..."
+                        Rachel "es una broma jajaja"
+                        Rachel "pero si, es un xiaomi"
+
+                        $ opt_menu_talkRachel_q1 = True
+                        $ friendship_rachel += 2
+
+                        jump rachel_menu
+                    
+                    "que haces en tus tiempos libres?":
+                        character_name "que haces en tus tiempos libres?"
+                        Rachel "Programar, Programar, Programar..."
+                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
+                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
+                        Rachel "no te preocupes :D"
+                        Rachel "Tu podras con esto"
+                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
+                        Rachel "yo creo en ti :'D"
+
+                        $ friendship_rachel += 5
+                        $ confidence_rachel += 3
+                        $ opt_menu_talkRachel_q2 = True
+                        jump rachel_menu
+
+                    "A que rama te quieres dedicar?":
+                        character_name "A que rama te quieres dedicar?"
+                        Rachel "Me gusta mucho la programacion web sabes"
+                        Rachel "En la parte de frontend mas que todo"
+                        Rachel "Es genial, darle vida a una pagina en blanco"
+                        character_name "Se escucha genial"
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q3 = True
+                        jump rachel_menu
+
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == False:
+                menu:
+
+                    "A que rama te quieres dedicar?":
+                        character_name "A que rama te quieres dedicar?"
+                        Rachel "Me gusta mucho la programacion web sabes"
+                        Rachel "En la parte de frontend mas que todo"
+                        Rachel "Es genial, darle vida a una pagina en blanco"
+                        character_name "Se escucha genial"
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q3 = True
+                        jump rachel_menu
+
+                    "Que comes aqui en la universidad?":
+                        character_name "Que comes aqui en la universidad?"
+                        Rachel "Que es comer?"
+                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
+                        Rachel "Llegas lleno hasta al dia siguiente B)"
+                        character_name "Anotado XD"
+
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q4 = True
+                        jump rachel_menu
+ 
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == False:
+                menu:
+                    
+                    
+                    "que haces en tus tiempos libres?":
+                        character_name "que haces en tus tiempos libres?"
+                        Rachel "Programar, Programar, Programar..."
+                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
+                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
+                        Rachel "no te preocupes :D"
+                        Rachel "Tu podras con esto"
+                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
+                        Rachel "yo creo en ti :'D"
+
+                        $ friendship_rachel += 5
+                        $ confidence_rachel += 3
+                        $ opt_menu_talkRachel_q2 = True
+                        jump rachel_menu
+
+                    "Que comes aqui en la universidad?":
+                        character_name "Que comes aqui en la universidad?"
+                        Rachel "Que es comer?"
+                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
+                        Rachel "Llegas lleno hasta al dia siguiente B)"
+                        character_name "Anotado XD"
+
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q4 = True
+                        jump rachel_menu
+ 
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == True:
+                menu:
+                    
+                    "que haces en tus tiempos libres?":
+                        character_name "que haces en tus tiempos libres?"
+                        Rachel "Programar, Programar, Programar..."
+                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
+                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
+                        Rachel "no te preocupes :D"
+                        Rachel "Tu podras con esto"
+                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
+                        Rachel "yo creo en ti :'D"
+
+                        $ friendship_rachel += 5
+                        $ confidence_rachel += 3
+                        $ opt_menu_talkRachel_q2 = True
+                        jump rachel_menu
+
+                    "A que rama te quieres dedicar?":
+                        character_name "A que rama te quieres dedicar?"
+                        Rachel "Me gusta mucho la programacion web sabes"
+                        Rachel "En la parte de frontend mas que todo"
+                        Rachel "Es genial, darle vida a una pagina en blanco"
+                        character_name "Se escucha genial"
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q3 = True
+                        jump rachel_menu
+
+            #1 y 2 arriba
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == False:
+                menu:
+                    "Que marca es tu telefono?":
+                        character_name "Que marca es tu telefono?"
+                        Rachel "Es un xiaomi, puro calidad precio XD"
+                        character_name "..."
+                        Rachel "es una broma jajaja"
+                        Rachel "pero si, es un xiaomi"
+
+                        $ opt_menu_talkRachel_q1 = True
+                        $ friendship_rachel += 2
+
+                        jump rachel_menu
+                    
+
+                    "Que comes aqui en la universidad?":
+                        character_name "Que comes aqui en la universidad?"
+                        Rachel "Que es comer?"
+                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
+                        Rachel "Llegas lleno hasta al dia siguiente B)"
+                        character_name "Anotado XD"
+
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q4 = True
+                        jump rachel_menu
+ 
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == True:
+                menu:
+
+                    
+                    "que haces en tus tiempos libres?":
+                        character_name "que haces en tus tiempos libres?"
+                        Rachel "Programar, Programar, Programar..."
+                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
+                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
+                        Rachel "no te preocupes :D"
+                        Rachel "Tu podras con esto"
+                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
+                        Rachel "yo creo en ti :'D"
+
+                        $ friendship_rachel += 5
+                        $ confidence_rachel += 3
+                        $ opt_menu_talkRachel_q2 = True
+                        jump rachel_menu
+
+                    "A que rama te quieres dedicar?":
+                        character_name "A que rama te quieres dedicar?"
+                        Rachel "Me gusta mucho la programacion web sabes"
+                        Rachel "En la parte de frontend mas que todo"
+                        Rachel "Es genial, darle vida a una pagina en blanco"
+                        character_name "Se escucha genial"
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q3 = True
+                        jump rachel_menu
+
+            # 1 y 3 
+            # 2 y 3 arriba
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == True:
+                menu:
+                    "Que marca es tu telefono?":
+                        character_name "Que marca es tu telefono?"
+                        Rachel "Es un xiaomi, puro calidad precio XD"
+                        character_name "..."
+                        Rachel "es una broma jajaja"
+                        Rachel "pero si, es un xiaomi"
+
+                        $ opt_menu_talkRachel_q1 = True
+                        $ friendship_rachel += 2
+
+                        jump rachel_menu
+                    
+                    "que haces en tus tiempos libres?":
+                        character_name "que haces en tus tiempos libres?"
+                        Rachel "Programar, Programar, Programar..."
+                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
+                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
+                        Rachel "no te preocupes :D"
+                        Rachel "Tu podras con esto"
+                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
+                        Rachel "yo creo en ti :'D"
+
+                        $ friendship_rachel += 5
+                        $ confidence_rachel += 3
+                        $ opt_menu_talkRachel_q2 = True
+                        jump rachel_menu
+
+
+            # unica opcion
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == True:
+                menu:
+                    "Que marca es tu telefono?":
+                        character_name "Que marca es tu telefono?"
+                        Rachel "Es un xiaomi, puro calidad precio XD"
+                        character_name "..."
+                        Rachel "es una broma jajaja"
+                        Rachel "pero si, es un xiaomi"
+
+                        $ opt_menu_talkRachel_q1 = True
+                        $ friendship_rachel += 2
+                        $opt_menu_talkRachel = True
+
+                        jump rachel_menu
+                    
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == True:
+                menu:                    
+                    "que haces en tus tiempos libres?":
+                        character_name "que haces en tus tiempos libres?"
+                        Rachel "Programar, Programar, Programar..."
+                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
+                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
+                        Rachel "no te preocupes :D"
+                        Rachel "Tu podras con esto"
+                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
+                        Rachel "yo creo en ti :'D"
+
+                        $ friendship_rachel += 5
+                        $ confidence_rachel += 3
+                        $ opt_menu_talkRachel_q2 = True
+                        $opt_menu_talkRachel = True
+                        
+                        jump rachel_menu
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == True:
+                menu:
+                    "A que rama te quieres dedicar?":
+                        character_name "A que rama te quieres dedicar?"
+                        Rachel "Me gusta mucho la programacion web sabes"
+                        Rachel "En la parte de frontend mas que todo"
+                        Rachel "Es genial, darle vida a una pagina en blanco"
+                        character_name "Se escucha genial"
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q3 = True
+                        $opt_menu_talkRachel = True
+
+                        jump rachel_menu
+
+            if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == False:
+                menu:
+                    "Que comes aqui en la universidad?":
+                        character_name "Que comes aqui en la universidad?"
+                        Rachel "Que es comer?"
+                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
+                        Rachel "Llegas lleno hasta al dia siguiente B)"
+                        character_name "Anotado XD"
+
+
+                        $ friendship_rachel += 2
+                        $ confidence_rachel += 1
+                        $ opt_menu_talkRachel_q4 = True
+                        $opt_menu_talkRachel = True
+                        jump rachel_menu
+ 
+                    
+        "Guide":
+            jump rachel_menu 
+
+        "Go home":
+            if exitDay == True:
+                jump Byebye
+
+            character_name "* no deberia irme aun *"
+            jump rachel_menu
+
+
+
+label Byebye:
+    character_name "Creo que ya deberiamos de irnos"
+    Rachel "Si, tienes razon, nos vemos mañana [character_name]"
+
+
+            

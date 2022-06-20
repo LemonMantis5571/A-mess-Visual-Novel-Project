@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/insto/insto.rpy", line 366: end of line expected.
-    jump screen insto
-                ^
+File "game/eduardo_days.rpy", line 331: expected menuitem
+    if option_music_Rachel == 1:
+    ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Tue Jun 14 02:29:56 2022
+Mon Jun 20 12:27:29 2022
