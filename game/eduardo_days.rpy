@@ -1,7 +1,7 @@
 default rachel_finish = False
-
+default EduChapter = "Chapter 2: Edu-Days"
 label Tuesday_edu:
-
+    
     play music "audio/bgm_intromusic.mp3" fadein 1.0 volume 0.3
     
     scene bg blank with dissolve
@@ -836,7 +836,7 @@ label rachel_menu:
  
                     
         "Guide":
-            jump rachel_menu 
+            jump Edu_days_guide
 
         "Go home":
             if exitDay == True:
