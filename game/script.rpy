@@ -710,10 +710,7 @@ label tamy_options:
             Tamy "Taking you as a person that I just met 5 mins ago."
             Tamy "To my friends..."
             Tamy "Let me think a bit about it"
-            $ Tamy_University_trip = True
             jump tamy_options
-
-
 
 
         "Quit":

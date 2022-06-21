@@ -220,6 +220,7 @@ label Nuria_finished_chapt1:
         Nuria "Maybe Tamy can take you there."
         hide nuriaf
         $ Nuria_final_dialogue = True
+        $ Tamy_University_trip = True
         jump Nuria_finalized
         
     

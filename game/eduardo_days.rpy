@@ -317,7 +317,7 @@ label rachel_menu:
             jump initGame
 
         "ask about your music":
-            character_name "rachel, What Music Are You Listening?"
+            character_name "rachel, what  are you Listening?"
             show rachel at right
             Rachel "my music?"
             Rachel "I'm listening to... {font=fonts/NotoEmoji-Bold.ttf}🎶{/font}"
@@ -354,9 +354,9 @@ label rachel_menu:
 
         "Talk":
             if option_music_Rachel >= 3 and opt_menu_talkRachel == True:
-                Rachel "Y, que te parecen mis canciones?"
-                character_name "geniales"
-                Rachel "Tengo muchas mas pero las tengo en la nube, mañana talvez te las muestre"
+                Rachel "So, what do you think about my songs?"
+                character_name "Good, I like them"
+                Rachel "I have a lot more, but maybe tomorrow. "
                 $ exitDay = True
                 $ confidence_rachel += 2
                 $ friendship_rachel += 5
@@ -365,27 +365,27 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == False:
                 menu:
-                    "Que marca es tu telefono?":
-                        character_name "Que marca es tu telefono?"
-                        Rachel "Es un xiaomi, puro calidad precio XD"
+                    "What's your phone brand?":
+                        character_name "What's your phone brand?"
+                        Rachel "It's a Xiaomi, Quality-Price XD"
                         character_name "..."
-                        Rachel "es una broma jajaja"
-                        Rachel "pero si, es un xiaomi"
+                        Rachel "It's a joke hahaha"
+                        Rachel "but yeah, it's Xiaomi"
 
                         $ opt_menu_talkRachel_q1 = True
                         $ friendship_rachel += 2
 
                         jump rachel_menu
                     
-                    "que haces en tus tiempos libres?":
-                        character_name "que haces en tus tiempos libres?"
-                        Rachel "Programar, Programar, Programar..."
-                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
-                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
-                        Rachel "no te preocupes :D"
-                        Rachel "Tu podras con esto"
-                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
-                        Rachel "yo creo en ti :'D"
+                    "What do you do on your free time?":
+                        character_name "What do you do on your free time?"
+                        Rachel "Code, code and more code..."
+                        Rachel "It's hard, but we are here for one reason :')"
+                        character_name "Sad, this doesn't look how I expected {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
+                        Rachel "Don't worry, I'll be here for you {font=fonts/NotoEmoji-Bold.ttf}🤗{/font}"
+                        Rachel "You can do it"
+                        Rachel "Don't be afraid if it's hard, just relax, distract with something and take back to the action."
+                        Rachel "I believe in you {font=fonts/NotoEmoji-Bold.ttf}😁{/font}"
 
                         $ friendship_rachel += 5
                         $ confidence_rachel += 3
