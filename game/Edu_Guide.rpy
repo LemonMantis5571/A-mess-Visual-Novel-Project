@@ -5,7 +5,7 @@ define Eduguide = Character("Herradora", color="#8a0303", what_slow_cps=30, what
 label Edu_days_guide:
     scene bg blank
     stop music fadeout 1.0
-    play music "audio/demonic.mp3" fadein 2.0 volume 0.3
+    play music "audio/demonic.mp3" fadein 2.0 volume 0.5
     scene bg eduguide with pixellate
 
     Eduguide "You again huh."
@@ -27,6 +27,7 @@ label Edu_days_options:
             Eduguide "(?)"
             Eduguide "If you max out status points, maybe you can unlock new paths in the history."
             Eduguide "Press any key to continue."
+            hide eduguide
             jump Edu_days_options
         
 
