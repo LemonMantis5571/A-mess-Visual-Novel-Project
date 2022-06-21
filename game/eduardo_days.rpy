@@ -392,24 +392,24 @@ label rachel_menu:
                         $ opt_menu_talkRachel_q2 = True
                         jump rachel_menu
 
-                    "A que rama te quieres dedicar?":
-                        character_name "A que rama te quieres dedicar?"
-                        Rachel "Me gusta mucho la programacion web sabes"
-                        Rachel "En la parte de frontend mas que todo"
-                        Rachel "Es genial, darle vida a una pagina en blanco"
-                        character_name "Se escucha genial"
+                    "Which branch of computer science do you like the most?":
+                        character_name "Which branch of computer science do you like the most?"
+                        Rachel "I like a lot web development, but I also like the other branches"
+                        Rachel "On the front end I like HTML, CSS and Javascript"
+                        Rachel "It's awesome to be able to code in a browser"
+                        character_name "Sounds good, I like it"
 
                         $ friendship_rachel += 2
                         $ confidence_rachel += 1
                         $ opt_menu_talkRachel_q3 = True
                         jump rachel_menu
 
-                    "Que comes aqui en la universidad?":
-                        character_name "Que comes aqui en la universidad?"
-                        Rachel "Que es comer?"
-                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
-                        Rachel "Llegas lleno hasta al dia siguiente B)"
-                        character_name "Anotado XD"
+                    "What do you regularly eat here?":
+                        character_name "What do you regularly eat here?"
+                        Rachel "What is that?"
+                        Rachel "JK, what I use to eat is a piece of bread and a chocolita"
+                        Rachel "You won't need to eat until the next day B)"
+                        character_name "Taking notes XD"
 
 
                         $ friendship_rachel += 2
@@ -420,39 +420,39 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == False:
                 menu:
-                    "que haces en tus tiempos libres?":
-                        character_name "que haces en tus tiempos libres?"
-                        Rachel "Programar, Programar, Programar..."
-                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
-                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
-                        Rachel "no te preocupes :D"
-                        Rachel "Tu podras con esto"
-                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
-                        Rachel "yo creo en ti :'D"
+                    "What do you do on your free time?":
+                        character_name "What do you do on your free time?"
+                        Rachel "Code, code and more code..."
+                        Rachel "It's hard, but we are here for one reason :')"
+                        character_name "Sad, this doesn't look how I expected {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
+                        Rachel "Don't worry, I'll be here for you {font=fonts/NotoEmoji-Bold.ttf}🤗{/font}"
+                        Rachel "You can do it"
+                        Rachel "Don't be afraid if it's hard, just relax, distract with something and take back to the action."
+                        Rachel "I believe in you {font=fonts/NotoEmoji-Bold.ttf}😁{/font}"
 
                         $ friendship_rachel += 5
                         $ confidence_rachel += 3
                         $ opt_menu_talkRachel_q2 = True
                         jump rachel_menu
 
-                    "A que rama te quieres dedicar?":
-                        character_name "A que rama te quieres dedicar?"
-                        Rachel "Me gusta mucho la programacion web sabes"
-                        Rachel "En la parte de frontend mas que todo"
-                        Rachel "Es genial, darle vida a una pagina en blanco"
-                        character_name "Se escucha genial"
+                    "Which branch of computer science do you like the most?":
+                        character_name "Which branch of computer science do you like the most?"
+                        Rachel "I like a lot web development, but I also like the other branches"
+                        Rachel "On the front end I like HTML, CSS and Javascript"
+                        Rachel "It's awesome to be able to code in a browser"
+                        character_name "Sounds good, I like it"
 
                         $ friendship_rachel += 2
                         $ confidence_rachel += 1
                         $ opt_menu_talkRachel_q3 = True
                         jump rachel_menu
 
-                    "Que comes aqui en la universidad?":
-                        character_name "Que comes aqui en la universidad?"
-                        Rachel "Que es comer?"
-                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
-                        Rachel "Llegas lleno hasta al dia siguiente B)"
-                        character_name "Anotado XD"
+                    "What do you regularly eat here?":
+                        character_name "What do you regularly eat here?"
+                        Rachel "What is that?"
+                        Rachel "JK, what I use to eat is a piece of bread and a chocolita"
+                        Rachel "You won't need to eat until the next day B)"
+                        character_name "Taking notes XD"
 
 
                         $ friendship_rachel += 2
@@ -462,36 +462,36 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == False:
                 menu:
-                    "Que marca es tu telefono?":
-                        character_name "Que marca es tu telefono?"
-                        Rachel "Es un xiaomi, puro calidad precio XD"
+                    "What's your phone brand?":
+                        character_name "What's your phone brand?"
+                        Rachel "It's a Xiaomi, Quality-Price XD"
                         character_name "..."
-                        Rachel "es una broma jajaja"
-                        Rachel "pero si, es un xiaomi"
+                        Rachel "It's a joke hahaha"
+                        Rachel "but yeah, it's Xiaomi"
 
                         $ opt_menu_talkRachel_q1 = True
                         $ friendship_rachel += 2
 
                         jump rachel_menu
 
-                    "A que rama te quieres dedicar?":
-                        character_name "A que rama te quieres dedicar?"
-                        Rachel "Me gusta mucho la programacion web sabes"
-                        Rachel "En la parte de frontend mas que todo"
-                        Rachel "Es genial, darle vida a una pagina en blanco"
-                        character_name "Se escucha genial"
+                    "Which branch of computer science do you like the most?":
+                        character_name "Which branch of computer science do you like the most?"
+                        Rachel "I like a lot web development, but I also like the other branches"
+                        Rachel "On the front end I like HTML, CSS and Javascript"
+                        Rachel "It's awesome to be able to code in a browser"
+                        character_name "Sounds good, I like it"
 
                         $ friendship_rachel += 2
                         $ confidence_rachel += 1
                         $ opt_menu_talkRachel_q3 = True
                         jump rachel_menu
 
-                    "Que comes aqui en la universidad?":
-                        character_name "Que comes aqui en la universidad?"
-                        Rachel "Que es comer?"
-                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
-                        Rachel "Llegas lleno hasta al dia siguiente B)"
-                        character_name "Anotado XD"
+                    "What do you regularly eat here?":
+                        character_name "What do you regularly eat here?"
+                        Rachel "What is that?"
+                        Rachel "JK, what I use to eat is a piece of bread and a chocolita"
+                        Rachel "You won't need to eat until the next day B)"
+                        character_name "Taking notes XD"
 
 
                         $ friendship_rachel += 2
@@ -501,28 +501,27 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == False:
                 menu:
-                    
-                    "Que marca es tu telefono?":
-                        character_name "Que marca es tu telefono?"
-                        Rachel "Es un xiaomi, puro calidad precio XD"
+                    "What's your phone brand?":
+                        character_name "What's your phone brand?"
+                        Rachel "It's a Xiaomi, Quality-Price XD"
                         character_name "..."
-                        Rachel "es una broma jajaja"
-                        Rachel "pero si, es un xiaomi"
+                        Rachel "It's a joke hahaha"
+                        Rachel "but yeah, it's Xiaomi"
 
                         $ opt_menu_talkRachel_q1 = True
                         $ friendship_rachel += 2
 
                         jump rachel_menu
 
-                    "que haces en tus tiempos libres?":
-                        character_name "que haces en tus tiempos libres?"
-                        Rachel "Programar, Programar, Programar..."
-                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
-                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
-                        Rachel "no te preocupes :D"
-                        Rachel "Tu podras con esto"
-                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
-                        Rachel "yo creo en ti :'D"
+                    "What do you do on your free time?":
+                        character_name "What do you do on your free time?"
+                        Rachel "Code, code and more code..."
+                        Rachel "It's hard, but we are here for one reason :')"
+                        character_name "Sad, this doesn't look how I expected {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
+                        Rachel "Don't worry, I'll be here for you {font=fonts/NotoEmoji-Bold.ttf}🤗{/font}"
+                        Rachel "You can do it"
+                        Rachel "Don't be afraid if it's hard, just relax, distract with something and take back to the action."
+                        Rachel "I believe in you {font=fonts/NotoEmoji-Bold.ttf}😁{/font}"
 
                         $ friendship_rachel += 5
                         $ confidence_rachel += 3
@@ -531,12 +530,12 @@ label rachel_menu:
 
                     
 
-                    "Que comes aqui en la universidad?":
-                        character_name "Que comes aqui en la universidad?"
-                        Rachel "Que es comer?"
-                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
-                        Rachel "Llegas lleno hasta al dia siguiente B)"
-                        character_name "Anotado XD"
+                    "What do you regularly eat here?":
+                        character_name "What do you regularly eat here?"
+                        Rachel "What is that?"
+                        Rachel "JK, what I use to eat is a piece of bread and a chocolita"
+                        Rachel "You won't need to eat until the next day B)"
+                        character_name "Taking notes XD"
 
 
                         $ friendship_rachel += 2
@@ -546,39 +545,39 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == True:
                 menu:
-                    "Que marca es tu telefono?":
-                        character_name "Que marca es tu telefono?"
-                        Rachel "Es un xiaomi, puro calidad precio XD"
+                    "What's your phone brand?":
+                        character_name "What's your phone brand?"
+                        Rachel "It's a Xiaomi, Quality-Price XD"
                         character_name "..."
-                        Rachel "es una broma jajaja"
-                        Rachel "pero si, es un xiaomi"
+                        Rachel "It's a joke hahaha"
+                        Rachel "but yeah, it's Xiaomi"
 
                         $ opt_menu_talkRachel_q1 = True
                         $ friendship_rachel += 2
 
                         jump rachel_menu
                     
-                    "que haces en tus tiempos libres?":
-                        character_name "que haces en tus tiempos libres?"
-                        Rachel "Programar, Programar, Programar..."
-                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
-                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
-                        Rachel "no te preocupes :D"
-                        Rachel "Tu podras con esto"
-                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
-                        Rachel "yo creo en ti :'D"
+                    "What do you do on your free time?":
+                        character_name "What do you do on your free time?"
+                        Rachel "Code, code and more code..."
+                        Rachel "It's hard, but we are here for one reason :')"
+                        character_name "Sad, this doesn't look how I expected {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
+                        Rachel "Don't worry, I'll be here for you {font=fonts/NotoEmoji-Bold.ttf}🤗{/font}"
+                        Rachel "You can do it"
+                        Rachel "Don't be afraid if it's hard, just relax, distract with something and take back to the action."
+                        Rachel "I believe in you {font=fonts/NotoEmoji-Bold.ttf}😁{/font}"
 
                         $ friendship_rachel += 5
                         $ confidence_rachel += 3
                         $ opt_menu_talkRachel_q2 = True
                         jump rachel_menu
 
-                    "A que rama te quieres dedicar?":
-                        character_name "A que rama te quieres dedicar?"
-                        Rachel "Me gusta mucho la programacion web sabes"
-                        Rachel "En la parte de frontend mas que todo"
-                        Rachel "Es genial, darle vida a una pagina en blanco"
-                        character_name "Se escucha genial"
+                    "Which branch of computer science do you like the most?":
+                        character_name "Which branch of computer science do you like the most?"
+                        Rachel "I like a lot web development, but I also like the other branches"
+                        Rachel "On the front end I like HTML, CSS and Javascript"
+                        Rachel "It's awesome to be able to code in a browser"
+                        character_name "Sounds good, I like it"
 
                         $ friendship_rachel += 2
                         $ confidence_rachel += 1
@@ -588,25 +587,24 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == False:
                 menu:
-
-                    "A que rama te quieres dedicar?":
-                        character_name "A que rama te quieres dedicar?"
-                        Rachel "Me gusta mucho la programacion web sabes"
-                        Rachel "En la parte de frontend mas que todo"
-                        Rachel "Es genial, darle vida a una pagina en blanco"
-                        character_name "Se escucha genial"
+                    "Which branch of computer science do you like the most?":
+                        character_name "Which branch of computer science do you like the most?"
+                        Rachel "I like a lot web development, but I also like the other branches"
+                        Rachel "On the front end I like HTML, CSS and Javascript"
+                        Rachel "It's awesome to be able to code in a browser"
+                        character_name "Sounds good, I like it"
 
                         $ friendship_rachel += 2
                         $ confidence_rachel += 1
                         $ opt_menu_talkRachel_q3 = True
                         jump rachel_menu
 
-                    "Que comes aqui en la universidad?":
-                        character_name "Que comes aqui en la universidad?"
-                        Rachel "Que es comer?"
-                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
-                        Rachel "Llegas lleno hasta al dia siguiente B)"
-                        character_name "Anotado XD"
+                    "What do you regularly eat here?":
+                        character_name "What do you regularly eat here?"
+                        Rachel "What is that?"
+                        Rachel "JK, what I use to eat is a piece of bread and a chocolita"
+                        Rachel "You won't need to eat until the next day B)"
+                        character_name "Taking notes XD"
 
 
                         $ friendship_rachel += 2
@@ -616,29 +614,27 @@ label rachel_menu:
  
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == False:
                 menu:
-                    
-                    
-                    "que haces en tus tiempos libres?":
-                        character_name "que haces en tus tiempos libres?"
-                        Rachel "Programar, Programar, Programar..."
-                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
-                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
-                        Rachel "no te preocupes :D"
-                        Rachel "Tu podras con esto"
-                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
-                        Rachel "yo creo en ti :'D"
+                    "What do you do on your free time?":
+                        character_name "What do you do on your free time?"
+                        Rachel "Code, code and more code..."
+                        Rachel "It's hard, but we are here for one reason :')"
+                        character_name "Sad, this doesn't look how I expected {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
+                        Rachel "Don't worry, I'll be here for you {font=fonts/NotoEmoji-Bold.ttf}🤗{/font}"
+                        Rachel "You can do it"
+                        Rachel "Don't be afraid if it's hard, just relax, distract with something and take back to the action."
+                        Rachel "I believe in you {font=fonts/NotoEmoji-Bold.ttf}😁{/font}"
 
                         $ friendship_rachel += 5
                         $ confidence_rachel += 3
                         $ opt_menu_talkRachel_q2 = True
                         jump rachel_menu
 
-                    "Que comes aqui en la universidad?":
-                        character_name "Que comes aqui en la universidad?"
-                        Rachel "Que es comer?"
-                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
-                        Rachel "Llegas lleno hasta al dia siguiente B)"
-                        character_name "Anotado XD"
+                    "What do you regularly eat here?":
+                        character_name "What do you regularly eat here?"
+                        Rachel "What is that?"
+                        Rachel "JK, what I use to eat is a piece of bread and a chocolita"
+                        Rachel "You won't need to eat until the next day B)"
+                        character_name "Taking notes XD"
 
 
                         $ friendship_rachel += 2
@@ -649,27 +645,27 @@ label rachel_menu:
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == True:
                 menu:
                     
-                    "que haces en tus tiempos libres?":
-                        character_name "que haces en tus tiempos libres?"
-                        Rachel "Programar, Programar, Programar..."
-                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
-                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
-                        Rachel "no te preocupes :D"
-                        Rachel "Tu podras con esto"
-                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
-                        Rachel "yo creo en ti :'D"
+                    "What do you do on your free time?":
+                        character_name "What do you do on your free time?"
+                        Rachel "Code, code and more code..."
+                        Rachel "It's hard, but we are here for one reason :')"
+                        character_name "Sad, this doesn't look how I expected {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
+                        Rachel "Don't worry, I'll be here for you {font=fonts/NotoEmoji-Bold.ttf}🤗{/font}"
+                        Rachel "You can do it"
+                        Rachel "Don't be afraid if it's hard, just relax, distract with something and take back to the action."
+                        Rachel "I believe in you {font=fonts/NotoEmoji-Bold.ttf}😁{/font}"
 
                         $ friendship_rachel += 5
                         $ confidence_rachel += 3
                         $ opt_menu_talkRachel_q2 = True
                         jump rachel_menu
 
-                    "A que rama te quieres dedicar?":
-                        character_name "A que rama te quieres dedicar?"
-                        Rachel "Me gusta mucho la programacion web sabes"
-                        Rachel "En la parte de frontend mas que todo"
-                        Rachel "Es genial, darle vida a una pagina en blanco"
-                        character_name "Se escucha genial"
+                    "Which branch of computer science do you like the most?":
+                        character_name "Which branch of computer science do you like the most?"
+                        Rachel "I like a lot web development, but I also like the other branches"
+                        Rachel "On the front end I like HTML, CSS and Javascript"
+                        Rachel "It's awesome to be able to code in a browser"
+                        character_name "Sounds good, I like it"
 
                         $ friendship_rachel += 2
                         $ confidence_rachel += 1
@@ -680,12 +676,12 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == False:
                 menu:
-                    "Que marca es tu telefono?":
-                        character_name "Que marca es tu telefono?"
-                        Rachel "Es un xiaomi, puro calidad precio XD"
+                    "What's your phone brand?":
+                        character_name "What's your phone brand?"
+                        Rachel "It's a Xiaomi, Quality-Price XD"
                         character_name "..."
-                        Rachel "es una broma jajaja"
-                        Rachel "pero si, es un xiaomi"
+                        Rachel "It's a joke hahaha"
+                        Rachel "but yeah, it's Xiaomi"
 
                         $ opt_menu_talkRachel_q1 = True
                         $ friendship_rachel += 2
@@ -693,12 +689,12 @@ label rachel_menu:
                         jump rachel_menu
                     
 
-                    "Que comes aqui en la universidad?":
-                        character_name "Que comes aqui en la universidad?"
-                        Rachel "Que es comer?"
-                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
-                        Rachel "Llegas lleno hasta al dia siguiente B)"
-                        character_name "Anotado XD"
+                    "What do you regularly eat here?":
+                        character_name "What do you regularly eat here?"
+                        Rachel "What is that?"
+                        Rachel "JK, what I use to eat is a piece of bread and a chocolita"
+                        Rachel "You won't need to eat until the next day B)"
+                        character_name "Taking notes XD"
 
 
                         $ friendship_rachel += 2
@@ -710,27 +706,27 @@ label rachel_menu:
                 menu:
 
                     
-                    "que haces en tus tiempos libres?":
-                        character_name "que haces en tus tiempos libres?"
-                        Rachel "Programar, Programar, Programar..."
-                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
-                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
-                        Rachel "no te preocupes :D"
-                        Rachel "Tu podras con esto"
-                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
-                        Rachel "yo creo en ti :'D"
+                    "What do you do on your free time?":
+                        character_name "What do you do on your free time?"
+                        Rachel "Code, code and more code..."
+                        Rachel "It's hard, but we are here for one reason :')"
+                        character_name "Sad, this doesn't look how I expected {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
+                        Rachel "Don't worry, I'll be here for you {font=fonts/NotoEmoji-Bold.ttf}🤗{/font}"
+                        Rachel "You can do it"
+                        Rachel "Don't be afraid if it's hard, just relax, distract with something and take back to the action."
+                        Rachel "I believe in you {font=fonts/NotoEmoji-Bold.ttf}😁{/font}"
 
                         $ friendship_rachel += 5
                         $ confidence_rachel += 3
                         $ opt_menu_talkRachel_q2 = True
                         jump rachel_menu
 
-                    "A que rama te quieres dedicar?":
-                        character_name "A que rama te quieres dedicar?"
-                        Rachel "Me gusta mucho la programacion web sabes"
-                        Rachel "En la parte de frontend mas que todo"
-                        Rachel "Es genial, darle vida a una pagina en blanco"
-                        character_name "Se escucha genial"
+                    "Which branch of computer science do you like the most?":
+                        character_name "Which branch of computer science do you like the most?"
+                        Rachel "I like a lot web development, but I also like the other branches"
+                        Rachel "On the front end I like HTML, CSS and Javascript"
+                        Rachel "It's awesome to be able to code in a browser"
+                        character_name "Sounds good, I like it"
 
                         $ friendship_rachel += 2
                         $ confidence_rachel += 1
@@ -742,27 +738,27 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == True:
                 menu:
-                    "Que marca es tu telefono?":
-                        character_name "Que marca es tu telefono?"
-                        Rachel "Es un xiaomi, puro calidad precio XD"
+                    "What's your phone brand?":
+                        character_name "What's your phone brand?"
+                        Rachel "It's a Xiaomi, Quality-Price XD"
                         character_name "..."
-                        Rachel "es una broma jajaja"
-                        Rachel "pero si, es un xiaomi"
+                        Rachel "It's a joke hahaha"
+                        Rachel "but yeah, it's Xiaomi"
 
                         $ opt_menu_talkRachel_q1 = True
                         $ friendship_rachel += 2
 
                         jump rachel_menu
                     
-                    "que haces en tus tiempos libres?":
-                        character_name "que haces en tus tiempos libres?"
-                        Rachel "Programar, Programar, Programar..."
-                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
-                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
-                        Rachel "no te preocupes :D"
-                        Rachel "Tu podras con esto"
-                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
-                        Rachel "yo creo en ti :'D"
+                    "What do you do on your free time?":
+                        character_name "What do you do on your free time?"
+                        Rachel "Code, code and more code..."
+                        Rachel "It's hard, but we are here for one reason :')"
+                        character_name "Sad, this doesn't look how I expected {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
+                        Rachel "Don't worry, I'll be here for you {font=fonts/NotoEmoji-Bold.ttf}🤗{/font}"
+                        Rachel "You can do it"
+                        Rachel "Don't be afraid if it's hard, just relax, distract with something and take back to the action."
+                        Rachel "I believe in you {font=fonts/NotoEmoji-Bold.ttf}😁{/font}"
 
                         $ friendship_rachel += 5
                         $ confidence_rachel += 3
@@ -774,12 +770,12 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == False and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == True:
                 menu:
-                    "Que marca es tu telefono?":
-                        character_name "Que marca es tu telefono?"
-                        Rachel "Es un xiaomi, puro calidad precio XD"
+                    "What's your phone brand?":
+                        character_name "What's your phone brand?"
+                        Rachel "It's a Xiaomi, Quality-Price XD"
                         character_name "..."
-                        Rachel "es una broma jajaja"
-                        Rachel "pero si, es un xiaomi"
+                        Rachel "It's a joke hahaha"
+                        Rachel "but yeah, it's Xiaomi"
 
                         $ opt_menu_talkRachel_q1 = True
                         $ friendship_rachel += 2
@@ -789,15 +785,15 @@ label rachel_menu:
                     
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == False and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == True:
                 menu:                    
-                    "que haces en tus tiempos libres?":
-                        character_name "que haces en tus tiempos libres?"
-                        Rachel "Programar, Programar, Programar..."
-                        Rachel "Es duro, pero nosotros mismos elegimos este destino :')"
-                        character_name "Ay, no puede ser :(, no se ve como lo esperaba"
-                        Rachel "no te preocupes :D"
-                        Rachel "Tu podras con esto"
-                        Rachel "No te desanimes si lo ves complicado, solo relajate, distraete un rato y vuelve a la accion"
-                        Rachel "yo creo en ti :'D"
+                    "What do you do on your free time?":
+                        character_name "What do you do on your free time?"
+                        Rachel "Code, code and more code..."
+                        Rachel "It's hard, but we are here for one reason :')"
+                        character_name "Sad, this doesn't look how I expected {font=fonts/NotoEmoji-Bold.ttf}😔{/font}"
+                        Rachel "Don't worry, I'll be here for you {font=fonts/NotoEmoji-Bold.ttf}🤗{/font}"
+                        Rachel "You can do it"
+                        Rachel "Don't be afraid if it's hard, just relax, distract with something and take back to the action."
+                        Rachel "I believe in you {font=fonts/NotoEmoji-Bold.ttf}😁{/font}"
 
                         $ friendship_rachel += 5
                         $ confidence_rachel += 3
@@ -808,12 +804,12 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == False and opt_menu_talkRachel_q4 == True:
                 menu:
-                    "A que rama te quieres dedicar?":
-                        character_name "A que rama te quieres dedicar?"
-                        Rachel "Me gusta mucho la programacion web sabes"
-                        Rachel "En la parte de frontend mas que todo"
-                        Rachel "Es genial, darle vida a una pagina en blanco"
-                        character_name "Se escucha genial"
+                    "Which branch of computer science do you like the most?":
+                        character_name "Which branch of computer science do you like the most?"
+                        Rachel "I like a lot web development, but I also like the other branches"
+                        Rachel "On the front end I like HTML, CSS and Javascript"
+                        Rachel "It's awesome to be able to code in a browser"
+                        character_name "Sounds good, I like it"
 
                         $ friendship_rachel += 2
                         $ confidence_rachel += 1
@@ -824,12 +820,12 @@ label rachel_menu:
 
             if opt_menu_talkRachel == False and opt_menu_talkRachel_q1 == True and opt_menu_talkRachel_q2 == True and opt_menu_talkRachel_q3 == True and opt_menu_talkRachel_q4 == False:
                 menu:
-                    "Que comes aqui en la universidad?":
-                        character_name "Que comes aqui en la universidad?"
-                        Rachel "Que es comer?"
-                        Rachel "ok no xd, lo que como mas seguido es un par de churros y una chocolita"
-                        Rachel "Llegas lleno hasta al dia siguiente B)"
-                        character_name "Anotado XD"
+                    "What do you regularly eat here?":
+                        character_name "What do you regularly eat here?"
+                        Rachel "What is that?"
+                        Rachel "JK, what I use to eat is a piece of bread and a chocolita"
+                        Rachel "You won't need to eat until the next day B)"
+                        character_name "Taking notes XD"
 
 
                         $ friendship_rachel += 2
@@ -846,14 +842,14 @@ label rachel_menu:
             if exitDay == True:
                 jump Byebye
 
-            character_name "* no deberia irme aun *"
+            character_name "* I shouldn't go yet *"
             jump rachel_menu
 
 
 
 label Byebye:
-    character_name "Creo que ya deberiamos de irnos"
-    Rachel "Si, tienes razon, nos vemos mañana [character_name]"
+    character_name "I think is time to go"
+    Rachel "Yep, you right, see you tomorrow [character_name]"
 
 
             
