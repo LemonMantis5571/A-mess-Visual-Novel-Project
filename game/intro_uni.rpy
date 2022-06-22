@@ -56,6 +56,12 @@ label  start_uni:
     Talya "From music taste to programming preferences."
     Talya "Your main goal is..."
     Talya "Be yourself."
+    Talya "In this game you have to be sensitive with the characters."
+    Talya "There's some status for each one of them."
+    Talya "Confidence / Friendship / Tension"
+    Talya "Make sure to keep Tension low."
+    Talya "Haha."
+    Talya "If you are stuck just click on the guide option in the menu screen."
     Talya "So, tell me your name."
     menu:
         "I'm...":

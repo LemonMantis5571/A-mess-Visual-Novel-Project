@@ -3,9 +3,6 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-
-
-
 define Meifeng = Character("Meifeng", color="#FFD700")
 define Blezz = Character("Blezz", color="#ff99cc")
 define Isela = Character("Miss Isela", color="#b3b3ff")
@@ -39,9 +36,7 @@ transform dizzy(m, t):
         easein 1.0 * t yoffset 0
         repeat
 
-default game_code_uni = "0188U" #The code of the game 
 
-default game_code_lincoln  = "0198L" #The code of the game
 
 default game_code = 0
 
@@ -63,8 +58,6 @@ default Wordle_Finish = False
 label start:
     # The game starts here.
     scene bg blank
-    
-    $ game_code = renpy.input("Enter your pass-code:", length=5)
 
     screen input:
 
@@ -76,62 +69,9 @@ label start:
             input id "input" xalign 0.5 yalign 0.5
 
         use quick_menu
-
-    if game_code == game_code_lincoln:
-        jump start_lincoln
-
-    elif game_code == game_code_uni:
-        jump start_uni
     
-    else:
-        jump start
-    
-label start_lincoln:
-    play music "audio/bgm_intromusic.mp3" fadein 1.0 volume 0.3
-    scene bg opening
+    jump start_uni
 
-    
-    Meifeng "*sigh*"
-    show meifeng at left
-    Blezz "*sigh*"
-    show blezz at right
-
-    Meifeng "I'm Meifeng, a student From Lincoln English Academy."
-    hide blezz
-    hide meifeng
-    show blezz
-    Blezz "I'm Blezz, and me too.."
-    hide blezz
-
-    show meifeng at left
-
-    Meifeng """
-     I'll give you a little introduction to this particular game.
-
-     In this game you will have the oportunity to apreciate a concept of the current level 6 to level 9 class in lincoln academy.
-
-     The game consist in listening to the 4 music of each character that will be displayed in the class.
-
-     Each character is a mix of my perspective of each personality from everyone in the room.
-
-     The protagonist, aka YOU will be asking for a touch of their headset and discover what they are listening to.
-
-     The main plot is to daydream about what music tells for every character in the game.
-
-     Yes is a short game as you can tell.
-
-     So, don't waste more time and jump to the action!
-
-     """
-
-    Meifeng "Oops!, i forgot something!"
-    Meifeng "What's your name?. "
-    
-    $ character_name = renpy.input("Insert your name below", length=9)
-
-    Meifeng "Nice to meet you [character_name]."
-    Meifeng "Get good."
-    
 label traveling:
 
     stop music fadeout 1.0
@@ -182,7 +122,7 @@ label lincoln:
 
     scene bg class1
     with pushdown
-    centered "*You enter the class*"
+    "*You enter the class*"
 
     play music "audio/bgm_class.mp3" fadein 1.0 volume 0.3
     "I wonder why is everybody looking at me in that way..."
@@ -248,7 +188,7 @@ label Options:
                                         stop music fadeout 1.0
                                         scene bg class1
                                         show screen thefeels_buttons
-                                        play music "audio/thefeels.mp3" fadein 2.0 volume 0.2
+                                        play music "audio/thefeels.ogg" fadein 2.0 volume 0.2
                                         hide window
                                         pause
 
@@ -635,7 +575,7 @@ label tamy_options:
         "Shekinah Radio":
             hide tamy
             if childish == 0:
-                play music "audio/screamer.mp3"  volume 0.15
+                play music "audio/screamer.ogg"  volume 0.15
                 show screamer:
                     parallel:
                         0.2 #tiempo de espera

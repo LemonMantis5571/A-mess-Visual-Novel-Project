@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/Edu_Guide.rpy", line 1: expected statement.
-    from turtle import left
-                           ^
+File "game/script.rpy", line 9: expected statement.
+    from sre_constants import JUMP
+                                  ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Mon Jun 20 22:24:49 2022
+Wed Jun 22 13:33:47 2022

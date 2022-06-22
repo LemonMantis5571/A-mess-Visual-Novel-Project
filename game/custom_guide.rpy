@@ -24,6 +24,9 @@ label guide_options:
             show guide at right with move
             guide "Like listening the songs multiple times."
             guide "(?)"
+            guide "Every Character has their own atributes. Some get new dialogues at 5 of each status some at 25."
+            guide "Nuria gets something at 25."
+            guide "Make sure that you have low tension, less is better."
             guide "If you max out status points, maybe you can unlock new paths in the history."
             guide "Press any key to continue."
             jump guide_options
