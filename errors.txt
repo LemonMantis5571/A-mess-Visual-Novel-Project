@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 9: expected statement.
-    from sre_constants import JUMP
-                                  ^
+File "game/lingo.rpy", line 143: u'jump' is not a keyword argument or valid child for the button statement.
+    jump tamy_options
+        ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Wed Jun 22 13:33:47 2022
+Wed Jun 22 23:56:46 2022

@@ -1,118 +1,60 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'images/eduguide.png'>:
-  File "game/script.rpy", line 494, in script call
+While running game code:
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
-    call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
-    call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
-    call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 492, in script call
+  File "game/script.rpy", line 432, in script call
     call Nuria_finished_chapt1 from _call_Nuria_finished_chapt1
-  File "game/script.rpy", line 492, in script call
-    call Nuria_finished_chapt1 from _call_Nuria_finished_chapt1
-  File "game/script.rpy", line 492, in script call
-    call Nuria_finished_chapt1 from _call_Nuria_finished_chapt1
-  File "game/Edu_Guide.rpy", line 20, in script
-    menu:
-IOError: Couldn't find file 'images/eduguide.png'.
+  File "game/examEduDay.rpy", line 92, in script
+    if fail_question =>2:
+SyntaxError: invalid syntax (examEduDay.rpy, line 92)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
+  File "game/script.rpy", line 434, in script call
     call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
-    call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
-    call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 494, in script call
-    call atributes_nuria from _call_atributes_nuria
-  File "game/script.rpy", line 492, in script call
+  File "game/script.rpy", line 432, in script call
     call Nuria_finished_chapt1 from _call_Nuria_finished_chapt1
-  File "game/script.rpy", line 492, in script call
-    call Nuria_finished_chapt1 from _call_Nuria_finished_chapt1
-  File "game/script.rpy", line 492, in script call
-    call Nuria_finished_chapt1 from _call_Nuria_finished_chapt1
-  File "game/Edu_Guide.rpy", line 20, in script
-    menu:
-  File "renpy/ast.py", line 1688, in execute
-    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
-  File "renpy/exports.py", line 1060, in menu
-    rv = renpy.store.menu(new_items)
-  File "renpy/exports.py", line 1296, in display_menu
-    rv = renpy.ui.interact(mouse='menu', type=type, roll_forward=roll_forward)
-  File "renpy/ui.py", line 298, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 3325, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs)
-  File "renpy/display/core.py", line 3839, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "renpy/display/core.py", line 2565, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 492, in renpy.display.render.render_screen
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/layout.py", line 826, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/transform.py", line 733, in render
-    return transform_render(self, width, height, st, at)
-  File "accelerator.pyx", line 187, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/image.py", line 501, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "renpy/display/image.py", line 307, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 263, in renpy.display.render.render
-  File "renpy/display/im.py", line 625, in render
-    return cache.get(self, render=True)
-  File "renpy/display/im.py", line 287, in get
-    surf = image.load()
-  File "renpy/display/im.py", line 706, in load
+  File "game/examEduDay.rpy", line 92, in script
+    if fail_question =>2:
+  File "renpy/ast.py", line 1898, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2274, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
     raise e
-IOError: Couldn't find file 'images/eduguide.png'.
+SyntaxError: invalid syntax (examEduDay.rpy, line 92)
 
 Windows-10-10.0.19041
 Ren'Py 7.4.11.2266
 A mess 1.0
-Tue Jun 21 10:23:19 2022
+Thu Jun 23 00:17:21 2022

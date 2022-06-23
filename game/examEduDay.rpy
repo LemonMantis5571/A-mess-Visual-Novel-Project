@@ -89,7 +89,7 @@ label preguntas:
 label finalTimeExam:
     show rachel
 
-    if fail_question =>2:
+    if fail_question >=2:
         Rachel "We will do it better to next"
     else:
         Rachel "It wasn't so difficult "

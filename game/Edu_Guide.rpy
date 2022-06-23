@@ -21,12 +21,10 @@ label Edu_days_options:
         "Im stuck.":
             show eduguide with dissolve
             Eduguide "So you are stuck in [EduChapter]'s chapter."
-            Eduguide "Maybe you should try to find a way out."
+            Eduguide "Maybe you should talk to rachel."
             show eduguide at right with move
-            Eduguide "Try to talk and listen to all their songs"
-            Eduguide "(?)"
-            Eduguide "If you max out status points, maybe you can unlock new paths in the history."
-            Eduguide "Press any key to continue."
+            Eduguide "Try to read carefully"
+            Eduguide "..."
             hide eduguide
             jump Edu_days_options
         

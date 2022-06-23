@@ -215,7 +215,7 @@ screen gameOver:
                     background "#FFFFFF"
                     xysize (120, 50)
                     align (0.5, 0.8)
-                    textbutton _("Hola") align (0.5, 0.5) action Jump("Hola")
+                    textbutton _("Win") align (0.5, 0.5) action Jump("Hola")
                     
                         
                     

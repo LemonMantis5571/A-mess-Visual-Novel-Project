@@ -316,9 +316,10 @@ label insto_example:
     $ instopost.user = aya_user
     # she follows few friends
     $ instopost.follow(rin_user)
+    $ instopost.follow(chepito)
     $ instopost.follow(mayo_user)
     # add some other users to our app
-    $ instopost.other_users = [chepito, guy_101, the_real_president,pita]
+    $ instopost.other_users = [guy_101, the_real_president,pita]
 
     # Adding some post to people's timeline
     #$ mayo_user.post(_("Koi and tea..."),"piqselscom-id-oigzk")

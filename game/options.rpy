@@ -177,7 +177,7 @@ init python:
     ## subdirectories, and "**.psd" matches psd files anywhere in the project.
 
     ## Classify files as None to exclude them from the built distributions.
-
+    build.classify("sgb-words.txt", "all")
     build.classify('**~', None)
     build.classify('**.bak', None)
     build.classify('**/.**', None)
