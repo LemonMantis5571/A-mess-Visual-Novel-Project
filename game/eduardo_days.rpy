@@ -14,38 +14,25 @@ label Tuesday_edu:
 
     play music "audio/bgm_walking.mp3" fadein 1.0 volume 0.3
 
-    scene bg uni with dissolve
+    scene bg parada with dissolve
 
     character_name "Oh dear, it's full again..."
 
-    character_name "It's already late, should I go until the next hour?"
+    character_name "Better wait for the next"
 
-    menu:
-        "Take the Bus":
-            #goto Tuesday_bus
-            jump busTuesday
+    jump busTuesday
 
-        "Skip the first class":
-            #block of code to run
-            scene bg blank with dissolve
-
-            centered "*You returned home and waited for the next class.*"
-
-            #$optional = 1
-
-            jump classTuesday
 
 
 label busTuesday:
 
     scene bg businterior
-    
 
     character_name "*You are in the bus*"
     character_name "Everything is fine, I'm just late."
-    character_name "I don't if it's me but I feel that everyday this is getting crowded."
+    character_name "At least the day is calm"
 
-    """*You push someone*"""
+    """*they push you*"""
 
     if confidence_rachel < 5:
         show rachel at right
@@ -69,14 +56,17 @@ label busTuesday:
 
 
             "Actually not":
+                show rachel2 at right
                 character_name "Actually not, I've already seen you around here"
-                
+                Rachel "hmmm ok"
+                hide rachel2
                 $rachel_bus = 0
 
             "...":
                 character_name "..."
                 show rachel at right
                 Rachel "Are you shy? Do not worry, haha"
+                hide rachel
 
                 $ rachel_bus = 2
         
@@ -176,7 +166,11 @@ label classTuesday:
                 jump Options1
             
             "I'm not interested":
-                "As you wish"
+                show rachel2 at right
+                "I don't care about her.I don't want to check double"
+                character_name "a"
+                hide rachel2
+                
                 jump Options1
 
 label Options1:
@@ -252,12 +246,9 @@ label exam:
     scene bg aula1
     show rachel at right
     Rachel "Okey, we are going to do an exam"
-    Rachel "Ez game"
     hide rachel
     jump preguntas
     
-
-
 
 label preGame:
 
@@ -298,8 +289,7 @@ label preGame:
             hide rachel
 
             jump initGame
-    
-
+   
 
 label rachel_menu:
     scene bg aula1
@@ -308,6 +298,7 @@ label rachel_menu:
    
     
     Rachel "Well, now what do we do?"
+    hide rachel
 
 
     menu:
@@ -325,7 +316,7 @@ label rachel_menu:
             hide rachel
 
             menu:
-                "music1":
+                "WhatsappAudio20220903":
                     scene bg blank
                     play music "audio/rachel1.mp3" fadein 2.0 volume 0.5
                     pause
@@ -333,7 +324,7 @@ label rachel_menu:
                     jump rachel_menu
 
                 
-                "music2":
+                "WhatsappAudio20220901":
                     scene bg blank
                     play music "audio/rachel2.mp3" fadein 2.0 volume 0.5
                     pause
@@ -342,7 +333,7 @@ label rachel_menu:
 
                     
 
-                "music3":
+                "WhatsappAudio20220904":
                     scene bg blank
                     play music "audio/rachel3.mp3" fadein 2.0 volume 0.5
                     pause
@@ -850,6 +841,14 @@ label rachel_menu:
 label Byebye:
     character_name "I think is time to go"
     Rachel "Yep, you right, see you tomorrow [character_name]"
+    Rachel "By the way, add me on Instagram"
+    Rachel "To speak then?"
+    character_name "ok"
+    Rachel "ok, good bye"
+
+    scene bg blank
+    pause
+    pause
 
 
             

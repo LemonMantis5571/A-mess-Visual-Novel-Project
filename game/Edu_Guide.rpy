@@ -23,7 +23,7 @@ label Edu_days_options:
             Eduguide "So you are stuck in [EduChapter]'s chapter."
             Eduguide "Maybe you should try to find a way out."
             show eduguide at right with move
-            Eduguide "Like listening the songs multiple times."
+            Eduguide "Try to talk and listen to all their songs"
             Eduguide "(?)"
             Eduguide "If you max out status points, maybe you can unlock new paths in the history."
             Eduguide "Press any key to continue."
@@ -37,7 +37,7 @@ label Edu_days_options:
             Eduguide "You can also load the game by pressing the load key."
             show eduguide at right with move
             Eduguide "Very simple to use."
-            jump Eduguide_options
+            jump Edu_days_options
         
         "How do I change the music?":
             show eduguide at right with move
