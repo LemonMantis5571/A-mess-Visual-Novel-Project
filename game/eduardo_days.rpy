@@ -317,7 +317,7 @@ label rachel_menu:
 
             menu:
                 "WhatsappAudio20220903":
-                    scene bg blank
+                    scene bg guide
                     play music "audio/rachel1.mp3" fadein 2.0 volume 0.5
                     pause
                     $ option_music_Rachel += 1
@@ -325,7 +325,7 @@ label rachel_menu:
 
                 
                 "WhatsappAudio20220901":
-                    scene bg blank
+                    scene bg nuria
                     play music "audio/rachel2.mp3" fadein 2.0 volume 0.5
                     pause
                     $ option_music_Rachel += 1
@@ -334,7 +334,7 @@ label rachel_menu:
                     
 
                 "WhatsappAudio20220904":
-                    scene bg blank
+                    scene bg businterior
                     play music "audio/rachel3.mp3" fadein 2.0 volume 0.5
                     pause
                     $ option_music_Rachel += 1
@@ -847,8 +847,13 @@ label Byebye:
     Rachel "ok, good bye"
 
     scene bg blank
-    pause
-    pause
+    Centered "Thank you for playing this game"
+    Centered "To be continued..."
+    Centered "We promise.   "
+
+    pause 25.0
+    pause 25.0
+    jump start_uni
 
 
             
