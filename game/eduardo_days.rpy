@@ -141,9 +141,9 @@ label classTuesday:
             $ friendship_rachel -= 2
             $ tension_rachel += 2 
             $ confidence_rachel -= 1
-            show rachel at right
+            show rachel2 at right
             Rachel "..."
-            hide rachel
+            hide rachel2
             $  rachel_clase = 0
     
     if rachel_clase == 1:
