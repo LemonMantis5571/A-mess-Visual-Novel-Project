@@ -1,0 +1,106 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/intro_uni.rpy", line 101, in script
+    call screen content_warning_screen
+  File "game/intro_uni.rpy", line 10, in execute
+    screen content_warning_screen:
+  File "game/intro_uni.rpy", line 10, in execute
+    screen content_warning_screen:
+  File "game/intro_uni.rpy", line 18, in execute
+    frame:
+  File "game/intro_uni.rpy", line 27, in execute
+    vbox:
+  File "game/intro_uni.rpy", line 85, in execute
+    textbutton "Continue":
+  File "game/intro_uni.rpy", line 85, in keywords
+    textbutton "Continue":
+  File "game/intro_uni.rpy", line 90, in <module>
+    sensitive health_answer is not None and censor_answer is not None
+              ^^^^^^^^^^^^^                                          
+NameError: name 'health_answer' is not defined
+
+-- Full Traceback ------------------------------------------------------------
+
+Traceback (most recent call last):
+  File "game/intro_uni.rpy", line 101, in script
+    call screen content_warning_screen
+  File "renpy/ast.py", line 2241, in execute
+    self.call("execute")
+    ~~~~~~~~~^^^^^^^^^^^
+  File "renpy/ast.py", line 2195, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/statements.py", line 381, in call
+    return method(parsed, *args, **kwargs)
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/common/000statements.rpy", line 695, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/exports/statementexports.py", line 348, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/ui.py", line 306, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/display/core.py", line 2154, in interact
+    repeat, rv = self.interact_core(
+                 ~~~~~~~~~~~~~~~~~~^
+        preloads=preloads,
+        ^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "renpy/display/core.py", line 2700, in interact_core
+    root_widget.visit_all(lambda d: d.per_interact())
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 457, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 457, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/displayable.py", line 457, in visit_all
+    d.visit_all(callback, seen)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "renpy/display/screen.py", line 503, in visit_all
+    callback(self)
+    ~~~~~~~~^^^^^^
+  File "renpy/display/core.py", line 2700, in <lambda>
+    root_widget.visit_all(lambda d: d.per_interact())
+                                    ~~~~~~~~~~~~~~^^ 
+  File "renpy/display/screen.py", line 514, in per_interact
+    self.update()
+    ~~~~~~~~~~~^^
+  File "renpy/display/screen.py", line 715, in update
+    self.screen.function(**self.scope)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "game/intro_uni.rpy", line 10, in execute
+    screen content_warning_screen:
+  File "game/intro_uni.rpy", line 10, in execute
+    screen content_warning_screen:
+  File "game/intro_uni.rpy", line 18, in execute
+    frame:
+  File "game/intro_uni.rpy", line 27, in execute
+    vbox:
+  File "game/intro_uni.rpy", line 85, in execute
+    textbutton "Continue":
+  File "game/intro_uni.rpy", line 85, in keywords
+    textbutton "Continue":
+  File "renpy/python.py", line 1305, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1298, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "game/intro_uni.rpy", line 90, in <module>
+    sensitive health_answer is not None and censor_answer is not None
+              ^^^^^^^^^^^^^                                          
+NameError: name 'health_answer' is not defined
+
+Windows-11-10.0.26100-SP0 AMD64
+Ren'Py 8.5.2.26010301
+A mess 1.0
+Tue Mar 10 13:12:05 2026

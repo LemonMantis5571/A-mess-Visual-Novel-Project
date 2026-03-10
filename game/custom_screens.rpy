@@ -1,207 +1,116 @@
-init python:
-    def drag_placed(drags,drop):
-        if not drop:
-                return
-        
-        store.draggable = drags[0].drag_name
-        store.droppable = drop.drop_name
-        return True
+# ──────────────────────────────────────
+#  Status Box – consistent warm palette
+# ──────────────────────────────────────
 
-init python:
-    style.window.background = Frame("images/UI/boxtext.png", 100, 100)
+transform status_fade_in:
+    alpha 0.0
+    easein 0.4 alpha 1.0
 
 screen StatusBox:
-    fixed:
-        drag:
-            drag_name "Tamy"
-            xpos 0.4
-            ypos 0.5
-            draggable True
-            drag_raise True
+    modal True
+
+    frame:
+        background "#1a0a1ad8"
+        xfill True
+        yfill True
+
+    frame:
+        at status_fade_in
+        background "#2e1630ee"
+        xalign 0.5
+        yalign 0.5
+        xsize 1320
+        ysize 760
+        padding (40, 32)
+
+        vbox:
+            spacing 20
+
+            text "Route Status" size 42 bold True color "#EC8FD0"
+
+            hbox:
+                spacing 30
+
+                # nuria card
+                frame:
+                    background "#3a1a38ee"
+                    xsize 580
+                    ysize 280
+                    padding (24, 20)
+
+                    vbox:
+                        spacing 8
+                        text "Nuria" size 32 bold True color "#8cff66"
+                        text "Stage: [route_label('nuria')]" size 22 color "#d4a0c8"
+                        null height 4
+                        hbox:
+                            spacing 16
+                            vbox:
+                                text "Confidence" size 16 color "#9a8094"
+                                text "[confidence_nuria]" size 26 bold True color "#ffffff"
+                            vbox:
+                                text "Friendship" size 16 color "#9a8094"
+                                text "[friendship_nuria]" size 26 bold True color "#ffffff"
+                            vbox:
+                                text "Tension" size 16 color "#9a8094"
+                                text "[tension_nuria]" size 26 bold True color "#ffffff"
+                        null height 4
+                        hbox:
+                            spacing 10
+                            text "Animal in Me" size 18 color "#9a8094"
+                            text "[best_grade('nuria_animal')]" size 18 bold True color "#EC8FD0"
+                            text "Blackout" size 18 color "#9a8094"
+                            text "[best_grade('nuria_blackout')]" size 18 bold True color "#EC8FD0"
+
+                # tamy card
+                frame:
+                    background "#1a1a38ee"
+                    xsize 580
+                    ysize 280
+                    padding (24, 20)
+
+                    vbox:
+                        spacing 8
+                        text "Tamy" size 32 bold True color "#6666ff"
+                        text "Stage: [route_label('tamy')]" size 22 color "#a0a8d4"
+                        null height 4
+                        hbox:
+                            spacing 16
+                            vbox:
+                                text "Confidence" size 16 color "#808aaa"
+                                text "[confidence_tamy]" size 26 bold True color "#ffffff"
+                            vbox:
+                                text "Friendship" size 16 color "#808aaa"
+                                text "[friendship_tamy]" size 26 bold True color "#ffffff"
+                            vbox:
+                                text "Tension" size 16 color "#808aaa"
+                                text "[tension_tamy]" size 26 bold True color "#ffffff"
+                        null height 4
+                        hbox:
+                            spacing 10
+                            text "Afterdark" size 18 color "#808aaa"
+                            text "[best_grade('tamy_afterdark')]" size 18 bold True color "#EC8FD0"
+                            text "Homemage" size 18 color "#808aaa"
+                            text "[best_grade('tamy_homemage')]" size 18 bold True color "#EC8FD0"
+
+            # music room summary
             frame:
-                xpadding 20
-                ypadding 20
-                text "Tamy's Confidence: [confidence_tamy]\n" + "Tamy's Friendship: [friendship_tamy]\n" + "Tamy's Tension: [tension_tamy]"     
+                background "#1a0a1aee"
+                xfill True
+                ysize 230
+                padding (24, 20)
 
-        drag:
-            drag_name "Rachel"
-            xpos 0.7
-            ypos 0.8
-            draggable True
-            drag_raise True
-            frame:
-                xpadding 20
-                ypadding 20
-                text "Rachel's Confidence: [confidence_rachel]\n" + "Rachel's Friendship: [friendship_rachel]\n" + "Rachel's Tension: [tension_rachel]"     
-               
-            
-        drag:
-            drag_name "Nuria"
-            xpos 0.6
-            ypos 0.7
-            draggable True
-            drag_raise True
-            frame:
-                xpadding 20
-                ypadding 20
-                text "Nuria's Confidence: [confidence_nuria]\n" + "Nuria's Friendship: [friendship_nuria]\n" + "Nuria's Tension: [tension_nuria]"
+                vbox:
+                    spacing 8
+                    text "Music Room" size 28 bold True color "#EC8FD0"
+                    text "Unlocked tracks: [unlocked_track_count()] / [len(RHYTHM_SONGS)]" size 22 color "#ffffff"
+                    text "Selected track: [RHYTHM_SONGS[music_room_selected]['title']]" size 22 color "#d4a0c8"
+                    text "Current goal: [chapter]" size 22 color "#ffffff"
+                    text "Clear charts with a C grade or higher to move the story." size 18 color "#9a8094"
 
-        drag:
-            drag_name "Music Game"
-            xpos 0.5
-            ypos 0.5
-            draggable True
-            drag_raise True
-            frame:
-                xpadding 20
-                ypadding 20
-                text "Music taste status: \nMetal: [music_game_choice_nuria] \nPop-Synthwave: [music_game_choice_tamy]"
-            
-            
-
-        button:
-            hover_background "#00a"
-            background "images/UI/1textbox.png"
-            xpadding 140
-            ypadding 120
-            xpos 1640
-            ypos 44
-            yalign 0.5
-            textbutton "Exit"  action [ToggleScreen("StatusBox"), Jump("Options")]
-
-screen nuria_buttons:
-
-    draggroup:
-        drag:
-            drag_name "phone"
-            child "nuriaphone.png"
-            xpos 100
-            ypos 100
-            draggable True
-            droppable False
-            dragged drag_placed
-            drag_raise True
-
-
-screen fnaf_golden:
-
-    draggroup:
-        drag:
-            drag_name "golden"
-            child "images/UI/goldfreddy.png"
-            xalign 0.5
-            yalign 0.5
-            draggable True
-            droppable False
-            dragged drag_placed
-            drag_raise True
-            button action [ToggleScreen("fnaf_golden")]
-
-screen afterdark:
-
-    draggroup:
-        drag:
-            drag_name "mrkitty"
-            child "images/UI/afterdark.png"
-            xalign 0.5
-            yalign 0.5
-            draggable True
-            droppable False
-            dragged drag_placed
-            drag_raise True
-            button action [ToggleScreen("afterdark")]
-
-screen synthwave:
-
-    draggroup:
-        drag:
-            drag_name "wave"
-            child "images/UI/synthwave.png"
-            xalign 0.5
-            yalign 0.5
-            draggable True
-            droppable False
-            dragged drag_placed
-            drag_raise True
-            button action [ToggleScreen("synthwave")]
-
-screen caldera:
-
-    draggroup:
-        drag:
-            drag_name "sugar"
-            child "images/UI/caldera.png"
-            xalign 0.5
-            yalign 0.5
-            draggable True
-            droppable False
-            dragged drag_placed
-            drag_raise True
-            button action [ToggleScreen("caldera")]
-            
-            
-
-'''screen fnaf_screamer:
-
-    draggroup:
-        drag:
-            drag_name "screamer"
-            child "images/UI/screamer.png"
-            xalign 0.5
-            yalign 0.5
-            draggable True
-            droppable False
-            dragged drag_placed
-            drag_raise True
-            button action [ToggleScreen("fnaf_screamer")] '''
-
-screen nuria_quit:
-    button:
-            background "images/UI/1textbox.png"
-            xpadding 140
-            ypadding 120
-            xpos 1640
-            ypos 44
-            yalign 0.5
-            textbutton "Quit"  action [ToggleScreen("nuria_quit"), Jump("nuriarepeat")]
-
-
-screen nuria_quit_menu:
-    button:
-            background "images/UI/1textbox.png"
-            xpadding 140
-            ypadding 120
-            xpos 1640
-            ypos 44
-            yalign 0.5
-            textbutton "Quit"  action [ToggleScreen("nuria_quit_menu"), Jump("Options")]
-
-screen guide_quit:
-    button:
-            background "images/UI/1textbox.png"
-            xpadding 140
-            ypadding 120
-            xpos 1640
-            ypos 44
-            yalign 0.5
-            textbutton "Quit"  action [ToggleScreen("guide_quit"), Jump("Options")]
-
-'''
-screen Music_Player:
-    button:
-        text "Music Controls"
-        action ToggleScreen("music_controls") '''
-
-
-screen thefeels_buttons:
-
-    draggroup:
-        drag:
-            drag_name "phone"
-            child "thefeels.png"
-            xpos 450
-            ypos 100
-            draggable True
-            droppable False
-            dragged drag_placed
-            drag_raise True          
+            textbutton "Back":
+                xalign 1.0
+                text_size 24
+                text_color "#EC8FD0"
+                text_hover_color "#FFC0CB"
+                action Return()

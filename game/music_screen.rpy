@@ -1,309 +1,216 @@
-
-## Music Room ########################################################
-##
-## This controls the music room player positions, sizes and more.
-######################################################################
-
-## The positions and sizes of the music viewport list
-define gui.music_room_viewport_xsize = int(250 * ost.scale)
-define gui.music_room_viewport_pos = int(20 * ost.scale)
-define gui.music_room_spacing = int(20 * ost.scale)
-define gui.music_room_viewport_ysize = 0.93
-
-## The positions and sizes of the music information text
-define gui.music_room_information_xpos = int(700 * ost.scale)
-define gui.music_room_information_ypos = int(208 * ost.scale)
-define gui.music_room_information_xsize = int(570 * ost.scale)
-
-## The positions and sizes of the music controls
-define gui.music_room_options_xpos = int(715 * ost.scale)
-define gui.music_room_options_ypos = int(410 * ost.scale)
-define gui.music_room_options_spacing = int(20 * ost.scale)
-define gui.music_room_options_button_size = int(36 * ost.scale)
-
-## The positions of the music settings controls
-define gui.music_room_settings_ypos = int(450 * ost.scale)
-
-## The positions and sizes of the music progress bar
-define gui.music_room_progress_xsize = int(710 * ost.scale)
-define gui.music_room_progress_xpos = int(330 * ost.scale)
-define gui.music_room_progress_ypos = int(520 * ost.scale)
-
-## The positions and sizes of the music volume bar
-define gui.music_room_volume_xsize = int(120 * ost.scale)
-define gui.music_room_volume_xpos = int(1130 * ost.scale)
-define gui.music_room_volume_options_xpos = int(1090 * ost.scale)
-define gui.music_room_volume_options_ypos = int(509 * ost.scale)
-
-## The positions for the music progress/duration time text
-define gui.music_room_progress_text_xpos = int(330 * ost.scale)
-define gui.music_room_text_size = gui.interface_text_size
-define gui.music_room_progress_text_xalign = 0.28 * ost.scale
-define gui.music_room_progress_text_yalign = 0.79 * ost.scale
-
-## The positions for the cover art and it's transform properties
-define gui.music_room_cover_art_xpos = int(500 * ost.scale)
-define gui.music_room_cover_art_ypos = int(300 * ost.scale)
-define gui.music_room_cover_art_size = int(350 * ost.scale)
+# ──────────────────────────────────────
+#  Music Room – consistent warm palette
+# ──────────────────────────────────────
 
 init python:
+    def mr_select_chart():
+        stop_preview_music()
+        return store.music_room_selected
 
-    if renpy.variant('small'):
-        gui.music_room_text_size = int(24 * ost.scale)
-        gui.music_room_progress_text_yalign = 0.81 * ost.scale
-        gui.music_room_volume_options_xpos = int(1080 * ost.scale)
-        gui.music_room_volume_options_ypos = int(514 * ost.scale)
-        gui.music_room_options_button_size = int(40 * ost.scale)
+    def mr_go_back():
+        stop_preview_music()
+        return "__back__"
 
-image readablePos = DynamicDisplayable(renpy.curry(ost.music_pos)(
-                    "music_room_progress_text"))
-image readableDur = DynamicDisplayable(renpy.curry(ost.music_dur)(
-                    "music_room_duration_text")) 
-image titleName = DynamicDisplayable(renpy.curry(ost.dynamic_title_text)(
-                    "music_room_information_text")) 
-image authorName = DynamicDisplayable(renpy.curry(ost.dynamic_author_text)(
-                    "music_room_information_text")) 
-image coverArt = DynamicDisplayable(ost.refresh_cover_data) 
-image songDescription = DynamicDisplayable(renpy.curry(ost.dynamic_description_text)(
-                    "music_room_information_text")) 
-image rpa_map_warning = DynamicDisplayable(renpy.curry(ost.rpa_mapping_detection)(
-                    "music_room_information_text"))
-image playPauseButton = DynamicDisplayable(ost.auto_play_pause_button)
+transform mr_bg_drift:
+    subpixel True
+    zoom 1.0
+    xalign 0.5
+    yalign 0.5
 
-screen music_room():
+transform mr_panel_fade:
+    alpha 0.0
+    easein 0.35 alpha 1.0
 
+transform mr_track_hover:
+    xoffset 0
+    easein 0.15 xoffset 8
+
+transform mr_track_idle:
+    xoffset 8
+    easein 0.15 xoffset 0
+
+transform mr_timer_pulse:
+    alpha 0.7
+    ease 0.6 alpha 1.0
+    ease 0.6 alpha 0.7
+    repeat
+
+
+screen music_room(in_game=False):
     tag menu
+    modal True
+    on "show" action Function(open_music_room)
+    on "hide" action Function(stop_preview_music)
+    timer 0.1 action NullAction() repeat True
 
-    default bar_val = ost.AdjustableAudioPositionValue()
+    $ song = selected_song()
+    $ unlocked = track_unlocks.get(music_room_selected, False)
+    $ result = track_results.get(music_room_selected, {})
 
-    style_prefix "music_room"
+    # animated background
+    add Transform(song["background"], fit="contain", xysize=(1920, 1080)) at mr_bg_drift
 
-    add gui.main_menu_background
-
+    # dark overlay
     frame:
-        style "music_room_frame"
+        background "#1a0a1add"
+        xfill True
+        yfill True
 
-    side "c l":
-        
-        viewport id "vpo":
+    hbox:
+        spacing 26
+        xalign 0.5
+        yalign 0.5
 
-            style "music_room_viewport"
+        # ── left panel: track list ──
+        frame:
+            at mr_panel_fade
+            background "#2a1028ee"
+            xsize 420
+            ysize 820
+            padding (24, 24)
 
-            mousewheel True
-            has vbox
-
-            spacing gui.navigation_spacing
-
-            for st in ost.soundtracks:
-                textbutton "[st.name]":
-                    text_style "music_room_list_button"
-                    if ost.game_soundtrack:
-                        action [SensitiveIf(ost.game_soundtrack.name != st.name
-                                or ost.game_soundtrack.author != st.author 
-                                or ost.game_soundtrack.description != st.description), 
-                                SetVariable("ost.game_soundtrack", st), 
-                                SetVariable("ost.pausedstate", False), 
-                                Play("music_room", st.path, loop=ost.loopSong,
-                                fadein=2.0)]
-                    else:
-                        action [SetVariable("ost.game_soundtrack", st), 
-                        SetVariable("ost.pausedstate", False), 
-                        Play("music_room", st.path, loop=ost.loopSong, fadein=2.0)]
-
-        vbar value YScrollValue("vpo") xpos 1.0 ypos 20
-
-    if ost.game_soundtrack:
-
-        if ost.game_soundtrack.cover_art:
-
-            add "coverArt" at cover_art_fade
-
-        if ost.game_soundtrack.author:
             vbox:
-                hbox: 
+                spacing 14
+                text "Music Room" size 36 color "#EC8FD0" bold True
+                text "Practice unlocked charts and preview character themes." size 18 color "#d4a0c8"
+
+                null height 8
+
+                viewport:
+                    draggable True
+                    mousewheel True
+                    ymaximum 660
+
                     vbox:
-                        style_prefix "music_room_information"
-                        add "titleName"
+                        spacing 8
+                        for song_id in ordered_song_ids():
+                            $ row_song = RHYTHM_SONGS[song_id]
+                            $ is_selected = song_id == music_room_selected
+                            button:
+                                xfill True
+                                if is_selected:
+                                    background "#EC8FD044"
+                                else:
+                                    background "#ffffff0a"
+                                hover_background "#EC8FD033"
+                                padding (14, 10)
+                                action [
+                                    SetVariable("music_room_selected", song_id),
+                                    Function(preview_music_song, song_id)
+                                ]
+
+                                hbox:
+                                    spacing 10
+                                    yalign 0.5
+                                    text "[row_song['title']]" size 22 color "#ffffff"
+                                    text "[best_grade(song_id)]" size 20 color "#EC8FD0" bold True
+
+                        null height 6
+                        for song_id in locked_song_ids():
+                            $ row_song = RHYTHM_SONGS[song_id]
+                            button:
+                                xfill True
+                                background "#ffffff06"
+                                padding (14, 10)
+                                action SetVariable("music_room_selected", song_id)
+
+                                hbox:
+                                    spacing 10
+                                    yalign 0.5
+                                    text "[row_song['title']]" size 22 color "#666677"
+                                    text "LOCKED" size 18 color "#555566"
+
+        # ── right panel: track details ──
+        frame:
+            at mr_panel_fade
+            background "#2e1630ee"
+            xsize 980
+            ysize 820
+            padding (28, 28)
+
+            vbox:
+                spacing 18
+
+                # Preserve the background aspect ratio in the header preview.
+                frame:
+                    background "#120914"
+                    xsize 924
+                    ysize 240
+                    xalign 0.5
+                    padding (0, 0)
+
+                    add Transform(song["background"], fit="contain", xysize=(924, 240), xalign=0.5, yalign=0.5)
+
                 hbox:
+                    spacing 20
+
+                    # song info
                     vbox:
-                        style_prefix "music_room_information"
-                        add "authorName"
+                        spacing 8
+                        xsize 580
+                        text "[song['title']]" size 40 bold True color "#ffffff"
+                        text "[song['character']]  |  [song['artist']]" size 22 color "#d4a0c8"
 
-                if ost.game_soundtrack.description:
-                    hbox:
+                        hbox:
+                            spacing 16
+                            text "Difficulty [song['difficulty']]" size 22 color "#EC8FD0"
+                            text "Grade [result.get('grade', '-')]" size 22 color "#EC8FD0" bold True
+
+                        null height 4
+                        text "[song['description']]" size 20 color "#c8b0c0"
+                        text "[unlock_text(song['id'])]" size 18 color "#9a8094"
+
+                    # preview stats
+                    frame:
+                        background "#1a0a1aee"
+                        xsize 300
+                        ysize 200
+                        padding (18, 16)
+
                         vbox:
-                            style_prefix "music_room_information"
-                            add "songDescription"
+                            spacing 8
+                            text "Preview" size 26 bold True color "#EC8FD0"
+                            text "[music_position_text()] / [format_time(song['length'])]" at mr_timer_pulse size 22 color "#ffffff"
+                            text "Best score [result.get('score', 0)]" size 20 color "#d4a0c8"
+                            text "Accuracy [result.get('accuracy_text', '--')]" size 20 color "#d4a0c8"
 
-        hbox:
-            style "music_room_control_options"
+                # controls bar
+                frame:
+                    background "#3a1a38ee"
+                    xfill True
+                    padding (20, 18)
 
-            imagebutton:
-                idle At("images/music_room/backward.png", imagebutton_scale)
-                hover At("images/music_room/backwardHover.png", imagebutton_scale)
-                action [SensitiveIf(renpy.music.is_playing(channel='music_room')), 
-                        Function(ost.current_music_backward)]
-            
-            add "playPauseButton" at imagebutton_scale
-            
-            imagebutton:
-                idle At("images/music_room/forward.png", imagebutton_scale)
-                hover At("images/music_room/forwardHover.png", imagebutton_scale)
-                action [SensitiveIf(renpy.music.is_playing(channel='music_room')), 
-                        Function(ost.current_music_forward)]
+                    vbox:
+                        spacing 12
+                        text "Volume" size 22 color "#EC8FD0"
+                        bar value Preference("music_room_mixer volume") xmaximum 600
 
-        hbox:
+                        hbox:
+                            spacing 14
 
-            style "music_room_setting_options"
+                            textbutton "Preview":
+                                sensitive unlocked
+                                text_size 22
+                                text_color "#ffffff"
+                                text_hover_color "#FFC0CB"
+                                action Function(preview_music_song, music_room_selected)
 
-            imagebutton:
-                idle At(ConditionSwitch("ost.organizeAZ", "images/music_room/A-ZOn.png", 
-                        "True", "images/music_room/A-Z.png"), imagebutton_scale)
-                hover At("images/music_room/A-ZHover.png", imagebutton_scale)
-                action [ToggleVariable("ost.organizeAZ", False, True), 
-                        Function(ost.resort)]
-            
-            imagebutton:
-                idle At(ConditionSwitch("ost.organizePriority", 
-                "images/music_room/priorityOn.png", "True", 
-                "images/music_room/priority.png"), imagebutton_scale)
-                hover At("images/music_room/priorityHover.png", imagebutton_scale)
-                action [ToggleVariable("ost.organizePriority", False, True), 
-                        Function(ost.resort)]
-            
-            imagebutton:
-                idle At(ConditionSwitch("ost.loopSong", 
-                "images/music_room/replayOn.png", "True", 
-                "images/music_room/replay.png"), imagebutton_scale)
-                hover At("images/music_room/replayHover.png", imagebutton_scale)
-                action [ToggleVariable("ost.loopSong", False, True)]
-            
-            imagebutton:
-                idle At(ConditionSwitch("ost.randomSong", 
-                        "images/music_room/shuffleOn.png", "True", 
-                        "images/music_room/shuffle.png"), imagebutton_scale)
-                hover At("images/music_room/shuffleHover.png", imagebutton_scale)
-                action [ToggleVariable("ost.randomSong", False, True)]
-            
-            imagebutton:
-                idle At("images/music_room/refreshList.png", imagebutton_scale)
-                hover At("images/music_room/refreshHover.png", imagebutton_scale)
-                action [Function(ost.refresh_list)]
+                            textbutton "Stop":
+                                text_size 22
+                                text_color "#ffffff"
+                                text_hover_color "#FFC0CB"
+                                action Function(stop_preview_music)
 
-        bar:
-            style "music_room_progress_bar"
-            value bar_val
-            hovered bar_val.hovered
-            unhovered bar_val.unhovered
+                            if in_game:
+                                textbutton "Select Chart":
+                                    sensitive unlocked
+                                    text_size 22
+                                    text_color "#EC8FD0"
+                                    text_hover_color "#FFC0CB"
+                                    action Function(mr_select_chart)
 
-        bar value Preference ("music_room_mixer volume") style "music_room_volume_bar"
-
-        imagebutton:
-            style "music_room_volume_options"
-            idle At(ConditionSwitch("preferences.get_volume(\"music_room_mixer\") == 0.0", 
-                    "images/music_room/volume.png", "True", 
-                    "images/music_room/volumeOn.png"), imagebutton_scale)
-            hover At(ConditionSwitch("preferences.get_volume(\"music_room_mixer\") == 0.0", 
-                    "images/music_room/volumeHover.png", "True", 
-                    "images/music_room/volumeOnHover.png"), imagebutton_scale)
-            action [Function(ost.mute_player)]
-            
-        add "readablePos" 
-        add "readableDur"
-
-    text "Ren'Py Universal Player v[ost.version]":
-        xalign 1.0 yalign 1.0
-        xoffset -10 yoffset -10
-        size gui.notify_text_size
-    
-    if not config.developer:
-        add "rpa_map_warning" xpos 0.23 ypos 0.85 xsize 950
-
-    textbutton _("Return"):
-        style "return_button"
-        action [Return(), Function(ost.check_paused_state), 
-                If(not ost.prevTrack, None, 
-                false=Play('music', ost.prevTrack, fadein=2.0))]
-
-style music_room_frame is empty
-style music_room_viewport is gui_viewport
-style music_room_progress_bar is gui_slider
-style music_room_volume_bar is gui_slider
-style music_room_volume_options is gui_button
-style music_room_list_button is gui_button
-style music_room_control_options is gui_button
-style music_room_setting_options is gui_button
-style music_room_information_text is gui_text
-style music_room_progress_text is gui_text
-style music_room_duration_text is gui_text
-
-style music_room_frame:
-    yfill True
-
-    background "gui/overlay/main_menu.png"
-
-style music_room_list_button is default:
-    size gui.interface_text_size
-    hover_color gui.hover_color
-    selected_color gui.selected_color
-    insensitive_color gui.insensitive_color
-    #hover_sound gui.hover_sound
-    #activate_sound gui.activate_sound
-    line_spacing 5
-
-style music_room_viewport:
-    xpos gui.music_room_viewport_pos
-    ypos gui.music_room_viewport_pos
-    xsize gui.music_room_viewport_xsize
-    ysize gui.music_room_viewport_ysize
-
-style music_room_information_text:
-    font gui.interface_text_font
-    xpos gui.music_room_information_xpos
-    ypos gui.music_room_information_ypos
-
-style music_room_control_options:
-    xpos gui.music_room_options_xpos
-    ypos gui.music_room_options_ypos
-    spacing gui.music_room_spacing
-
-style music_room_setting_options is music_room_control_options:
-    ypos gui.music_room_settings_ypos
-
-style music_room_progress_bar:
-    xsize gui.music_room_progress_xsize
-    xpos gui.music_room_progress_xpos
-    ypos gui.music_room_progress_ypos
-
-style music_room_volume_bar:
-    xsize gui.music_room_volume_xsize
-    xpos gui.music_room_volume_xpos
-    ypos gui.music_room_progress_ypos
-
-style music_room_volume_options:
-    xpos gui.music_room_volume_options_xpos
-    ypos gui.music_room_volume_options_ypos
-
-style music_room_progress_text:
-    font gui.interface_text_font
-    xalign gui.music_room_progress_text_xalign
-    yalign gui.music_room_progress_text_yalign
-    size gui.music_room_text_size
-
-style music_room_duration_text is music_room_progress_text:
-    xalign 0.79 * ost.scale
-
-style music_room_information_vbox:
-    xsize gui.music_room_information_xsize
-    xfill True
-
-transform cover_art_fade:
-    anchor (0.5, 0.5)
-    xpos gui.music_room_cover_art_xpos
-    ypos gui.music_room_cover_art_ypos
-    size (gui.music_room_cover_art_size, gui.music_room_cover_art_size)
-    alpha 0
-    linear 0.2 alpha 1
-
-transform imagebutton_scale:
-    size(gui.music_room_options_button_size, gui.music_room_options_button_size)
+                            textbutton "Back":
+                                text_size 22
+                                text_color "#ffffff"
+                                text_hover_color "#FFC0CB"
+                                action Function(mr_go_back)

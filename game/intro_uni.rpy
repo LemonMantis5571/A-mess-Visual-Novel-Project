@@ -1,95 +1,181 @@
-default Adult = True
+# ──────────────────────────────────────
+#  Intro / Setup – with real scenes
+# ──────────────────────────────────────
 
-show ozunat:
-    subpixel True zoom 1.19
+transform intro_fade_in:
+    alpha 0.0
+    easein 0.6 alpha 1.0
 
-label  start_uni:
+
+screen content_warning_screen:
+    modal True
+    default health_answer = None
+    default censor_answer = None
+
+    frame:
+        background "#1a0a1ad8"
+        xfill True
+        yfill True
+
+    frame:
+        at intro_fade_in
+        background "#2e1630ee"
+        xalign 0.5
+        yalign 0.5
+        xsize 900
+        ysize 480
+        padding (40, 32)
+
+        vbox:
+            spacing 18
+            text "Before we start" size 38 bold True color "#EC8FD0" xalign 0.5
+
+            null height 6
+
+            text "This game contains flashing visuals, sudden audio cues, and intense scenes." size 22 color "#d4a0c8" xalign 0.5 text_align 0.5
+
+            null height 14
+
+            frame:
+                background "#3a1a38ee"
+                xfill True
+                padding (24, 18)
+
+                vbox:
+                    spacing 14
+
+                    text "Do you have heart problems or photosensitivity?" size 24 color "#ffffff"
+                    hbox:
+                        spacing 20
+                        xalign 0.5
+                        textbutton "Yes — enable safe mode":
+                            text_size 22
+                            if health_answer == 1:
+                                background "#ffe66d44"
+                                text_color "#ffe66d"
+                                text_bold True
+                            else:
+                                text_color "#9a8094"
+                            text_hover_color "#FFC0CB"
+                            padding (16, 8)
+                            action SetScreenVariable("health_answer", 1)
+                        textbutton "No — full experience":
+                            text_size 22
+                            if health_answer == 0:
+                                background "#6dffa044"
+                                text_color "#6dffa0"
+                                text_bold True
+                            else:
+                                text_color "#9a8094"
+                            text_hover_color "#FFC0CB"
+                            padding (16, 8)
+                            action SetScreenVariable("health_answer", 0)
+
+            frame:
+                background "#3a1a38ee"
+                xfill True
+                padding (24, 18)
+
+                vbox:
+                    spacing 14
+
+                    text "Disable strong visual scares?" size 24 color "#ffffff"
+                    hbox:
+                        spacing 20
+                        xalign 0.5
+                        textbutton "Yes — keep it mild":
+                            text_size 22
+                            if censor_answer == 1:
+                                background "#ffe66d44"
+                                text_color "#ffe66d"
+                                text_bold True
+                            else:
+                                text_color "#9a8094"
+                            text_hover_color "#FFC0CB"
+                            padding (16, 8)
+                            action SetScreenVariable("censor_answer", 1)
+                        textbutton "No — bring it on":
+                            text_size 22
+                            if censor_answer == 0:
+                                background "#6dffa044"
+                                text_color "#6dffa0"
+                                text_bold True
+                            else:
+                                text_color "#9a8094"
+                            text_hover_color "#FFC0CB"
+                            padding (16, 8)
+                            action SetScreenVariable("censor_answer", 0)
+
+            null height 4
+
+            textbutton "Continue":
+                xalign 0.5
+                text_size 28
+                text_color "#EC8FD0"
+                text_hover_color "#FFC0CB"
+                sensitive health_answer is not None and censor_answer is not None
+                action Return((health_answer, censor_answer))
+
+
+label start_uni:
     scene bg blank
 
-    "Do you have heart problems of any type?"
-    menu:   
-        "Yes":
-            $ heart_problems = 1
-            $ Adult = False
+    # ── Content warning / accessibility ──
+    call screen content_warning_screen
+    $ heart_problems = _return[0]
+    $ censorship = _return[1]
 
-        "No":
-            $ heart_problems = 0
-            $ Adult = True
-            "hehe :)"
-    
-    "Do you have any type of fear?"
-    menu:
-        "Yes":
-            $ censorship = 1
+    # ── Name input ──
+    scene bg blank
+    centered "{size=36}{color=#EC8FD0}What should they call you?{/color}{/size}"
+    $ entered = renpy.input("Enter your name, or leave blank for {b}Sherylda{/b}.", length=12).strip()
+    if entered:
+        $ character_name = entered
+    else:
+        $ character_name = "Sherylda"
 
-        "No":
-            $ censorship = 0
-            "hm..."
-
-
-    screen input:
-
-        window:
-
-            style "nvl_window"
-            
-            text prompt xalign 0.5 yalign 0.4
-            input id "input" xalign 0.5 yalign 0.5
-
-        use quick_menu
-    play music "audio/bgm_unimusic.mp3" fadein 1.0 volume 0.3
+    # ── Intro scene with Talya ──
+    stop music fadeout 0.5
+    play music "audio/bgm_unimusic.mp3" fadein 1.5 volume 0.3
     scene bg uni with dissolve
 
-    show secret
-    Talya "Hello there {font=fonts/NotoEmoji-Bold.ttf}😁{/font}."
-    Talya "So, you are a UNI Student."
-    Talya "You may ask what are you doing here."
-    Talya "Well I'm here to help you."
-    Talya "I'm Talya, your guide in this adventure. "
-    #make dialogue of a music game introduction
-    Talya "I'm going to show you how to play this game."
-    Talya "You will have to choose between two paths."
-    Talya "Being a good person is the best path."
-    Talya "Being a bad person is the second best path."
-    Talya "Well, not that bad, right?"
-    Talya "Aight, in this game you'll experiment the personality of every character."
-    Talya "From music taste to programming preferences."
-    Talya "Your main goal is..."
-    Talya "Be yourself."
-    Talya "In this game you have to be sensitive with the characters."
-    Talya "There's some status for each one of them."
-    Talya "Confidence / Friendship / Tension"
-    Talya "Make sure to keep Tension low."
-    Talya "Haha."
-    Talya "If you are stuck just click on the guide option in the menu screen."
-    Talya "So, tell me your name."
-    menu:
-        "I'm...":
+    centered "{size=28}{color=#d4a0c8}Somewhere between the last bell and the first silence...{/color}{/size}"
 
-            $ character_name = renpy.input("Insert your name below", length=9)
+    show secret at left with dissolve
 
-        "I prefer a random nickname.":
-            Talya "Ok, I'll call you..."
-            Talya "..."
-            stop music fadeout 1.0
-            Talya "Ozuna!"
-            hide secret
-            play music "audio/ozuna.mp3" fadein 1.0 volume 0.3
-            show ozuna at right with dissolve
-            "Ozuna!?"
-            show secret at left
-            Talya "Yes."
-            hide ozuna
-            show ozunat at right with dissolve
+    Talya "So you came back."
+    Talya "Or maybe you never really left."
 
+    character_name "Who are you?"
 
-            Ozuna "ax2+bx+c=0"
-            $ character_name = "Ozuna" 
+    Talya "Someone who listens when others just hear noise."
+    Talya "This place... Lincoln... it runs on rhythm."
+    Talya "Every person here has a pulse that says more than their words."
 
-    hide ozuna
-    Talya "Nice to meet you, [character_name]."
-    Talya "So, lets start with your adventure, Good Luck!."
+    show secret at center with easeinleft
+
+    Talya "There are two people you should know."
+    Talya "Nuria. She is a wall of distortion, but there is a melody underneath."
+    Talya "And Tamy. She speaks in precision, but the gaps between her words are louder."
+
+    character_name "What am I supposed to do?"
+
+    Talya "Listen. Not just with your ears."
+    Talya "With your hands."
+    Talya "Each of them has rhythm charts. If you can keep tempo, they let you in."
+
+    Talya "Confidence, friendship, and tension still shape how they react."
+    Talya "But now those values shift when you survive the beat and answer honestly."
+
+    Talya "If you get lost, talk to the guide or open the music room."
+
+    Talya "One more thing, [character_name]."
+    Talya "Do not rush the silence between the notes."
+    Talya "That is where the truth lives."
+
+    hide secret with dissolve
+
+    centered "{size=24}{color=#9a8094}Talya walks away before you can respond.{/color}{/size}"
+    centered "{size=24}{color=#9a8094}The morning bus is waiting.{/color}{/size}"
 
     jump traveling
-
-

@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/insto/insto.rpy", line 143: the action keyword argument was not given a value.
+    timer .1 action
+                    ^
+
+Ren'Py Version: Ren'Py 8.5.2.26010301
+Tue Mar 10 11:23:54 2026

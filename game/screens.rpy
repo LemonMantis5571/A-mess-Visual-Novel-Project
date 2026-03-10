@@ -345,25 +345,11 @@ screen navigation():
             ## Web.
             textbutton _("Quit") action Quit(confirm=not main_menu)
 
-        textbutton _("Music Room") action [ShowMenu("music_room"), Function(ost.get_music_channel_info), Stop('music', fadeout=2.0), Function(ost.refresh_list)]
+        textbutton _("Music Room") action ShowMenu("music_room")
 
 
 style navigation_button is gui_button
 style navigation_button_text is gui_button_text
-
-style navigation_button:
-    size_group "navigation"
-    properties gui.button_properties("navigation_button")
-
-style navigation_button_text:
-    properties gui.button_text_properties("navigation_button")
-    font "fonts/Lato-Bold.ttf"
-    outlines [(absolute(2), "#000000", absolute(10),absolute(-5))]
-    xalign 0.5
-
-style mainmenu_button is navigation_button:
-    xalign 0.5
-
 style mainmenu_button_text is navigation_button_text:
     xalign 0.5
 
@@ -1200,20 +1186,28 @@ style confirm_button is gui_medium_button
 style confirm_button_text is gui_medium_button_text
 
 style confirm_frame:
-    background Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=gui.frame_tile)
-    padding gui.confirm_frame_borders.padding
+    background Solid("#2a1028e6")
+    padding (60, 60)
     xalign .5
     yalign .5
+    xsize 700
 
 style confirm_prompt_text:
+    color "#ffffff"
     text_align 0.5
     layout "subtitle"
+    size 34
 
 style confirm_button:
     properties gui.button_properties("confirm_button")
+    background Solid("#1a0a1a")
+    hover_background Solid("#EC8FD0")
+    padding (20, 10)
 
 style confirm_button_text:
     properties gui.button_text_properties("confirm_button")
+    hover_color "#ffffff"
+    color "#d4a0c8"
 
 
 ## Skip indicator screen #######################################################
