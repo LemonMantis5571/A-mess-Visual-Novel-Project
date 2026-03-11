@@ -7,31 +7,32 @@ label start:
 label traveling:
     stop music fadeout 1.0
     scene bg blank with dissolve
-    centered "*Monday morning*"
-    centered "*The bus ride to Lincoln feels half real, half haunted.*"
+    centered "*Monday morning.*"
+    centered "*The first world arrives in glassy color and soft blue light.*"
     play music "audio/bgm_walking.mp3" fadein 1.0 volume 0.3
-    scene bg zumen with slideawayleft
+    scene bg class1 with slideawayleft
     character_name "If I miss first period again, Miss Isela is going to skin me alive."
-    character_name "At least the city still sounds awake."
+    character_name "Everything looks cleaner than it should."
+    character_name "Like the morning got filtered through plastic and water."
     centered "*You reach Lincoln and force yourself through the gate.*"
     jump lincoln
 
 
 label lincoln:
-    $ chapter = "Chapter I: Pulse Check"
+    $ chapter = "World I: Frutiger Aero"
 
     scene bg class1 with dissolve
     play music "audio/bgm_class.mp3" fadein 1.0 volume 0.3
     "The room is already full."
-    scene bg class0
+    scene bg class1_empty
     show isela at left
     Isela "Good morning, [character_name]. Late. Again."
     Isela "Sit down before I decide to count this as a speech."
     hide isela
     scene bg class1
-    character_name "Everyone looks different today."
-    character_name "Not quieter. Sharper."
-    character_name "Like every desk has its own metronome."
+    character_name "The whole room looks dipped in aqua light."
+    character_name "Not quieter. Just smoother."
+    character_name "Like every desk belongs to a cleaner world than mine."
     jump class_hub
 
 
@@ -76,7 +77,7 @@ label class_hub:
 
 
 label nuria_route:
-    scene bg class0
+    scene bg class1_empty
 
     if route_nuria_stage == 0:
         show nuria at right
@@ -99,7 +100,7 @@ label nuria_route:
         $ result = _return
         $ store_last_result("nuria_animal")
         if result["cleared"]:
-            scene bg class0
+            scene bg class1_empty
             show nuria_blush at right
             Nuria "You stayed with it."
             Nuria "That was not terrible."
@@ -112,7 +113,7 @@ label nuria_route:
             $ unlock_track("tamy_afterdark")
             hide nuria_blush
         else:
-            scene bg class0
+            scene bg class1_empty
             show nuria_angry at right
             Nuria "No. You drifted."
             Nuria "Practice it in the music room and come back."
@@ -129,7 +130,7 @@ label nuria_route:
         $ result = _return
         $ store_last_result("nuria_blackout")
         if result["cleared"]:
-            scene bg class0
+            scene bg class1_empty
             show nuria at right
             Nuria "Fine."
             Nuria "Now you get it."
@@ -141,7 +142,7 @@ label nuria_route:
             $ route_nuria_stage = 3
             hide nuria
         else:
-            scene bg class0
+            scene bg class1_empty
             show nuria_angry at right
             Nuria "Still not there."
             Nuria "When your hands stop hesitating, come back."
@@ -247,6 +248,7 @@ label class_ending:
     show tamy at left
     Tamy "And did not panic."
     hide tamy
+    scene bg class1_empty
     show isela at left
     Isela "If all of you are finished having invisible emotional breakthroughs, open your notebooks."
     hide isela

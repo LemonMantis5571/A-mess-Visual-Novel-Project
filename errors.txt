@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/insto/insto.rpy", line 143: the action keyword argument was not given a value.
-    timer .1 action
-                    ^
+File "game/rhythm_game.rpy", line 776: The if statement is not a valid child of the frame statement.
+    background g.lane_colors[spark["lane"]] if spark["type"] == "PERFECT" else "#ffffff"
+                                              ^
 
 Ren'Py Version: Ren'Py 8.5.2.26010301
-Tue Mar 10 11:23:54 2026
+Wed Mar 11 14:48:21 2026

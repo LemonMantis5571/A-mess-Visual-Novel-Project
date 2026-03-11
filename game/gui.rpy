@@ -85,7 +85,7 @@ define gui.title_text_size = 75
 ## Main and Game Menus #########################################################
 
 ## The images used for the main and game menus.
-define gui.main_menu_background = "bg uni.png"
+define gui.main_menu_background = "images/chapter1/bg main_menu.jpg"
 define gui.game_menu_background = "gui/game_menu.png"
 
 
@@ -202,14 +202,14 @@ define gui.quick_button_text_selected_color = gui.accent_color
 ##
 ## Choice buttons are used in the in-game menus.
 
-define gui.choice_button_width = 600
-define gui.choice_button_height = None
+define gui.choice_button_width = 980
+define gui.choice_button_height = 110
 define gui.choice_button_tile = False
 define gui.choice_button_borders = Borders(50, 8, 50, 8)
 define gui.choice_button_text_font = "fonts/Lato-Bold.ttf"
-define gui.choice_button_text_size = 26
-define gui.choice_button_text_xalign = 0.0
-define gui.choice_button_text_idle_color = "#cccccc"
+define gui.choice_button_text_size = 38
+define gui.choice_button_text_xalign = 0.5
+define gui.choice_button_text_idle_color = "#f5f7fb"
 define gui.choice_button_text_hover_color = "#ffffff"
 define gui.choice_button_text_insensitive_color = "#444444"
 
@@ -255,7 +255,7 @@ define gui.skip_ypos = 15
 define gui.notify_ypos = 68
 
 ## The spacing between menu choices.
-define gui.choice_spacing = 8
+define gui.choice_spacing = 20
 
 ## Buttons in the navigation section of the main and game menus.
 define gui.navigation_spacing = 12
@@ -443,7 +443,8 @@ init python:
         gui.slider_size = 54
 
         gui.choice_button_width = 1860
-        gui.choice_button_text_size = 45
+        gui.choice_button_height = 140
+        gui.choice_button_text_size = 52
 
         gui.navigation_spacing = 30
         gui.pref_button_spacing = 15

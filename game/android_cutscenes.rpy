@@ -1,4 +1,4 @@
-image splash = "images/bg afterdark.jpg"
+image splash = "images/bg blank.webp"
 
 define transition = Dissolve(2.0)
 

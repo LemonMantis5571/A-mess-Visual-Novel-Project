@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Initialization
 ################################################################################
 
@@ -223,16 +223,23 @@ style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
+    ypos 360
     yanchor 0.5
 
     spacing gui.choice_spacing
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
+    xalign 0.5
+    background Solid("#1a0a1add")
+    hover_background Solid("#EC8FD044")
+    insensitive_background Solid("#1a0a1a88")
+    padding (36, 8)
 
 style choice_button_text is default:
     properties gui.button_text_properties("choice_button")
+    xalign 0.5
+    text_align 0.5
 
 
 ## Quick Menu screen ###########################################################

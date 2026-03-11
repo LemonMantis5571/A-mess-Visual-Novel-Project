@@ -13,6 +13,23 @@ define Talya = Character("Talya", color="#ff00ff", what_slow_cps=30, what_slow_a
 define Ozuna = Character("Ozuna", color="#ff12ff", what_slow_cps=45, what_slow_abortable=False)
 define guide = Character("Juan Caldera", color="#FFD700", what_slow_cps=30, what_slow_abortable=False)
 
+image meifeng = "images/characters/meifeng.png"
+image blezz = "images/characters/blezz.png"
+image isela = "images/characters/isela.png"
+image grettell = "images/characters/grettell.png"
+image nuria = "images/characters/nuria.png"
+image nuriat = "images/characters/nuria.png"
+image nuria_blush = "images/characters/nuria_blush.png"
+image nuria_angry = "images/characters/nuria_angry.png"
+image tamy = "images/characters/tamy.png"
+image tamyt = "images/characters/tamy.png"
+image rachel = "images/characters/rachel.png"
+image yves = "images/characters/yves.png"
+image talya = "images/characters/talya.png"
+image ozuna = "images/characters/ozuna.png"
+image guide = "images/characters/juancaldera.png"
+image secret = "images/characters/talya.png"
+
 transform dizzy(m, t):
     subpixel True
     parallel:

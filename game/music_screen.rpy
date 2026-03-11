@@ -2,15 +2,6 @@
 #  Music Room – consistent warm palette
 # ──────────────────────────────────────
 
-init python:
-    def mr_select_chart():
-        stop_preview_music()
-        return store.music_room_selected
-
-    def mr_go_back():
-        stop_preview_music()
-        return "__back__"
-
 transform mr_bg_drift:
     subpixel True
     zoom 1.0
@@ -71,8 +62,8 @@ screen music_room(in_game=False):
 
             vbox:
                 spacing 14
-                text "Music Room" size 36 color "#EC8FD0" bold True
-                text "Practice unlocked charts and preview character themes." size 18 color "#d4a0c8"
+                text "Music Room" size 36 color "#ffffff" bold True
+                text "Practice unlocked charts and preview character themes." size 18 color "#ffffff"
 
                 null height 8
 
@@ -103,7 +94,7 @@ screen music_room(in_game=False):
                                     spacing 10
                                     yalign 0.5
                                     text "[row_song['title']]" size 22 color "#ffffff"
-                                    text "[best_grade(song_id)]" size 20 color "#EC8FD0" bold True
+                                    text "[best_grade(song_id)]" size 20 color "#ffffff" bold True
 
                         null height 6
                         for song_id in locked_song_ids():
@@ -117,8 +108,8 @@ screen music_room(in_game=False):
                                 hbox:
                                     spacing 10
                                     yalign 0.5
-                                    text "[row_song['title']]" size 22 color "#666677"
-                                    text "LOCKED" size 18 color "#555566"
+                                    text "[row_song['title']]" size 22 color "#ffffff"
+                                    text "LOCKED" size 18 color "#ffffff"
 
         # ── right panel: track details ──
         frame:
@@ -149,16 +140,16 @@ screen music_room(in_game=False):
                         spacing 8
                         xsize 580
                         text "[song['title']]" size 40 bold True color "#ffffff"
-                        text "[song['character']]  |  [song['artist']]" size 22 color "#d4a0c8"
+                        text "[song['character']]  |  [song['artist']]" size 22 color "#ffffff"
 
                         hbox:
                             spacing 16
-                            text "Difficulty [song['difficulty']]" size 22 color "#EC8FD0"
-                            text "Grade [result.get('grade', '-')]" size 22 color "#EC8FD0" bold True
+                            text "Difficulty [song['difficulty']]" size 22 color "#ffffff"
+                            text "Grade [result.get('grade', '-')]" size 22 color "#ffffff" bold True
 
                         null height 4
-                        text "[song['description']]" size 20 color "#c8b0c0"
-                        text "[unlock_text(song['id'])]" size 18 color "#9a8094"
+                        text "[song['description']]" size 20 color "#ffffff"
+                        text "[unlock_text(song['id'])]" size 18 color "#ffffff"
 
                     # preview stats
                     frame:
@@ -169,10 +160,10 @@ screen music_room(in_game=False):
 
                         vbox:
                             spacing 8
-                            text "Preview" size 26 bold True color "#EC8FD0"
+                            text "Preview" size 26 bold True color "#ffffff"
                             text "[music_position_text()] / [format_time(song['length'])]" at mr_timer_pulse size 22 color "#ffffff"
-                            text "Best score [result.get('score', 0)]" size 20 color "#d4a0c8"
-                            text "Accuracy [result.get('accuracy_text', '--')]" size 20 color "#d4a0c8"
+                            text "Best score [result.get('score', 0)]" size 20 color "#ffffff"
+                            text "Accuracy [result.get('accuracy_text', '--')]" size 20 color "#ffffff"
 
                 # controls bar
                 frame:
@@ -182,7 +173,7 @@ screen music_room(in_game=False):
 
                     vbox:
                         spacing 12
-                        text "Volume" size 22 color "#EC8FD0"
+                        text "Volume" size 22 color "#ffffff"
                         bar value Preference("music_room_mixer volume") xmaximum 600
 
                         hbox:
@@ -192,25 +183,25 @@ screen music_room(in_game=False):
                                 sensitive unlocked
                                 text_size 22
                                 text_color "#ffffff"
-                                text_hover_color "#FFC0CB"
+                                text_hover_color "#ffffff"
                                 action Function(preview_music_song, music_room_selected)
 
                             textbutton "Stop":
                                 text_size 22
                                 text_color "#ffffff"
-                                text_hover_color "#FFC0CB"
+                                text_hover_color "#ffffff"
                                 action Function(stop_preview_music)
 
                             if in_game:
                                 textbutton "Select Chart":
                                     sensitive unlocked
                                     text_size 22
-                                    text_color "#EC8FD0"
-                                    text_hover_color "#FFC0CB"
-                                    action Function(mr_select_chart)
+                                    text_color "#ffffff"
+                                    text_hover_color "#ffffff"
+                                    action Return(music_room_selected)
 
                             textbutton "Back":
                                 text_size 22
                                 text_color "#ffffff"
-                                text_hover_color "#FFC0CB"
-                                action Function(mr_go_back)
+                                text_hover_color "#ffffff"
+                                action Return("__back__" if in_game else None)

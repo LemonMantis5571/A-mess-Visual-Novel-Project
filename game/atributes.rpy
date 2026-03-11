@@ -1,5 +1,5 @@
 default character_name = "Sherylda"
-default chapter = "Chapter I: Pulse Check"
+default chapter = "World I: Frutiger Aero"
 default heart_problems = 0
 default censorship = 0
 
@@ -24,6 +24,17 @@ default track_unlocks = {
     "tamy_homemage": False,
 }
 default track_results = {}
+
+image bg class0 = "images/bg blank.webp"
+image bg guide = "images/bg blank.webp"
+image bg class1_frutiger = "images/bg blank.webp"
+image bg class1_empty = "images/bg blank.webp"
+image bg class1 = "images/bg blank.webp"
+image bg class = "images/bg blank.webp"
+image bg_nuria_frutiger = "images/bg blank.webp"
+image bg afterdark = "images/bg blank.webp"
+image bg homemage = "images/bg blank.webp"
+image bg main_menu = "images/chapter1/bg main_menu.jpg"
 
 init python:
     config.font_replacement_map["DejaVuSans.ttf", False, True] = ("fonts/Lato-Bold.ttf", False, False)

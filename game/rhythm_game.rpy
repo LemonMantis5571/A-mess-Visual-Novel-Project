@@ -6,6 +6,55 @@ init python:
     renpy.music.register_channel("preview", mixer="music_room_mixer", loop=False)
     renpy.music.register_channel("rhythm", mixer="music", loop=False)
 
+    def build_long_chart(base_notes, section_starts, lane_shifts, time_scales, accent_every=None, accent_start_section=99):
+        chart = []
+        base_start = base_notes[0]["time"]
+
+        for section_index, section_start in enumerate(section_starts):
+            lane_shift = lane_shifts[section_index % len(lane_shifts)]
+            time_scale = time_scales[section_index % len(time_scales)]
+
+            for note_index, note in enumerate(base_notes):
+                lane = (note["lane"] + lane_shift) % 4
+                note_time = section_start + ((note["time"] - base_start) * time_scale)
+                chart.append({
+                    "time": round(note_time, 2),
+                    "lane": lane,
+                })
+
+                if accent_every and section_index >= accent_start_section and note_index % accent_every == (accent_every - 1):
+                    chart.append({
+                        "time": round(note_time + (0.12 * time_scale), 2),
+                        "lane": (lane + 1 + (section_index % 2)) % 4,
+                    })
+
+        chart.sort(key=lambda item: item["time"])
+        return chart
+
+    NURIA_ANIMAL_BASE_NOTES = [
+        {"time": 1.00, "lane": 0}, {"time": 1.40, "lane": 1}, {"time": 1.80, "lane": 2}, {"time": 2.20, "lane": 3},
+        {"time": 2.80, "lane": 0}, {"time": 3.00, "lane": 1}, {"time": 3.20, "lane": 2}, {"time": 3.40, "lane": 3},
+        {"time": 4.10, "lane": 1}, {"time": 4.55, "lane": 0}, {"time": 5.00, "lane": 2}, {"time": 5.45, "lane": 3},
+        {"time": 6.10, "lane": 0}, {"time": 6.50, "lane": 2}, {"time": 6.90, "lane": 1}, {"time": 7.30, "lane": 3},
+        {"time": 8.10, "lane": 0}, {"time": 8.55, "lane": 1}, {"time": 9.00, "lane": 2}, {"time": 9.45, "lane": 3},
+        {"time": 10.10, "lane": 3}, {"time": 10.50, "lane": 2}, {"time": 10.90, "lane": 1}, {"time": 11.30, "lane": 0},
+        {"time": 12.10, "lane": 0}, {"time": 12.30, "lane": 2}, {"time": 12.50, "lane": 1}, {"time": 12.70, "lane": 3},
+        {"time": 13.50, "lane": 1}, {"time": 14.00, "lane": 0}, {"time": 14.50, "lane": 2}, {"time": 15.00, "lane": 3},
+    ]
+
+    NURIA_BLACKOUT_BASE_NOTES = [
+        {"time": 1.10, "lane": 0}, {"time": 1.45, "lane": 2}, {"time": 1.80, "lane": 1}, {"time": 2.15, "lane": 3},
+        {"time": 2.90, "lane": 0}, {"time": 3.15, "lane": 1}, {"time": 3.40, "lane": 2}, {"time": 3.65, "lane": 3},
+        {"time": 4.30, "lane": 2}, {"time": 4.55, "lane": 1}, {"time": 4.80, "lane": 0}, {"time": 5.05, "lane": 1},
+        {"time": 5.30, "lane": 2}, {"time": 5.55, "lane": 3}, {"time": 6.10, "lane": 0}, {"time": 6.45, "lane": 3},
+        {"time": 7.00, "lane": 1}, {"time": 7.35, "lane": 2}, {"time": 7.70, "lane": 1}, {"time": 8.05, "lane": 0},
+        {"time": 8.70, "lane": 3}, {"time": 9.05, "lane": 2}, {"time": 9.40, "lane": 1}, {"time": 9.75, "lane": 0},
+        {"time": 10.40, "lane": 0}, {"time": 10.65, "lane": 2}, {"time": 10.90, "lane": 3}, {"time": 11.15, "lane": 1},
+        {"time": 11.80, "lane": 0}, {"time": 12.15, "lane": 1}, {"time": 12.50, "lane": 2}, {"time": 12.85, "lane": 3},
+        {"time": 13.60, "lane": 1}, {"time": 13.85, "lane": 2}, {"time": 14.10, "lane": 1}, {"time": 14.35, "lane": 3},
+        {"time": 15.00, "lane": 0}, {"time": 15.35, "lane": 1}, {"time": 15.70, "lane": 2}, {"time": 16.05, "lane": 3},
+    ]
+
     RHYTHM_SONGS = {
         "nuria_animal": {
             "id": "nuria_animal",
@@ -13,21 +62,22 @@ init python:
             "artist": "Nuria Route",
             "character": "Nuria",
             "audio": "audio/metal1.mp3",
-            "background": "bg animal",
-            "difficulty": "2/5",
-            "length": 16.4,
-            "description": "Nuria's first chart. Sharp hits, simple pressure.",
+            "background": "bg_nuria_frutiger",
+            "difficulty": "4/5",
+            "length": 105.0,
+            "description": "Nuria's first full chart. Sharp hits, longer stamina, much tighter timing.",
             "unlock_text": "Unlocked from the start.",
-            "notes": [
-                {"time": 1.00, "lane": 0}, {"time": 1.40, "lane": 1}, {"time": 1.80, "lane": 2}, {"time": 2.20, "lane": 3},
-                {"time": 2.80, "lane": 0}, {"time": 3.00, "lane": 1}, {"time": 3.20, "lane": 2}, {"time": 3.40, "lane": 3},
-                {"time": 4.10, "lane": 1}, {"time": 4.55, "lane": 0}, {"time": 5.00, "lane": 2}, {"time": 5.45, "lane": 3},
-                {"time": 6.10, "lane": 0}, {"time": 6.50, "lane": 2}, {"time": 6.90, "lane": 1}, {"time": 7.30, "lane": 3},
-                {"time": 8.10, "lane": 0}, {"time": 8.55, "lane": 1}, {"time": 9.00, "lane": 2}, {"time": 9.45, "lane": 3},
-                {"time": 10.10, "lane": 3}, {"time": 10.50, "lane": 2}, {"time": 10.90, "lane": 1}, {"time": 11.30, "lane": 0},
-                {"time": 12.10, "lane": 0}, {"time": 12.30, "lane": 2}, {"time": 12.50, "lane": 1}, {"time": 12.70, "lane": 3},
-                {"time": 13.50, "lane": 1}, {"time": 14.00, "lane": 0}, {"time": 14.50, "lane": 2}, {"time": 15.00, "lane": 3},
-            ],
+            "perfect_window": 0.15,
+            "good_window": 0.25,
+            "miss_window": 0.35,
+            "notes": build_long_chart(
+                NURIA_ANIMAL_BASE_NOTES,
+                [1.0, 14.6, 28.0, 41.0, 53.8, 66.4, 78.8, 91.0],
+                [0, 1, 0, 2, 1, 3, 2, 0],
+                [1.00, 0.98, 0.96, 0.94, 0.92, 0.90, 0.88, 0.86],
+                accent_every=8,
+                accent_start_section=3,
+            ),
         },
         "nuria_blackout": {
             "id": "nuria_blackout",
@@ -35,23 +85,22 @@ init python:
             "artist": "Nuria Route",
             "character": "Nuria",
             "audio": "audio/metal3.mp3",
-            "background": "bg blackout",
-            "difficulty": "3/5",
-            "length": 18.2,
-            "description": "Nuria's second chart. Denser bursts and a faster center lane.",
+            "background": "bg_nuria_frutiger",
+            "difficulty": "5/5",
+            "length": 99.0,
+            "description": "Nuria's second full chart. Dense phrases, longer pressure, and unforgiving windows.",
             "unlock_text": "Clear Animal in Me.",
-            "notes": [
-                {"time": 1.10, "lane": 0}, {"time": 1.45, "lane": 2}, {"time": 1.80, "lane": 1}, {"time": 2.15, "lane": 3},
-                {"time": 2.90, "lane": 0}, {"time": 3.15, "lane": 1}, {"time": 3.40, "lane": 2}, {"time": 3.65, "lane": 3},
-                {"time": 4.30, "lane": 2}, {"time": 4.55, "lane": 1}, {"time": 4.80, "lane": 0}, {"time": 5.05, "lane": 1},
-                {"time": 5.30, "lane": 2}, {"time": 5.55, "lane": 3}, {"time": 6.10, "lane": 0}, {"time": 6.45, "lane": 3},
-                {"time": 7.00, "lane": 1}, {"time": 7.35, "lane": 2}, {"time": 7.70, "lane": 1}, {"time": 8.05, "lane": 0},
-                {"time": 8.70, "lane": 3}, {"time": 9.05, "lane": 2}, {"time": 9.40, "lane": 1}, {"time": 9.75, "lane": 0},
-                {"time": 10.40, "lane": 0}, {"time": 10.65, "lane": 2}, {"time": 10.90, "lane": 3}, {"time": 11.15, "lane": 1},
-                {"time": 11.80, "lane": 0}, {"time": 12.15, "lane": 1}, {"time": 12.50, "lane": 2}, {"time": 12.85, "lane": 3},
-                {"time": 13.60, "lane": 1}, {"time": 13.85, "lane": 2}, {"time": 14.10, "lane": 1}, {"time": 14.35, "lane": 3},
-                {"time": 15.00, "lane": 0}, {"time": 15.35, "lane": 1}, {"time": 15.70, "lane": 2}, {"time": 16.05, "lane": 3},
-            ],
+            "perfect_window": 0.12,
+            "good_window": 0.20,
+            "miss_window": 0.30,
+            "notes": build_long_chart(
+                NURIA_BLACKOUT_BASE_NOTES,
+                [1.0, 13.8, 26.2, 38.2, 50.0, 61.6, 73.0, 84.4],
+                [0, 1, 2, 1, 3, 2, 0, 3],
+                [0.98, 0.96, 0.94, 0.92, 0.90, 0.88, 0.86, 0.84],
+                accent_every=6,
+                accent_start_section=2,
+            ),
         },
         "tamy_afterdark": {
             "id": "tamy_afterdark",
@@ -211,6 +260,27 @@ init python:
         base = ["#e25f5f", "#e2a65f", "#4ca7d9", "#8c6fe8"]
         return base[lane] + "55"
 
+    def grade_color(grade):
+        palette = {
+            "S": "#ffe66d",
+            "A": "#6dffa0",
+            "B": "#8cc8ff",
+            "C": "#f3c87c",
+            "D": "#ff7a7a",
+            "-": "#f5f7fb",
+        }
+        return palette.get(grade, "#f5f7fb")
+
+    def timing_color(offset):
+        if offset is None:
+            return "#f5f7fb"
+        delta = abs(offset)
+        if delta <= 0.05:
+            return "#6dffa0"
+        if delta <= 0.12:
+            return "#ffe66d"
+        return "#ff7a7a"
+
 
     class RhythmGameState(object):
         lane_count = 4
@@ -224,9 +294,9 @@ init python:
         pre_spawn = 1.60
         # Ren'Py input/audio timing is not strict enough for arcade-tight windows.
         # Keep this forgiving so visual alignment matters more than frame-perfect input.
-        perfect_window = 0.14
-        good_window = 0.25
-        miss_window = 0.38
+        perfect_window = 0.20
+        good_window = 0.35
+        miss_window = 0.50
         input_offset = 0.04
         lane_colors = ["#e25f5f", "#e2a65f", "#4ca7d9", "#8c6fe8"]
 
@@ -234,8 +304,13 @@ init python:
             self.song_id = None
             self.song = None
             self.notes = []
+            self.total_notes = 0
+            self.judged_notes = 0
             self.last_judgment = ""
+            self.last_offset = None
+            self.last_lane = None
             self.judgment_time = 0.0
+            self.combo_pop_time = 0.0
             self.score = 0
             self.combo = 0
             self.max_combo = 0
@@ -244,19 +319,29 @@ init python:
             self.miss = 0
             self.finished = False
             self.running = False
+            self.result_snapshot = None
             self.lane_flash_times = [0.0, 0.0, 0.0, 0.0]
+            self.sparks = []
 
         def start(self, song_id):
             stop_preview_music()
             self.song_id = song_id
             self.song = RHYTHM_SONGS[song_id]
+            self.perfect_window = self.song.get("perfect_window", type(self).perfect_window)
+            self.good_window = self.song.get("good_window", type(self).good_window)
+            self.miss_window = self.song.get("miss_window", type(self).miss_window)
             self.notes = []
+            self.total_notes = len(self.song["notes"])
+            self.judged_notes = 0
             for note in self.song["notes"]:
                 note_data = copy.deepcopy(note)
                 note_data["judged"] = False
                 self.notes.append(note_data)
             self.last_judgment = ""
+            self.last_offset = None
+            self.last_lane = None
             self.judgment_time = 0.0
+            self.combo_pop_time = 0.0
             self.score = 0
             self.combo = 0
             self.max_combo = 0
@@ -265,7 +350,9 @@ init python:
             self.miss = 0
             self.finished = False
             self.running = True
+            self.result_snapshot = None
             self.lane_flash_times = [0.0, 0.0, 0.0, 0.0]
+            self.sparks = []
             renpy.music.stop(channel="preview")
             renpy.music.play(self.song["audio"], channel="rhythm", fadein=0.1)
 
@@ -279,35 +366,52 @@ init python:
             left = (1920 - total_width) // 2
             return left + lane * (self.lane_width + self.lane_gap)
 
+        def mark_judged(self, note):
+            if note is not None and not note["judged"]:
+                note["judged"] = True
+                self.judged_notes += 1
+
         def judge_note(self, note, delta):
-            note["judged"] = True
-            delta = abs(delta)
-            if delta <= self.perfect_window:
+            self.mark_judged(note)
+            self.last_offset = delta
+            self.last_lane = note["lane"]
+            abs_delta = abs(delta)
+
+            if abs_delta <= self.perfect_window:
                 self.perfect += 1
                 self.combo += 1
                 self.max_combo = max(self.max_combo, self.combo)
                 self.score += 1000 + (self.combo * 5)
                 self.last_judgment = "PERFECT"
                 self.judgment_time = _pytime.time()
+                hit_y = self.hit_line_y - (delta * self.note_speed)
+                self.sparks.append({"lane": note["lane"], "x": self.lane_x(note["lane"]) + self.lane_width // 2, "y": hit_y + self.note_height // 2, "time": self.judgment_time, "type": "PERFECT"})
+                if self.combo >= 5:
+                    self.combo_pop_time = self.judgment_time
                 return
 
-            if delta <= self.good_window:
+            if abs_delta <= self.good_window:
                 self.good += 1
                 self.combo += 1
                 self.max_combo = max(self.max_combo, self.combo)
                 self.score += 600 + (self.combo * 3)
                 self.last_judgment = "GOOD"
                 self.judgment_time = _pytime.time()
+                hit_y = self.hit_line_y - (delta * self.note_speed)
+                self.sparks.append({"lane": note["lane"], "x": self.lane_x(note["lane"]) + self.lane_width // 2, "y": hit_y + self.note_height // 2, "time": self.judgment_time, "type": "GOOD"})
+                if self.combo >= 5:
+                    self.combo_pop_time = self.judgment_time
                 return
 
-            self.register_miss(note)
+            self.register_miss(note, lane=note["lane"])
 
-        def register_miss(self, note=None):
-            if note is not None:
-                note["judged"] = True
+        def register_miss(self, note=None, lane=None):
+            self.mark_judged(note)
             self.miss += 1
             self.combo = 0
             self.last_judgment = "MISS"
+            self.last_offset = None
+            self.last_lane = lane
             self.judgment_time = _pytime.time()
 
         def tick(self):
@@ -319,11 +423,11 @@ init python:
                 if note["judged"]:
                     continue
                 if now - note["time"] > self.miss_window:
-                    self.register_miss(note)
+                    self.register_miss(note, lane=note["lane"])
                     continue
                 break
 
-            if now >= self.song["length"] and all(note["judged"] for note in self.notes):
+            if now >= self.song["length"] and self.judged_notes >= self.total_notes:
                 self.finish()
 
         def hit_lane(self, lane):
@@ -350,13 +454,16 @@ init python:
                 self.judge_note(note, delta)
                 return
 
-            self.register_miss()
+            self.register_miss(lane=lane)
 
         def flash_active(self, lane):
             return (_pytime.time() - self.lane_flash_times[lane]) < 0.12
 
         def judgment_visible(self):
             return (_pytime.time() - self.judgment_time) < 0.55
+
+        def combo_visible(self):
+            return self.combo >= 5 and (_pytime.time() - self.combo_pop_time) < 0.45
 
         def progress(self):
             if not self.song:
@@ -384,12 +491,20 @@ init python:
                 })
             return visible
 
+        def active_sparks(self):
+            now = _pytime.time()
+            self.sparks = [s for s in self.sparks if now - s["time"] < 0.25]
+            return self.sparks
+
         def accuracy(self):
             total = self.perfect + self.good + self.miss
             if not total:
                 return 0.0
             weighted_hits = (self.perfect * 1.0) + (self.good * 0.7)
             return weighted_hits / total
+
+        def accuracy_text(self):
+            return "{:.0%}".format(self.accuracy())
 
         def grade(self):
             acc = self.accuracy()
@@ -409,18 +524,40 @@ init python:
         def finish(self):
             self.finished = True
             self.running = False
+            self.result_snapshot = self.build_result()
             renpy.music.stop(channel="rhythm", fadeout=0.2)
 
+        def timing_text(self):
+            if self.last_judgment == "MISS":
+                return "Missed window"
+            if self.last_offset is None:
+                return "On beat"
+            ms = int(round(abs(self.last_offset) * 1000))
+            if ms == 0:
+                return "On beat"
+            if self.last_offset > 0:
+                return "{}ms early".format(ms)
+            return "{}ms late".format(ms)
+
+        def remaining_notes(self):
+            return max(0, self.total_notes - self.judged_notes)
+
         def build_result(self):
+            if self.result_snapshot is not None:
+                return dict(self.result_snapshot)
+
             accuracy = self.accuracy()
             return {
                 "song_id": self.song_id,
                 "score": self.score,
                 "grade": self.grade(),
                 "accuracy": accuracy,
-                "accuracy_text": "{:.0%}".format(accuracy),
+                "accuracy_text": self.accuracy_text(),
                 "cleared": self.cleared(),
                 "max_combo": self.max_combo,
+                "perfect": self.perfect,
+                "good": self.good,
+                "miss": self.miss,
             }
 
 
@@ -464,6 +601,27 @@ transform combo_wobble:
     ease 0.18 xoffset 2
     ease 0.18 xoffset 0
     repeat
+
+transform combo_burst:
+    anchor (0.5, 0.5)
+    zoom 1.35
+    alpha 0.0
+    on show:
+        alpha 0.0
+        easein 0.08 alpha 1.0 zoom 1.0
+        pause 0.1
+        ease 0.22 alpha 0.0 yoffset -24
+
+transform spark_burst:
+    anchor (0.5, 0.5)
+    zoom 1.0
+    alpha 0.85
+    easeout 0.25 zoom 1.8 alpha 0.0
+
+transform results_pop:
+    alpha 0.0
+    zoom 0.96
+    easein 0.18 alpha 1.0 zoom 1.0
 
 transform lane_btn_idle:
     zoom 1.0
@@ -509,6 +667,34 @@ screen rhythm_game(g=rhythm_state):
         ysize 5
         background "#EC8FD0"
 
+    frame:
+        background "#120914dd"
+        xalign 0.5
+        ypos 18
+        xsize 500
+        ysize 78
+        padding (24, 12)
+
+        hbox:
+            spacing 28
+            xalign 0.5
+            yalign 0.5
+
+            vbox:
+                spacing 2
+                text "Grade" size 16 color "#d4a0c8" xalign 0.5
+                text "[g.grade()]" size 28 bold True color grade_color(g.grade()) xalign 0.5
+
+            vbox:
+                spacing 2
+                text "Time" size 16 color "#d4a0c8" xalign 0.5
+                text "[format_time(g.current_time())] / [format_time(g.song['length'])]" size 24 color "#ffffff" xalign 0.5
+
+            vbox:
+                spacing 2
+                text "Notes Left" size 16 color "#d4a0c8" xalign 0.5
+                text "[g.remaining_notes()]" size 24 bold True color "#ffffff" xalign 0.5
+
     # --- lane columns ---
     for lane in range(g.lane_count):
         # main column body
@@ -533,7 +719,7 @@ screen rhythm_game(g=rhythm_state):
             xpos g.lane_x(lane)
             ypos g.hit_line_y
             xsize g.lane_width
-            ysize 6
+            ysize 26
             at hit_line_pulse
             background g.lane_colors[lane]
 
@@ -579,16 +765,48 @@ screen rhythm_game(g=rhythm_state):
             ysize g.note_height // 2 - 2
             background "#ffffff18"
 
+    # --- hit sparks (visual hit feedback) ---
+    for spark in g.active_sparks():
+        $ spark_color = g.lane_colors[spark["lane"]] if spark["type"] == "PERFECT" else "#ffffff"
+        frame:
+            xpos spark["x"]
+            ypos int(spark["y"])
+            xsize g.lane_width
+            ysize g.note_height
+            at spark_burst
+            background spark_color
+
     # --- judgment popup (floating center) ---
     if g.judgment_visible() and g.last_judgment:
-        text g.last_judgment:
-            at judgment_pop
+        vbox:
             xalign 0.5
-            ypos 420
-            size 64
+            ypos 410
+            spacing 4
+
+            text g.last_judgment:
+                at judgment_pop
+                xalign 0.5
+                size 64
+                bold True
+                color judgment_color(g.last_judgment)
+                outlines [(3, "#000000cc", 0, 0)]
+
+            text "[g.timing_text()]":
+                xalign 0.5
+                size 24
+                bold True
+                color timing_color(g.last_offset)
+                outlines [(2, "#000000aa", 0, 0)]
+
+    if g.combo_visible():
+        text "[g.combo] combo":
+            at combo_burst
+            xalign 0.5
+            ypos 510
+            size 34
             bold True
-            color judgment_color(g.last_judgment)
-            outlines [(3, "#000000cc", 0, 0)]
+            color "#ffffff"
+            outlines [(2, "#000000aa", 0, 0)]
 
     # --- HUD left panel ---
     frame:
@@ -615,7 +833,10 @@ screen rhythm_game(g=rhythm_state):
                 vbox:
                     spacing 4
                     text "Accuracy" size 16 color "#d4a0c8"
-                    text "[g.build_result()['accuracy_text']]" size 28 bold True color "#EC8FD0"
+                    text "[g.accuracy_text()]" size 28 bold True color "#EC8FD0"
+
+            null height 6
+            text "[g.timing_text()]" size 18 color timing_color(g.last_offset)
 
     # --- HUD right panel ---
     frame:
@@ -657,25 +878,36 @@ screen rhythm_game(g=rhythm_state):
             hbox:
                 spacing 8
                 text "Keys: D  F  J  K" size 16 color "#9a8094"
-                textbutton "Quit" text_size 16 text_color "#EC8FD0" text_hover_color "#FFC0CB":
+                textbutton "Quit" text_size 16 text_color "#ffffff" text_hover_color "#ffffff":
                     action [Function(g.finish), Return(g.build_result())]
 
     # --- lane hit buttons ---
     for lane in range(g.lane_count):
+        $ lane_button_bg = (g.lane_colors[lane] + "55") if g.flash_active(lane) else "#2a1028"
         button:
             xpos g.lane_x(lane)
             ypos 855
             xsize g.lane_width
             ysize 85
-            background "#2a1028"
+            background lane_button_bg
             hover_background g.lane_colors[lane]
             action Function(g.hit_lane, lane)
 
-            text lane_key_text(lane):
-                align (0.5, 0.5)
-                size 28
-                bold True
-                color "#f5f7fb"
+            vbox:
+                xalign 0.5
+                yalign 0.5
+                spacing 2
+
+                text lane_key_text(lane):
+                    xalign 0.5
+                    size 28
+                    bold True
+                    color "#f5f7fb"
+
+                text "Lane [lane + 1]":
+                    xalign 0.5
+                    size 14
+                    color "#ffffffcc"
 
     # --- keyboard bindings ---
     key "d" action Function(g.hit_lane, 0)
@@ -684,8 +916,113 @@ screen rhythm_game(g=rhythm_state):
     key "k" action Function(g.hit_lane, 3)
 
 
+screen rhythm_results(song, result):
+    modal True
+    tag menu
+
+    add Transform(song["background"], fit="contain", xysize=(1920, 1080), xalign=0.5, yalign=0.5)
+
+    frame:
+        background "#04050ddd"
+        xfill True
+        yfill True
+
+    frame:
+        at results_pop
+        background "#1a0a1af2"
+        xalign 0.5
+        yalign 0.5
+        xsize 980
+        ysize 620
+        padding (38, 34)
+
+        vbox:
+            spacing 18
+
+            hbox:
+                spacing 28
+
+                vbox:
+                    spacing 4
+                    xsize 620
+                    text "[song['title']]" size 38 bold True color "#ffffff"
+                    text "[song['character']]  |  [song['artist']]" size 22 color "#d4a0c8"
+                    text ("Chart cleared." if result["cleared"] else "Keep practicing and try again.") size 20 color "#ffffff"
+
+                frame:
+                    background "#120914"
+                    xsize 220
+                    ysize 160
+                    xalign 1.0
+                    yalign 0.5
+
+                    text "[result['grade']]":
+                        xalign 0.5
+                        yalign 0.5
+                        size 92
+                        bold True
+                        color grade_color(result["grade"])
+
+            hbox:
+                spacing 20
+
+                frame:
+                    background "#2a1028"
+                    xsize 430
+                    ysize 220
+                    padding (22, 18)
+
+                    vbox:
+                        spacing 10
+                        text "Performance" size 26 bold True color "#ffffff"
+                        text "Score  [result['score']]" size 22 color "#ffffff"
+                        text "Accuracy  [result['accuracy_text']]" size 22 color "#ffffff"
+                        text "Max combo  [result['max_combo']]" size 22 color "#ffffff"
+
+                frame:
+                    background "#2a1028"
+                    xsize 430
+                    ysize 220
+                    padding (22, 18)
+
+                    vbox:
+                        spacing 10
+                        text "Hit Breakdown" size 26 bold True color "#ffffff"
+                        text "Perfect  [result['perfect']]" size 22 color "#6dffa0"
+                        text "Good  [result['good']]" size 22 color "#ffe66d"
+                        text "Miss  [result['miss']]" size 22 color "#ff7a7a"
+
+            text "Retry to refine your score, or continue back to the story." size 20 color "#ffffff"
+
+            hbox:
+                spacing 18
+                xalign 1.0
+
+                textbutton "Retry":
+                    text_size 24
+                    text_color "#ffffff"
+                    text_hover_color "#ffffff"
+                    action Return("retry")
+
+                textbutton "Continue":
+                    text_size 24
+                    text_color "#ffffff"
+                    text_hover_color "#ffffff"
+                    action Return("continue")
+
+
 label play_rhythm_song(song_id):
     $ sync_music_progress()
-    $ rhythm_state.start(song_id)
-    call screen rhythm_game()
-    return _return
+    $ retry_song = True
+    $ final_result = None
+
+    while retry_song:
+        $ rhythm_state.start(song_id)
+        call screen rhythm_game()
+        $ result = _return
+        call screen rhythm_results(RHYTHM_SONGS[song_id], result)
+        if _return != "retry":
+            $ final_result = result
+            $ retry_song = False
+
+    return final_result
